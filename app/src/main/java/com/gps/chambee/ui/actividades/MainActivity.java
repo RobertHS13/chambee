@@ -1,8 +1,10 @@
-package com.gps.chambee;
+package com.gps.chambee.ui.actividades;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.gps.chambee.R;
 
 public class MainActivity extends AppCompatActivity {
 
