@@ -1,12 +1,16 @@
 package com.gps.chambee.entidades;
 
-public class Usuario {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Usuario implements Parcelable {
 
     private String nombre;
     private String apellidos;
     private String correoElectronico;
     private String contrasenia;
     private String telefono;
+    private int id;
 
     private Usuario(UsuarioBuilder builder){
         this.nombre = builder.nombre;
@@ -16,15 +20,55 @@ public class Usuario {
         this.contrasenia = builder.contrasenia;
     }
 
+    protected Usuario(Parcel in) {
+        nombre = in.readString();
+        apellidos = in.readString();
+        correoElectronico = in.readString();
+        contrasenia = in.readString();
+        telefono = in.readString();
+        id = in.readInt();
+    }
+
+    public static final Creator<Usuario> CREATOR = new Creator<Usuario>() {
+        @Override
+        public Usuario createFromParcel(Parcel in) {
+            return new Usuario(in);
+        }
+
+        @Override
+        public Usuario[] newArray(int size) {
+            return new Usuario[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(nombre);
+        dest.writeString(apellidos);
+        dest.writeString(correoElectronico);
+        dest.writeString(contrasenia);
+        dest.writeString(telefono);
+        dest.writeInt(id);
+    }
+
     public static class UsuarioBuilder{
         private String nombre;
         private String apellidos;
         private String correoElectronico;
         private String contrasenia;
         private String telefono;
+        private int id;
 
-        public UsuarioBuilder(){
+        public UsuarioBuilder(){  }
 
+        public UsuarioBuilder setId(int id) {
+            this.id = id;
+            return this;
         }
 
         public UsuarioBuilder setNombre(String nombre){
@@ -55,6 +99,14 @@ public class Usuario {
         public Usuario build(){
             return new Usuario(this);
         }
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNombre() {
