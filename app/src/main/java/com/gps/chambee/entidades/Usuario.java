@@ -10,7 +10,7 @@ public class Usuario implements Parcelable {
     private String correoElectronico;
     private String contrasenia;
     private String telefono;
-    private int id;
+    private String id;
 
     private Usuario(UsuarioBuilder builder){
         this.nombre = builder.nombre;
@@ -62,11 +62,11 @@ public class Usuario implements Parcelable {
         private String correoElectronico;
         private String contrasenia;
         private String telefono;
-        private int id;
+        private String id;
 
         public UsuarioBuilder(){  }
 
-        public UsuarioBuilder setId(int id) {
+        public UsuarioBuilder setId(String id) {
             this.id = id;
             return this;
         }
@@ -101,11 +101,11 @@ public class Usuario implements Parcelable {
         }
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
