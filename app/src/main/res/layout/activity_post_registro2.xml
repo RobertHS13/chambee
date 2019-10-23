@@ -4,19 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blanco"
-    tools:context=".ui.actividades.MainActivity">
-  
-   <RelativeLayout
+    tools:context=".ui.actividades.PostRegistroActivity"
+    android:orientation="vertical"
+    android:background="#FFF">
+    <RelativeLayout
+        android:id="@+id/rlBannerChambee"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@color/colorFinal">
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_settings"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="20dp"/>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -48,41 +43,45 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginEnd="20dp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true">
-            <ImageView
-                android:id="@+id/ivNotificaciones"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/ic_notifications"
-                android:layout_marginEnd="10dp"/>
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/ic_search"/>
-        </LinearLayout>
-    </RelativeLayout>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:elevation="8dp"
-        app:menu="@menu/bottom_nav_menu"
-        android:id="@+id/bottom_navigation"
+    </RelativeLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_below="@+id/rlBannerChambee"
+        android:id="@+id/rlPuntos"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        app:itemTextColor="@color/colorFinal"/>
-  
-    <FrameLayout
-        android:id="@+id/flFragments"
+        android:layout_height="60dp"
+        android:background="@color/gris">
+    </LinearLayout>
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vpPostRegistro"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="60dp"
-        android:layout_marginBottom="56dp"/>
-  
-</RelativeLayout>
+        android:layout_below="@+id/rlPuntos"
+        android:layout_above="@+id/rlAvanzar"/>
+    <RelativeLayout
+        android:id="@+id/rlAvanzar"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/gris"/>
+        <Button
+            android:id="@+id/btnSiguientePost"
+            android:layout_marginEnd="20dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:paddingStart="40dp"
+            android:paddingEnd="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/fondo_degradado_redondeado_azul"
+            android:textColor="#FFF"
+            android:textAllCaps="false"
+            android:text="Avanzar"/>
+    </RelativeLayout>
 
+</RelativeLayout>
