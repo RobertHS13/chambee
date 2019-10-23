@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    android:id="@+id/lyRegistroTrabajos">
+
+    <ImageView
+        android:id="@+id/ivImagenEmpresa"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/item_tag"
+        android:layout_margin="5dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="5dp">
+
+        <TextView
+            android:id="@+id/tvUserPuesto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Puesto de trabajo"
+            android:fontFamily="@font/nunito_semibold"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/tvEmpresa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito"
+            android:text="EMPRESA"
+            android:textColor="#00BCD4"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RatingBar
+                android:id="@+id/rbCalificacion"
+                style="@style/Widget.AppCompat.RatingBar.Indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:outlineAmbientShadowColor="#FFEB3B" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(10+)"
+                android:textSize="24sp"
+                android:textColor="#C4BFBF"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>
