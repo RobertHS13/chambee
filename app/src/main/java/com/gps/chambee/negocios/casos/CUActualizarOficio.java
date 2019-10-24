@@ -28,4 +28,3 @@ public class CUActualizarOficio extends CasoUso<String> {
         });
     }
 }
-

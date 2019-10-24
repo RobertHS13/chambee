@@ -23,7 +23,7 @@ public class ValidadorUsuario extends Validador<Usuario> {
         }, new ErrorValidacion() {
             @Override
             public String mensajeError() {
-                return "El nombre no puede estar vacio";
+                return "El nombre no puede estar vacío";
             }
 
             @Override
@@ -62,7 +62,7 @@ public class ValidadorUsuario extends Validador<Usuario> {
         }, new ErrorValidacion() {
             @Override
             public String mensajeError() {
-                return "Los apellidos no pueden estar vacios";
+                return "Los apellidos no pueden estar vacíos";
             }
 
             @Override
@@ -100,7 +100,7 @@ public class ValidadorUsuario extends Validador<Usuario> {
         }, new ErrorValidacion() {
             @Override
             public String mensajeError() {
-                return "El correo no puede estar vacio";
+                return "El correo no puede estar vacío";
             }
 
             @Override
@@ -137,7 +137,7 @@ public class ValidadorUsuario extends Validador<Usuario> {
         }, new ErrorValidacion() {
             @Override
             public String mensajeError() {
-                return "La contraseña no puede estar vacia";
+                return "La contraseña no puede estar vacía";
             }
 
             @Override
@@ -155,7 +155,7 @@ public class ValidadorUsuario extends Validador<Usuario> {
         }, new ErrorValidacion() {
             @Override
             public String mensajeError() {
-                return "El télefono no puede estar vacia";
+                return "El télefono no puede estar vacía";
             }
 
             @Override

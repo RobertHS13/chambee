@@ -4,23 +4,25 @@ import android.content.Context;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
+import com.gps.chambee.entidades.Oficio;
 import com.gps.chambee.servicios.web.ServicioWeb;
 import com.gps.chambee.servicios.web.ServicioWebEscritura;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class SWEliminarUsuario extends ServicioWebEscritura {
-    public SWEliminarUsuario(Context context, Response.Listener<String> listener, Response.ErrorListener errorListener) {
+public class SWRegistrarOficio extends ServicioWebEscritura {
+    public SWRegistrarOficio(Context context, Response.Listener<String> listener, Response.ErrorListener errorListener) {
         super(context, listener, errorListener);
     }
 
     @Override
     protected Map<String, String> definirParams(Object... args) {
-        String id = args[0].toString();
+        Oficio oficio = (Oficio) args[0];
 
         Map<String, String> params = new HashMap<>();
-        params.put("id", String.valueOf(id));
+        params.put("nombre", oficio.getNombre());
+        params.put("especialidad", oficio.getEspecialidad());
 
         return params;
     }

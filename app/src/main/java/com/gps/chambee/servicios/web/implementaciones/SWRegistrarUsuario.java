@@ -18,11 +18,9 @@ public class SWRegistrarUsuario extends ServicioWebEscritura {
 
     @Override
     protected Map<String, String> definirParams(Object... args) {
-        int id = Integer.parseInt(args[0].toString());
-        Usuario user = (Usuario) args[1];
+        Usuario user = (Usuario) args[0];
 
         Map<String, String> params = new HashMap<>();
-        params.put("id", String.valueOf(id));
         params.put("nombre", user.getNombre());
         params.put("apellidos", user.getApellidos());
         params.put("correo_electronico", user.getCorreoElectronico());
