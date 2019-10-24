@@ -10,8 +10,8 @@ import com.gps.chambee.servicios.web.ServicioWebEscritura;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SWEliminarUsuario extends ServicioWebEscritura {
-    public SWEliminarUsuario(Context context, Response.Listener<String> listener, Response.ErrorListener errorListener) {
+public class SWEliminarCalle extends ServicioWebEscritura {
+    public SWEliminarCalle(Context context, Response.Listener<String> listener, Response.ErrorListener errorListener) {
         super(context, listener, errorListener);
     }
 

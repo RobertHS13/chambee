@@ -7,7 +7,7 @@ import com.android.volley.VolleyError;
 import com.gps.chambee.servicios.web.ServicioWeb;
 import com.gps.chambee.servicios.web.implementaciones.SWActualizarColonia;
 
-public class CUActualizarColonia extends CasoUso<String>{
+public class CUActualizarColonia extends CasoUso<String> {
 
     public CUActualizarColonia(Context context, EventoPeticionAceptada<String> eventoPeticionAceptada, EventoPeticionRechazada eventoPeticionRechazada) {
         super(context, eventoPeticionAceptada, eventoPeticionRechazada);

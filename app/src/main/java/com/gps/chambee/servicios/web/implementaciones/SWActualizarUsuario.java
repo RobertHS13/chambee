@@ -18,7 +18,7 @@ public class SWActualizarUsuario extends ServicioWebEscritura {
 
     @Override
     protected Map<String, String> definirParams(Object... args) {
-        int id = Integer.parseInt(args[0].toString());
+        String id = args[0].toString();
         Usuario user = (Usuario) args[1];
 
         Map<String, String> params = new HashMap<>();

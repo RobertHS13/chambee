@@ -5,17 +5,17 @@ import android.content.Context;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.gps.chambee.servicios.web.ServicioWeb;
-import com.gps.chambee.servicios.web.implementaciones.SWEliminarCiudad;
+import com.gps.chambee.servicios.web.implementaciones.SWRegistrarLocalidad;
 
-public class CUEliminarCiudad extends CasoUso<String>{
+public class CURegistrarLocalidad extends CasoUso<String> {
 
-    public CUEliminarCiudad(Context context, EventoPeticionAceptada<String> eventoPeticionAceptada, EventoPeticionRechazada eventoPeticionRechazada) {
+    public CURegistrarLocalidad(Context context, EventoPeticionAceptada<String> eventoPeticionAceptada, EventoPeticionRechazada eventoPeticionRechazada) {
         super(context, eventoPeticionAceptada, eventoPeticionRechazada);
     }
 
     @Override
     protected ServicioWeb definirServicioWeb() {
-        return new SWEliminarCiudad(context, new Response.Listener<String>() {
+        return new SWRegistrarLocalidad(context, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 eventoPeticionAceptada.alAceptarPeticion(response);
