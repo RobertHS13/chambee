@@ -30,6 +30,7 @@ public class Publicacion implements Parcelable {
         this.vistas = builder.vistas;
         this.meInteresa = builder.meInteresa;
         this.fecha = builder.fecha;
+        this.id = builder.id;
 
     }
 
@@ -45,6 +46,7 @@ public class Publicacion implements Parcelable {
         vistas = in.readInt();
         meInteresa = in.readInt();
         fecha = in.readString();
+        id = in.readInt();
     }
 
     public static final Creator<Publicacion> CREATOR = new Creator<Publicacion>() {
@@ -77,6 +79,7 @@ public class Publicacion implements Parcelable {
         dest.writeInt(vistas);
         dest.writeInt(meInteresa);
         dest.writeString(fecha);
+        dest.writeInt(id);
     }
 
     public static class PublicacionBuilder{
@@ -91,6 +94,7 @@ public class Publicacion implements Parcelable {
         private int vistas;
         private int meInteresa;
         private String fecha;
+        private int id;
 
         public PublicacionBuilder() { }
 
@@ -148,10 +152,23 @@ public class Publicacion implements Parcelable {
             this.fecha = fecha;
             return this;
         }
+        public PublicacionBuilder setID(int id){
+            this.id = id;
+            return this;
+        }
 
         public Publicacion build(){
             return new Publicacion(this);
         }
+
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getUrlDescriptiva() {

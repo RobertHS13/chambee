@@ -14,7 +14,7 @@ public class PresentadorListaUsuarios extends Presentador<List<Usuario>> {
     @Override
     public List<Usuario> procesar(JSONObject json) {
         JSONArray jsonArray = json.optJSONArray("usuario");
-        List<Usuario> usuarios = new ArrayList<>();
+        List<Usuario> usuarioList = new ArrayList<>();
 
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject jsonObject = null;
@@ -25,7 +25,7 @@ public class PresentadorListaUsuarios extends Presentador<List<Usuario>> {
             }
 
             assert jsonObject != null;
-            Usuario user = new Usuario.UsuarioBuilder()
+            Usuario usuario = new Usuario.UsuarioBuilder()
                     .setNombre(jsonObject.optString("nombre"))
                     .setApellidos(jsonObject.optString("apellidos"))
                     .setCorreoElectronico(jsonObject.optString("correoElectronico"))
@@ -33,8 +33,8 @@ public class PresentadorListaUsuarios extends Presentador<List<Usuario>> {
                     .setTelefono(jsonObject.optString("telefono"))
                     .build();
 
-            usuarios.add(user);
+            usuarioList.add(usuario);
         }
-        return usuarios;
+        return usuarioList;
     }
 }
