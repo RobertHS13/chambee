@@ -11,6 +11,7 @@
         android:id="@+id/llEncabezado"
         android:orientation="horizontal">
         <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civFotoNotificaciones"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@color/colorFinal"
@@ -20,6 +21,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
+                android:id="@+id/tvTextNotificacion"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"

@@ -19,6 +19,7 @@ import com.gps.chambee.R;
 import com.gps.chambee.ui.actividades.PublicacionActivity;
 import com.gps.chambee.ui.actividades.PublicarTrabajoActivity;
 import com.gps.chambee.ui.actividades.SolicitarEmpleoActivity;
+import com.gps.chambee.ui.adaptadores.CategoriasAdapter;
 import com.gps.chambee.ui.adaptadores.PublicacionEmpresaAdapter;
 import com.gps.chambee.ui.adaptadores.PublicacionPersonaAdapter;
 
@@ -31,6 +32,7 @@ public class InicioFragment extends Fragment {
     private FloatingActionButton btnPublicarEmpleo;
     private RecyclerView rvPublicaciones;
     private RecyclerView rvPublicacionesEmpleados;
+    private RecyclerView rvCategorias;
     private TextView tvVerTodoEmpleos;
 
     @Nullable
@@ -40,6 +42,7 @@ public class InicioFragment extends Fragment {
 
         rvPublicaciones = view.findViewById(R.id.rvPublicaciones);
         rvPublicacionesEmpleados = view.findViewById(R.id.rvPublicacionesEmpleados);
+        rvCategorias = view.findViewById(R.id.rvCategorias);
         tvVerTodoEmpleos=view.findViewById(R.id.tvVerTodoEmpleos);
         btnPublicarEmpleo=view.findViewById(R.id.btnPublicarEmpleo);
         btnSolicitarEmpleo = view.findViewById(R.id.btnSolicitarEmpleo);
@@ -59,6 +62,21 @@ public class InicioFragment extends Fragment {
         });
         rvPublicaciones.setHasFixedSize(true);
         rvPublicaciones.setAdapter(adapter);
+
+        //RecyclerView de categorias
+        List<Object> categorias = new ArrayList<>();
+        categorias.add(0);
+        categorias.add(0);
+
+        CategoriasAdapter caAdapter = new CategoriasAdapter(view.getContext(), categorias);
+        rvCategorias.setLayoutManager(new LinearLayoutManager(view.getContext()) {
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        });
+        rvCategorias.setHasFixedSize(true);
+        rvCategorias.setAdapter(caAdapter);
 
         //RecyclerView de publicaciones de personas
         List<Object> empleados=new ArrayList<>();

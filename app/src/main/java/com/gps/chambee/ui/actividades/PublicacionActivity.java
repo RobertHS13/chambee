@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.gps.chambee.R;
 import com.gps.chambee.ui.adaptadores.ComentarioTrabajoAdapter;
+import com.gps.chambee.ui.adaptadores.InteresadosAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +20,7 @@ import java.util.List;
 public class PublicacionActivity extends AppCompatActivity {
 
     private CircleImageView civFotoPerfil;
+    private RecyclerView rvInteresados;
     private RecyclerView rvComentariosTrabajo;
     private ImageView ivRegresarPublicacion;
     private ImageView ivPortada;
@@ -26,7 +28,6 @@ public class PublicacionActivity extends AppCompatActivity {
     private TextView tvNombreTrabajo;
     private TextView tvNombrePerfil;
     private TextView tvNumeroInteresados;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,14 +41,30 @@ public class PublicacionActivity extends AppCompatActivity {
         tvDescripcionTrabajo = findViewById(R.id.tvDescripcionTrabajo);
         tvNombrePerfil = findViewById(R.id.tvNombrePerfil);
         civFotoPerfil = findViewById(R.id.civFotoPerfil);
+        rvInteresados = findViewById(R.id.rvInteresados);
 
-        List<Object> lista=new ArrayList<>();
+        //
+        List<Object> interesados = new ArrayList<>();
+        interesados.add(0);
+        interesados.add(0);
+
+        InteresadosAdapter iaAdapter = new InteresadosAdapter(this, interesados);
+
+        rvInteresados.setLayoutManager(new LinearLayoutManager(this) {
+            @Override
+            public boolean canScrollVertically(){
+                return false;
+            }
+        });
+        rvInteresados.setAdapter(iaAdapter);
+        //
+        List<Object> lista = new ArrayList<>();
         lista.add(0);
         lista.add(0);
 
-        ComentarioTrabajoAdapter adapter=new ComentarioTrabajoAdapter(this,lista);
+        ComentarioTrabajoAdapter adapter = new ComentarioTrabajoAdapter(this, lista);
 
-        rvComentariosTrabajo.setLayoutManager(new LinearLayoutManager(this){
+        rvComentariosTrabajo.setLayoutManager(new LinearLayoutManager(this) {
             @Override
             public boolean canScrollVertically(){
                 return false;

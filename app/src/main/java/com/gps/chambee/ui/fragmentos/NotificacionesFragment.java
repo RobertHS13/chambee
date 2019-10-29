@@ -23,7 +23,7 @@ public class NotificacionesFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater layout, ViewGroup container, Bundle savedInstanceState) {
-        View view = layout.inflate(R.layout.notificaciones_fragment,container,false);
+        View view = layout.inflate(R.layout.fragment_notificaciones,container,false);
 
         rvNotificaciones = view.findViewById(R.id.rvNotificaciones);
         tvSalirNotificaciones = view.findViewById(R.id.tvSalirNotificaciones);

@@ -3,6 +3,7 @@ package com.gps.chambee.ui.actividades;
 import androidx.appcompat.app.AppCompatActivity;
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -28,6 +29,7 @@ public class SolicitarEmpleoActivity extends AppCompatActivity {
         civFotoUsuario = findViewById(R.id.civFotoPerfil);
         ivRegresarSolicitarTrabajo = findViewById(R.id.ivRegresarSolicitarTrabajo);
         ivSubirImagenPublicacion = findViewById(R.id.ivSubirImagenPublicacion);
+
         btnPublicar = findViewById(R.id.btnPublicar);
 
         btnPublicar.setOnClickListener(new View.OnClickListener() {

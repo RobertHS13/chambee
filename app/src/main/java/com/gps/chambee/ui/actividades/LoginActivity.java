@@ -42,6 +42,13 @@ public class LoginActivity extends AppCompatActivity {
         llNombre = findViewById(R.id.llNombre);
         llSociales = findViewById(R.id.llSociales);
 
+        tvOlvideContrasena.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this, OlvideContrasenaActivity.class));
+            }
+        });
+
         tvRegistrate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

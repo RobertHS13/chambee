@@ -45,6 +45,9 @@
 
         </LinearLayout>
         <EditText
+            android:inputType="textPersonName"
+            android:singleLine="true"
+            android:imeOptions="actionNext"
             android:id="@+id/etNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -60,6 +63,9 @@
             android:background="@drawable/fondo_redondeado_blanco"
             />
         <EditText
+            android:inputType="textPersonName"
+            android:singleLine="true"
+            android:imeOptions="actionNext"
             android:id="@+id/etApellidos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -75,6 +81,9 @@
             android:background="@drawable/fondo_redondeado_blanco"
             />
         <EditText
+            android:singleLine="true"
+            android:imeOptions="actionNext"
+            android:inputType="textEmailAddress"
             android:id="@+id/etCorreo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -90,6 +99,8 @@
             android:background="@drawable/fondo_redondeado_blanco"
             />
         <EditText
+            android:imeOptions="actionNext"
+            android:singleLine="true"
             android:id="@+id/etContrasena"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -106,6 +117,8 @@
             android:background="@drawable/fondo_redondeado_blanco"
             />
         <EditText
+            android:imeOptions="actionDone"
+            android:singleLine="true"
             android:id="@+id/etConfirmarContrasena"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

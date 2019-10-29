@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
+import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.google.android.material.tabs.TabLayout;
 import com.gps.chambee.R;
@@ -22,13 +24,25 @@ public class ExploraFragment extends Fragment {
 
     private TabLayout tabExplorar;
     private ViewPager vpExplora;
+    private ImageView ivFiltros;
+    private EditText etBusquedaExplorar;
 
     public View onCreateView(LayoutInflater inflate, ViewGroup container, Bundle savedInstanceState){
         View view = inflate.inflate(R.layout.fragment_explorar, container, false);
         setHasOptionsMenu(true);
 
+        etBusquedaExplorar = view.findViewById(R.id.etBusquedaExplorar);
+        ivFiltros = view.findViewById(R.id.ivFiltros);
         tabExplorar = view.findViewById(R.id.tabExplorar);
         vpExplora = view.findViewById(R.id.vpExplora);
+
+        ivFiltros.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FiltroFragment ff = new FiltroFragment();
+                ff.show(getFragmentManager(), "Dialogo");
+            }
+        });
 
         vpExplora.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabExplorar));
         tabExplorar.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -47,6 +61,7 @@ public class ExploraFragment extends Fragment {
 
             }
         });
+
         tabExplorar.addTab(tabExplorar.newTab().setText("Empleos"));
         tabExplorar.addTab(tabExplorar.newTab().setText("Empleados"));
         tabExplorar.setTabMode(TabLayout.MODE_SCROLLABLE);

@@ -3,24 +3,23 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="20dp"
-    android:id="@+id/lyRegistroTrabajos">
+    android:id="@+id/lyRegistroTrabajos"
+    android:paddingTop="10dp">
 
     <ImageView
-        android:id="@+id/ivImagenEmpresa"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/item_tag"
-        android:layout_margin="5dp"/>
+        android:id="@+id/ivFotoPuestoTrabajo"
+        android:layout_width="80dp"
+        android:layout_height="fill_parent"
+        android:layout_marginEnd="15dp"
+        android:src="@color/colorFinal"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="5dp">
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tvUserPuesto"
+            android:id="@+id/tvNombrePuesto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Puesto de trabajo"
@@ -28,31 +27,39 @@
             android:textSize="20sp"/>
 
         <TextView
-            android:id="@+id/tvEmpresa"
+            android:id="@+id/tvEmpresaRegistro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/nunito"
-            android:text="EMPRESA"
+            android:fontFamily="@font/montserrat_regular"
+            android:text="Empresa"
             android:textColor="#00BCD4"
-            android:textSize="20sp" />
+            android:textSize="12sp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <RatingBar
-                android:id="@+id/rbCalificacion"
-                style="@style/Widget.AppCompat.RatingBar.Indicator"
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:outlineAmbientShadowColor="#FFEB3B" />
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/ic_star"/>
             <TextView
+                android:id="@+id/tvCalificacionEstrellas"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:text="4.5"
+                android:textSize="12sp"/>
+            <TextView
+                android:id="@+id/tvNumeroCalificacionTrabajos"
+                android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="(10+)"
-                android:textSize="24sp"
-                android:textColor="#C4BFBF"/>
+                android:textSize="12sp"/>
         </LinearLayout>
 
     </LinearLayout>

@@ -13,9 +13,13 @@
         android:background="#eaeaea"
         android:orientation="horizontal">
         <ImageView
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:paddingEnd="15dp"
+            android:paddingStart="15dp"
+            android:layout_width="60dp"
+            android:layout_height="fill_parent"
             android:id="@+id/ivRegresarPublicarTrabajo"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
             android:src="@drawable/ic_regresar"
             android:layout_gravity="center_vertical"/>
         <TextView

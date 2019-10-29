@@ -12,13 +12,20 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class NotificacionesAdapter extends RecyclerView.Adapter<NotificacionesAdapter.ViewHolder> {
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
+        CircleImageView civFotoNotificaciones;
+        TextView tvTextNotificacion;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+
+            civFotoNotificaciones = itemView.findViewById(R.id.civFotoNotificaciones);
+            tvTextNotificacion = itemView.findViewById(R.id.tvTextNotificacion);
         }
     }
 

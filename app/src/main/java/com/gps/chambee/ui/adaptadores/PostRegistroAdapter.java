@@ -7,42 +7,31 @@ import android.view.ViewGroup;
 
 import com.gps.chambee.R;
 
+import java.util.List;
+
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.PagerAdapter;
 
-public class PostRegistroAdapter extends PagerAdapter {
+public class PostRegistroAdapter extends FragmentStatePagerAdapter {
 
-    private int[] layouts;
-    private LayoutInflater layoutInflater;
-    private Context context;
+    private List<Fragment> lista;
 
-    public PostRegistroAdapter(int[] layouts, Context context){
-        this.layouts = layouts;
-        this.context = context;
-        layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    public PostRegistroAdapter(FragmentManager fm, List<Fragment> lista){
+        super(fm);
+        this.lista = lista;
     }
 
     @Override
     public int getCount() {
-        return layouts.length;
+        return lista.size();
     }
-
-    @Override
-    public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
-        return view==object;
-    }
-
     @NonNull
     @Override
-    public Object instantiateItem(@NonNull ViewGroup container, int position) {
-        View view = layoutInflater.inflate(layouts[position],container,false);
-        container.addView(view);
-        return view;
+    public Fragment getItem(int position) {
+        return lista.get(position);
     }
 
-    @Override
-    public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-        View view = (View) object;
-        container.removeView(view);
-    }
 }

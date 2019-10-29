@@ -53,6 +53,8 @@
 
                 </LinearLayout>
                 <EditText
+                    android:singleLine="true"
+                    android:imeOptions="actionNext"
                     android:id="@+id/etUsuario"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -68,6 +70,8 @@
                     android:background="@drawable/fondo_redondeado_blanco"
                     />
                 <EditText
+                    android:singleLine="true"
+                    android:imeOptions="actionDone"
                     android:id="@+id/etContrasenaLogin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

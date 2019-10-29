@@ -11,6 +11,11 @@
         <item name="android:windowBackground">@drawable/degradado_splash</item>
     </style>
 
+    <style name="AppThemeRatingBar" parent="Theme.AppCompat">
+        <item name="colorAccent">#fcd321</item>
+        <item name="colorControlNormal">#6B6B6B</item>
+    </style>
+
     <style name="customFab">
         <item name="android:background">@drawable/fab_label_background</item>
         <item name="android:textColor">@color/blanco</item>
