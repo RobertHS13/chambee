@@ -37,7 +37,7 @@ public class SWRegistrarPerfil extends ServicioWebEscritura{
 
     @Override
     protected String definirUrl(Object... args) {
-        return null;
+        return "chabee.online/escritura/serviceweb_alta_perfiles.php";
     }
 
     @Override

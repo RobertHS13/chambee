@@ -33,7 +33,7 @@ public class SWActualizarComentarioPublicacion extends ServicioWebEscritura {
 
     @Override
     protected String definirUrl(Object... args) {
-        return "Here goes the URL With the php script.";
+        return "chabee.online/escritura/serviceweb_cambio_comentario_publicacion.php";
     }
 
     @Override

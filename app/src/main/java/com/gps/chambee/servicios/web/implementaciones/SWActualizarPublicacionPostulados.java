@@ -31,7 +31,7 @@ public class SWActualizarPublicacionPostulados extends ServicioWebEscritura {
 
     @Override
     protected String definirUrl(Object... args) {
-        return "Here goes the URL With the php script.";
+        return null;
     }
 
     @Override

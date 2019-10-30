@@ -28,7 +28,7 @@ public class SWRegistrarPais extends ServicioWebEscritura{
 
     @Override
     protected String definirUrl(Object... args) {
-        return null;
+        return "chabee.online/escritura/serviceweb_alta_paises.php";
     }
 
     @Override

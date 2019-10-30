@@ -31,7 +31,7 @@ public class SWRegistrarComentarioPublicacion extends ServicioWebEscritura {
 
     @Override
     protected String definirUrl(Object... args) {
-        return "Here goes the URL With the php script.";
+        return "chabee.online/escritura/serviceweb_alta_comentario_publicacion.php";
     }
 
     @Override
