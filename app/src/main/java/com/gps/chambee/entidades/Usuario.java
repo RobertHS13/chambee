@@ -26,7 +26,7 @@ public class Usuario implements Parcelable {
         correoElectronico = in.readString();
         contrasenia = in.readString();
         telefono = in.readString();
-        id = in.readInt();
+        id = in.readString();
     }
 
     public static final Creator<Usuario> CREATOR = new Creator<Usuario>() {
@@ -53,7 +53,7 @@ public class Usuario implements Parcelable {
         dest.writeString(correoElectronico);
         dest.writeString(contrasenia);
         dest.writeString(telefono);
-        dest.writeInt(id);
+        dest.writeString(id);
     }
 
     public static class UsuarioBuilder{

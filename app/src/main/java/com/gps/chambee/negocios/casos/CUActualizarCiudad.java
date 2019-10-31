@@ -15,7 +15,7 @@ public class CUActualizarCiudad extends CasoUso<String>{
 
     @Override
     protected ServicioWeb definirServicioWeb() {
-        return new SWActulizarCiudad(context, new Response.Listener<String>() {
+        return new SWActualizarCiudad(context, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 eventoPeticionAceptada.alAceptarPeticion(response);
