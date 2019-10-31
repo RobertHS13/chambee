@@ -10,7 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.actividades.CalificarUsuarioActivity"></activity>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        <activity android:name=".ui.actividades.CalificarUsuarioActivity"/>
         <activity android:name=".ui.actividades.OlvideContrasenaActivity" />
         <activity android:name=".ui.actividades.SeguridadActivity" />
         <activity android:name=".ui.actividades.TelefonoActivity" />
@@ -21,14 +27,8 @@
         <activity android:name=".ui.actividades.DatosPersonalesActivity" />
         <activity android:name=".ui.actividades.CorreoElectronicoActivity" />
         <activity android:name=".ui.actividades.ConfiguracionesActivity" />
-        <activity android:name=".ui.actividades.ChatActivity" />
-        <activity android:name=".ui.actividades.BienvenidaActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".ui.actividades.ChatActivity"/>
+        <activity android:name=".ui.actividades.BienvenidaActivity"/>
         <activity android:name=".ui.fragmentos.NotificacionesFragment" />
         <activity android:name=".ui.actividades.SolicitarEmpleoActivity" />
         <activity android:name=".ui.actividades.PostRegistroActivity" />
@@ -39,7 +39,7 @@
         <activity android:name=".ui.actividades.LoginActivity" />
         <activity android:name=".ui.actividades.SplashScreenActivity" />
         <activity android:name=".ui.actividades.MainActivity" />
-
+  
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
