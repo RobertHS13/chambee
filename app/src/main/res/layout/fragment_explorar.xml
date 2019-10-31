@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eaeaea">
+
+    <EditText
+        android:id="@+id/etBusquedaExplorar"
+        android:imeOptions="actionSearch"
+        android:singleLine="true"
+        android:drawablePadding="15dp"
+        android:drawableStart="@drawable/ic_search_gray"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20sp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:background="@drawable/fondo_redondeado_blanco_contorno"
+        android:hint="Buscar"
+        android:padding="15dp"/>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabExplorar"
+        style="@style/customTab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etBusquedaExplorar"
+        android:layout_marginTop="12dp"
+        android:background="#EAEAEA"
+        app:tabSelectedTextColor="#5B5B5B"></com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:background="#FFF"
+        android:layout_below="@+id/tabExplorar"
+        android:id="@+id/vpExplora"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <ImageView
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:padding="10dp"
+        android:id="@+id/ivFiltros"
+        android:layout_above="@+id/vpExplora"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_filter"
+        android:layout_alignParentEnd="true"/>
+
+</RelativeLayout>
