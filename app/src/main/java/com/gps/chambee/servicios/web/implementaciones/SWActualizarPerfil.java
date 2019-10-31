@@ -39,7 +39,7 @@ public class SWActualizarPerfil extends ServicioWebEscritura {
 
     @Override
     protected String definirUrl(Object... args) {
-        return "Here goes the URL With the php script.";
+        return "chabee.online/escritura/serviceweb_cambio_perfiles.php";
     }
 
     @Override

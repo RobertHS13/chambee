@@ -29,7 +29,7 @@ public class SWRegistrarOficio extends ServicioWebEscritura {
 
     @Override
     protected String definirUrl(Object... args) {
-        return "Here goes the URL With the php script.";
+        return "chabee.online/escritura/serviceweb_alta_oficios.php";
     }
 
     @Override
