@@ -8,6 +8,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.gps.chambee.R;
@@ -47,10 +48,17 @@ public class PublicacionActivity extends AppCompatActivity {
         List<Object> interesados = new ArrayList<>();
         interesados.add(0);
         interesados.add(0);
+        interesados.add(0);
+        interesados.add(0);
+        interesados.add(0);
+        interesados.add(0);
+        interesados.add(0);
+        interesados.add(0);
+        interesados.add(0);
 
         InteresadosAdapter iaAdapter = new InteresadosAdapter(this, interesados);
 
-        rvInteresados.setLayoutManager(new LinearLayoutManager(this) {
+        rvInteresados.setLayoutManager(new LinearLayoutManager(this, LinearLayout.HORIZONTAL, false) {
             @Override
             public boolean canScrollVertically(){
                 return false;

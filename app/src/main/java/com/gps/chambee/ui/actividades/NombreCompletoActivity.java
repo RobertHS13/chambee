@@ -15,6 +15,7 @@ public class NombreCompletoActivity extends AppCompatActivity {
 
     private TextView etNombreActual;
     private EditText etNuevoNombre;
+    private EditText etNuevoApellido;
     private Button btnListoNombre;
     private ImageView ivRegresarNombre;
 
@@ -24,6 +25,7 @@ public class NombreCompletoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_nombre_completo);
 
         etNombreActual = findViewById(R.id.tvNombreActual);
+        etNuevoApellido = findViewById(R.id.etNuevoApellido);
         etNuevoNombre = findViewById(R.id.etNuevoNombre);
         btnListoNombre = findViewById(R.id.btnListoNombre);
         ivRegresarNombre = findViewById(R.id.ivRegresarNombre);

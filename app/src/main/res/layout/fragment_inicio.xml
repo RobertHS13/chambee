@@ -55,12 +55,12 @@
                 android:layout_height="wrap_content"
                 android:text="Ver todo"
                 android:fontFamily="@font/montserrat_regular"
-                android:layout_above="@+id/hsvScroll"
+                android:layout_above="@+id/rvCategorias"
                 android:layout_alignParentRight="true"
                 android:textColor="@color/colorFinal"
                 android:layout_marginEnd="20dp"
                 android:textSize="14sp"/>
-            <HorizontalScrollView
+           <!-- <HorizontalScrollView
                 android:id="@+id/hsvScroll"
                 android:layout_marginTop="10dp"
                 android:layout_below="@+id/tvExplora"
@@ -69,7 +69,7 @@
                 android:fillViewport="true"
                 android:measureAllChildren="false"
                 android:scrollbars="none"
-                >
+                >-->
                 <!--<LinearLayout
                     android:layout_width="500dp"
                     android:layout_height="100dp"
@@ -238,14 +238,17 @@
                     </RelativeLayout>
                 </LinearLayout>-->
                 <androidx.recyclerview.widget.RecyclerView
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@+id/tvExplora"
+                    android:scrollbars="none"
                     android:id="@+id/rvCategorias"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
-            </HorizontalScrollView>
+            <!--</HorizontalScrollView>-->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/hsvScroll"
+                android:layout_below="@+id/rvCategorias"
                 android:id="@+id/rlNombres"
                 android:layout_marginRight="20dp"
                 android:layout_marginLeft="20dp"

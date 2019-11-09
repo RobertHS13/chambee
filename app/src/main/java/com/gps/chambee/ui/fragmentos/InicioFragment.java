@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
@@ -67,9 +68,15 @@ public class InicioFragment extends Fragment {
         List<Object> categorias = new ArrayList<>();
         categorias.add(0);
         categorias.add(0);
+        categorias.add(0);
+        categorias.add(0);
+        categorias.add(0);
+        categorias.add(0);
+        categorias.add(0);
+        categorias.add(0);
 
         CategoriasAdapter caAdapter = new CategoriasAdapter(view.getContext(), categorias);
-        rvCategorias.setLayoutManager(new LinearLayoutManager(view.getContext()) {
+        rvCategorias.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayout.HORIZONTAL, false) {
             @Override
             public boolean canScrollVertically() {
                 return false;
