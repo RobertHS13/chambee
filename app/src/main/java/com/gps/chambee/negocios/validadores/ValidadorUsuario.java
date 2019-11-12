@@ -145,6 +145,24 @@ public class ValidadorUsuario extends Validador<Usuario> {
                 return t.getContrasenia();
             }
         });
+        agregarValidacion(new ValidadorPropiedad() {
+            @Override
+            public boolean validar() {
+                if(t.getContrasenia().length()<6)
+                    return false;
+                return true;
+            }
+        }, new ErrorValidacion() {
+            @Override
+            public String mensajeError() {
+                return "La contraseña debe contener al menos 6 caracteres ";
+            }
+
+            @Override
+            public Object propiedadInvalida() {
+                return t.getContrasenia();
+            }
+        });
 
         //Telefono
         agregarValidacion(new ValidadorPropiedad() {
