@@ -1,14 +1,17 @@
 package com.gps.chambee.ui.adaptadores;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.gps.chambee.R;
-
-import org.w3c.dom.Text;
+import com.gps.chambee.entidades.PublicacionPersona;
+import com.gps.chambee.negocios.casos.CUObtenerImagen;
+import com.gps.chambee.negocios.casos.CasoUso;
 
 import java.util.List;
 
@@ -46,9 +49,9 @@ public class PublicacionPersonaAdapter extends RecyclerView.Adapter<PublicacionP
     }
 
     private Context context;
-    private List<Object> lista;
+    private List<PublicacionPersona> lista;
 
-    public PublicacionPersonaAdapter(Context context,List<Object> lista){
+    public PublicacionPersonaAdapter(Context context,List<PublicacionPersona> lista){
         this.context = context;
         this.lista = lista;
     }
@@ -61,7 +64,33 @@ public class PublicacionPersonaAdapter extends RecyclerView.Adapter<PublicacionP
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PublicacionPersonaAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final PublicacionPersonaAdapter.ViewHolder holder, int position) {
+        PublicacionPersona publicacion = lista.get(position);
+        holder.tvComentariosPersona.setText(publicacion.getComentarios());
+        holder.tvDescripcionPersona.setText(publicacion.getDescripcion());
+        holder.tvEtiquetaPublicacionPersona.setText(publicacion.getEtiqueta());
+        holder.tvLikesPersona.setText(publicacion.getInteresados());
+        holder.tvNombrePersonaPublicacion.setText(publicacion.getNombrePersona());
+        holder.tvTiempoPublicacionPersona.setText(publicacion.getTiempo());
+        holder.tvVistosPersona.setText(publicacion.getVistos());
+
+        new CUObtenerImagen(context,
+                new CasoUso.EventoPeticionAceptada<Bitmap>() {
+
+                    @Override
+                    public void alAceptarPeticion(Bitmap bitmap) {
+                        holder.civFotoPerfilPersona.setImageBitmap(bitmap);
+                    }
+                },
+                new CasoUso.EventoPeticionRechazada() {
+                    @Override
+                    public void alRechazarOperacion() {
+                        Bitmap imagen = BitmapFactory.decodeResource(
+                                context.getResources(),
+                                R.drawable.ic_person);
+                        holder.civFotoPerfilPersona.setImageBitmap(imagen);
+                    }
+                });
 
     }
 

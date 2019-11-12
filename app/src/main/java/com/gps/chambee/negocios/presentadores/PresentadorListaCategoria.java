@@ -1,5 +1,7 @@
 package com.gps.chambee.negocios.presentadores;
 
+import android.util.Log;
+
 import com.gps.chambee.entidades.Categoria;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -18,17 +20,22 @@ public class PresentadorListaCategoria extends Presentador<List<Categoria>> {
             JSONObject jsonObject = null;
             try {
                 jsonObject = jsonArray.getJSONObject(i);
+                Log.i("PRESENTADOR LISTA CAT", "procesar: object: " + jsonObject.toString());
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
             assert jsonObject != null;
             Categoria categoria = new Categoria.CategoriaBuilder()
-                    .setNombre(jsonObject.optString("nombre"))
+                    .setNombre(jsonObject.optString("categoria"))
                     .build();
 
             categoriaList.add(categoria);
         }
+        for (Categoria cat: categoriaList) {
+            Log.i("PRESENTADOR LISTA CAT", "procesar: cat: " + cat.getNombre().toString());
+        }
+
         return categoriaList;
     }
 }

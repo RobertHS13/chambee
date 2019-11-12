@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gps.chambee.R;
+import com.gps.chambee.entidades.Perfil;
 
 import java.util.List;
 
@@ -16,9 +17,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class InteresadosAdapter extends RecyclerView.Adapter<InteresadosAdapter.ViewHolder> {
 
     private Context context;
-    private List<Object> lista;
+    private List<Perfil> lista;
 
-    public InteresadosAdapter(Context context, List<Object> lista){
+    public InteresadosAdapter(Context context, List<Perfil> lista){
         this.context = context;
         this.lista = lista;
     }
