@@ -11,7 +11,8 @@ import com.gps.chambee.servicios.web.ServicioWebEscritura;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SWRegistrarUsuario extends ServicioWebEscritura {
+public class
+SWRegistrarUsuario extends ServicioWebEscritura {
     public SWRegistrarUsuario(Context context, Response.Listener<String> listener, Response.ErrorListener errorListener) {
         super(context, listener, errorListener);
     }
@@ -37,6 +38,12 @@ public class SWRegistrarUsuario extends ServicioWebEscritura {
 
     @Override
     protected Request definirRequest(String url, Object... args) {
+        Usuario usuario = (Usuario) args[0];
+
+        //falta retornar los valores hasta que entregue los url panda
+
+
+
         return null;
     }
 }

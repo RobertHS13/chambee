@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.gps.chambee.R;
 
@@ -13,10 +14,13 @@ public class RecuperarPasswordActivity extends AppCompatActivity {
 
     private Button btnVerificarCodigo;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recuperar_password);
+
+
 
         btnVerificarCodigo = findViewById(R.id.btnVerificarCodigo);
         btnVerificarCodigo.setOnClickListener(new View.OnClickListener() {
