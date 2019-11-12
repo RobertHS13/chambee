@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
@@ -13,13 +14,20 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.gps.chambee.R;
+import com.gps.chambee.entidades.Usuario;
+import com.gps.chambee.negocios.casos.CUIniciarSesion;
+import com.gps.chambee.negocios.casos.CasoUso;
+import com.gps.chambee.negocios.validadores.ValidadorCorreo;
+import com.gps.chambee.negocios.validadores.ValidadorNombreUsuario;
+import com.gps.chambee.negocios.validadores.ValidadorTelefono;
 
 public class LoginActivity extends AppCompatActivity {
 
     private TextView tvRegistrate;
-    private LinearLayout llNombre,llSociales;
+    private LinearLayout llNombre, llSociales;
     private RelativeLayout rlAbajo;
     private ImageView ivLogo;
     private EditText etUsuario;
@@ -49,18 +57,83 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+
+        btnIniciarSesion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String credencial = etUsuario.getText().toString();
+                String contrasena = etContrasenaLogin.getText().toString();
+
+                // validamos si es correo
+                ValidadorCorreo validadorCorreo = new ValidadorCorreo(credencial);
+                ValidadorTelefono validadorTelefono = new ValidadorTelefono(credencial);
+                ValidadorNombreUsuario validadorNombreUsuario = new ValidadorNombreUsuario(credencial);
+
+                int tipoInicio = 0;
+                if (validadorCorreo.validar() == true) {
+                    tipoInicio = 1;
+                }else {
+                    Toast.makeText(LoginActivity.this, validadorCorreo.ultimoError().mensajeError(), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (validadorNombreUsuario.validar() == true) {
+                    tipoInicio = 2;
+                }else {
+                    Toast.makeText(LoginActivity.this, validadorNombreUsuario.ultimoError().mensajeError(), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (validadorTelefono.validar() == true) {
+                    tipoInicio = 3;
+                }else {
+                    Toast.makeText(LoginActivity.this, validadorTelefono.ultimoError().mensajeError(), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+
+                CUIniciarSesion cuIniciarSesion = new CUIniciarSesion(LoginActivity.this, new CasoUso.EventoPeticionAceptada<Usuario>() {
+                    @Override
+                    public void alAceptarPeticion(Usuario usuario) {
+                        Intent sharedIntent = new Intent(LoginActivity.this, MainActivity.class);//check this out
+                        sharedIntent.putExtra("usuario", usuario);
+                        startActivity(sharedIntent);
+                        finish();
+
+
+                    }
+                }, new CasoUso.EventoPeticionRechazada() {
+                    @Override
+                    public void alRechazarOperacion() {
+                        Toast.makeText(LoginActivity.this, "No se puede iniciar sesion", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+
+
+                cuIniciarSesion.enviarPeticion(credencial, contrasena, tipoInicio);
+
+            }
+
+
+        });
+
+
+        //
+
         tvRegistrate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Intent sharedIntent = new Intent(LoginActivity.this, RegisterActivity.class);
                 Pair[] pair = new Pair[3];
-                pair[0] = new Pair<View,String>(ivLogo,"imageTransition");
-                pair[1] = new Pair<View,String>(llNombre,"layoutTransition");
-                pair[2] = new Pair<View,String>(rlAbajo,"linearTransition");
+                pair[0] = new Pair<View, String>(ivLogo, "imageTransition");
+                pair[1] = new Pair<View, String>(llNombre, "layoutTransition");
+                pair[2] = new Pair<View, String>(rlAbajo, "linearTransition");
 
-                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(LoginActivity.this,pair);
-                startActivity(sharedIntent,options.toBundle());
+                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(LoginActivity.this, pair);
+                startActivity(sharedIntent, options.toBundle());
                 overridePendingTransition(0, 0);
             }
         });
