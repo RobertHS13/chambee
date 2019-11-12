@@ -41,6 +41,9 @@ public class PostRegistroActivity extends AppCompatActivity {
         lista.add(new PostRegistroTresFragment());
 
 
+
+
+
         vpPostRegistro = findViewById(R.id.vpPostRegistro);
 
         prAdapter = new PostRegistroAdapter(getSupportFragmentManager(),lista);
