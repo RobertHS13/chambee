@@ -82,6 +82,8 @@ public class RegisterActivity extends AppCompatActivity {
 
                 Toast.makeText(RegisterActivity.this, s, Toast.LENGTH_LONG).show();
 
+                // TODO agregar usuario al singleton de sesion
+
                 startActivity(new Intent(RegisterActivity.this, PostRegistroActivity.class));
                 finish();
 
