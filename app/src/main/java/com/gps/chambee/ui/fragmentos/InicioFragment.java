@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -153,9 +154,17 @@ public class InicioFragment extends Fragment {
 
     private void llenarCategorias(List<Categoria> categorias, View view) {
         //RecyclerView de categorias
-
+        List<Object> categorias = new ArrayList<>();
+        categorias.add(0);
+        categorias.add(0);
+        categorias.add(0);
+        categorias.add(0);
+        categorias.add(0);
+        categorias.add(0);
+        categorias.add(0);
+        categorias.add(0);
         CategoriasAdapter caAdapter = new CategoriasAdapter(view.getContext(), categorias);
-        rvCategorias.setLayoutManager(new LinearLayoutManager(view.getContext()) {
+        rvCategorias.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayout.HORIZONTAL, false) {
             @Override
             public boolean canScrollVertically() {
                 return false;

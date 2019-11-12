@@ -9,6 +9,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.gps.chambee.R;
@@ -50,23 +51,30 @@ public class PublicacionActivity extends AppCompatActivity {
         civFotoPerfil = findViewById(R.id.civFotoPerfil);
         rvInteresados = findViewById(R.id.rvInteresados);
 
+        List<Object> interesados = new ArrayList<>();
+        interesados.add(0);
+        interesados.add(0);
+        interesados.add(0);
+        interesados.add(0);
+        interesados.add(0);
+        interesados.add(0);
+        interesados.add(0);
+        interesados.add(0);
+        interesados.add(0);
+
         new CUObtenerDetallesPublicacionEmpresa(
                 getApplicationContext(),
                 new CasoUso.EventoPeticionAceptada<DetallePublicacionEmpresa>(){
                     @Override
-                    public void alAceptarPeticion(DetallePublicacionEmpresa detallePublicacionEmpresa) {
-
-                    }
+                    public void alAceptarPeticion(DetallePublicacionEmpresa detallePublicacionEmpresa) { }
                 },
                 new CasoUso.EventoPeticionRechazada(){
                     @Override
-                    public void alRechazarOperacion() {
+                    public void alRechazarOperacion() { }
+                });
 
-                    }
-                }
-        );
-
-        ivRegresarPublicacion.setOnClickListener(new View.OnClickListener() {
+        rvInteresados.setLayoutManager(new LinearLayoutManager(this, LinearLayout.HORIZONTAL, false) { } ); 
+        ivRegresarPublicacion.setOnClickListener(new View.OnClickListener() {  
             @Override
             public void onClick(View view) {
                 PublicacionActivity.super.onBackPressed();
