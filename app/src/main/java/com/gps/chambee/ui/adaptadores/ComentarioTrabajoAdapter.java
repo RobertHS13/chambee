@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.gps.chambee.R;
+import com.gps.chambee.entidades.ComentarioPublicacion;
 
 import java.util.List;
 
@@ -39,9 +40,9 @@ public class ComentarioTrabajoAdapter extends RecyclerView.Adapter<ComentarioTra
     }
 
     private Context context;
-    private List<Object> lista;
+    private List<ComentarioPublicacion> lista;
 
-    public ComentarioTrabajoAdapter(Context context, List<Object> lista){
+    public ComentarioTrabajoAdapter(Context context, List<ComentarioPublicacion> lista){
         this.context=context;
         this.lista=lista;
     }

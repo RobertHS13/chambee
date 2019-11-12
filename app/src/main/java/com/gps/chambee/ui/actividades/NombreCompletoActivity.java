@@ -10,6 +10,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.gps.chambee.R;
+import com.gps.chambee.SesionSingleton;
+import com.gps.chambee.entidades.Usuario;
+import com.gps.chambee.negocios.casos.CUActualizarUsuario;
+import com.gps.chambee.negocios.casos.CasoUso;
 
 public class NombreCompletoActivity extends AppCompatActivity {
 
@@ -41,6 +45,20 @@ public class NombreCompletoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 NombreCompletoActivity.super.onBackPressed();
+                // CUActualizar.
+                CUActualizarUsuario cuActualizarUsuario = new CUActualizarUsuario(
+                        NombreCompletoActivity.this,
+                        new CasoUso.EventoPeticionAceptada<String>() {
+                            @Override
+                            public void alAceptarPeticion(String s) {
+
+                            }
+                        }, new CasoUso.EventoPeticionRechazada() {
+                    @Override
+                    public void alRechazarOperacion() {
+
+                    }
+                });
             }
         });
 

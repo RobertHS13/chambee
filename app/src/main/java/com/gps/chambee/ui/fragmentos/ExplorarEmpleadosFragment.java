@@ -26,11 +26,11 @@ public class ExplorarEmpleadosFragment extends Fragment {
         list.add(0);
         list.add(0);
 
-        PublicacionPersonaAdapter adapter = new PublicacionPersonaAdapter(view.getContext(),list);
-        rvEmpleados = view.findViewById(R.id.rvEmpleados);
-
-        rvEmpleados.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        rvEmpleados.setAdapter(adapter);
+//        PublicacionPersonaAdapter adapter = new PublicacionPersonaAdapter(view.getContext(),list);
+//        rvEmpleados = view.findViewById(R.id.rvEmpleados);
+//
+//        rvEmpleados.setLayoutManager(new LinearLayoutManager(view.getContext()));
+//        rvEmpleados.setAdapter(adapter);
 
         return view;
     }

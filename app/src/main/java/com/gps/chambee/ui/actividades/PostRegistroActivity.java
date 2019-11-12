@@ -41,6 +41,9 @@ public class PostRegistroActivity extends AppCompatActivity {
         lista.add(new PostRegistroTresFragment());
 
 
+
+
+
         vpPostRegistro = findViewById(R.id.vpPostRegistro);
 
         prAdapter = new PostRegistroAdapter(getSupportFragmentManager(),lista);
@@ -56,7 +59,7 @@ public class PostRegistroActivity extends AppCompatActivity {
                 if(nextSlide<3){
                     vpPostRegistro.setCurrentItem(nextSlide);
                 }else{
-                    startActivity(new Intent(PostRegistroActivity.this,MainActivity.class));
+                    startActivity(new Intent(PostRegistroActivity.this, MainActivity.class));
                     finish();
                 }
             }
