@@ -1,5 +1,6 @@
 package com.gps.chambee.negocios.casos.firebase;
 
+import com.google.firebase.database.DatabaseError;
 import com.gps.chambee.servicios.firebase.ServicioFirebase;
 
 public abstract class CasoUsoFirebase<T> {
@@ -9,7 +10,7 @@ public abstract class CasoUsoFirebase<T> {
     }
 
     public interface EventoPeticionRechazada {
-        void alRechazarOperacion();
+        void alRechazarOperacion(DatabaseError databaseError);
     }
 
     protected EventoPeticionAceptada<T> eventoPeticionAceptada;

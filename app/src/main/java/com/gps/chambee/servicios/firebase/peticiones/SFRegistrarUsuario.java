@@ -1,5 +1,7 @@
 package com.gps.chambee.servicios.firebase.peticiones;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -9,6 +11,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.gps.chambee.entidades.Usuario;
 import com.gps.chambee.servicios.firebase.ServicioFirebaseEscritura;
 
 import java.util.HashMap;
@@ -22,17 +25,16 @@ public class SFRegistrarUsuario extends ServicioFirebaseEscritura {
 
     @Override
     public void ejecutarTarea(Object... args) {
-        final String nombreUsuario = args[0].toString();
-        String correo = args[1].toString();
-        String contrasena = args[2].toString();
+        final Usuario usuario = (Usuario) args[0];
 
         final FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
-        Task<AuthResult> authResultTask = firebaseAuth.createUserWithEmailAndPassword(correo, contrasena);
-        authResultTask.addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        firebaseAuth.createUserWithEmailAndPassword(usuario.getCorreoElectronico(), usuario.getContrasenia())
+        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (!task.isSuccessful()) {
+                    Log.e("chambee", task.getException().getMessage());
                     eventoTareaCancelada.alCancelarTarea(null);
                     return;
                 }
@@ -46,10 +48,15 @@ public class SFRegistrarUsuario extends ServicioFirebaseEscritura {
 
                 Map<String, String> datos = new HashMap<>();
                 datos.put("id", idUsuario);
-                datos.put("nombre_usuario", nombreUsuario);
+                datos.put("nombreUsuario", usuario.getId());
+                datos.put("nombres", usuario.getNombre());
+                datos.put("apellidos", usuario.getApellidos());
+                datos.put("correo", usuario.getCorreoElectronico());
+                datos.put("contrasena", usuario.getContrasenia());
+                datos.put("telefono", usuario.getTelefono());
 
-                Task<Void> voidTask = databaseReference.setValue(datos);
-                voidTask.addOnCompleteListener(new OnCompleteListener<Void>() {
+                databaseReference.setValue(datos)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful())
@@ -60,4 +67,3 @@ public class SFRegistrarUsuario extends ServicioFirebaseEscritura {
         });
     }
 }
-

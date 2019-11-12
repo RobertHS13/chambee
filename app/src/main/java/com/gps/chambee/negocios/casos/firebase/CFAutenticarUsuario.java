@@ -20,7 +20,7 @@ public class CFAutenticarUsuario extends CasoUsoFirebase<String> {
         }, new ServicioFirebase.EventoTareaCancelada() {
             @Override
             public void alCancelarTarea(DatabaseError databaseError) {
-                eventoPeticionRechazada.alRechazarOperacion();
+                eventoPeticionRechazada.alRechazarOperacion(databaseError);
             }
         });
     }
