@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.gps.chambee.R;
@@ -70,7 +71,12 @@ public class PerfilFragment extends Fragment {
         listaMedallas.add(0);
 
         MedallasAdapter adMedallas = new MedallasAdapter(view.getContext(),listaMedallas);
-        rvMedallas.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        rvMedallas.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayout.HORIZONTAL, false) {
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        });
         rvMedallas.setAdapter(adMedallas);
 
         String nombreUsuario = tvNombreUsuario.getText().toString();

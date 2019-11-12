@@ -16,7 +16,12 @@ public abstract class ServicioWebLectura extends ServicioWeb<JSONObject> {
 
     @Override
     protected Request definirRequest(String url, Object... args) {
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, responseListener, errorListener);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.GET,
+                url,
+                null,
+                responseListener,
+                errorListener);
         jsonObjectRequest.setRetryPolicy(defaultRetryPolicy);
         return jsonObjectRequest;
     }

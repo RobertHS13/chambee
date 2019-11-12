@@ -71,11 +71,11 @@
                     android:text="Ofrece una insignia"
                     android:textAlignment="center"/>
                 <HorizontalScrollView
+                    android:scrollbars="none"
                     android:layout_marginBottom="15dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <LinearLayout
-                        android:layout_gravity="center_horizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
@@ -84,9 +84,45 @@
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
                             <ImageView
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:src="@drawable/tiempo"/>
+                                android:layout_width="95dp"
+                                android:layout_height="95dp"
+                                android:src="@drawable/amable"/>
+                            <TextView
+                                android:layout_marginTop="5dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/montserrat_regular"
+                                android:textAlignment="center"
+                                android:textSize="12sp"
+                                android:text="Amable"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_marginStart="20dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <ImageView
+                                android:layout_width="95dp"
+                            android:layout_height="95dp"
+                                android:src="@drawable/comunicativo"/>
+                            <TextView
+                                android:layout_marginTop="5dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/montserrat_regular"
+                                android:textAlignment="center"
+                                android:textSize="12sp"
+                                android:text="Comunicativo"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_marginStart="20dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <ImageView
+                                android:layout_width="95dp"
+                                android:layout_height="95dp"
+                                android:src="@drawable/eficaz"/>
                             <TextView
                                 android:layout_marginTop="5dp"
                                 android:layout_width="match_parent"
@@ -102,9 +138,9 @@
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
                             <ImageView
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:src="@drawable/tiempo"/>
+                                android:layout_width="95dp"
+                                android:layout_height="95dp"
+                                android:src="@drawable/heroe"/>
                             <TextView
                                 android:layout_marginTop="5dp"
                                 android:layout_width="match_parent"
@@ -112,7 +148,7 @@
                                 android:fontFamily="@font/montserrat_regular"
                                 android:textAlignment="center"
                                 android:textSize="12sp"
-                                android:text="Eficaz"/>
+                                android:text="Heroe"/>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_marginStart="20dp"
@@ -120,9 +156,9 @@
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
                             <ImageView
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:src="@drawable/tiempo"/>
+                                android:layout_width="95dp"
+                                android:layout_height="95dp"
+                                android:src="@drawable/puntual"/>
                             <TextView
                                 android:layout_marginTop="5dp"
                                 android:layout_width="match_parent"
@@ -130,7 +166,7 @@
                                 android:fontFamily="@font/montserrat_regular"
                                 android:textAlignment="center"
                                 android:textSize="12sp"
-                                android:text="Eficaz"/>
+                                android:text="Puntual"/>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_marginStart="20dp"
@@ -138,9 +174,9 @@
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
                             <ImageView
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:src="@drawable/tiempo"/>
+                                android:layout_width="95dp"
+                                android:layout_height="95dp"
+                                android:src="@drawable/rapido"/>
                             <TextView
                                 android:layout_marginTop="5dp"
                                 android:layout_width="match_parent"
@@ -148,7 +184,7 @@
                                 android:fontFamily="@font/montserrat_regular"
                                 android:textAlignment="center"
                                 android:textSize="12sp"
-                                android:text="Eficaz"/>
+                                android:text="Rapido"/>
                         </LinearLayout>
                         <LinearLayout
                             android:layout_marginStart="20dp"
@@ -156,9 +192,9 @@
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
                             <ImageView
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:src="@drawable/tiempo"/>
+                                android:layout_width="95dp"
+                                android:layout_height="95dp"
+                                android:src="@drawable/respetuoso"/>
                             <TextView
                                 android:layout_marginTop="5dp"
                                 android:layout_width="match_parent"
@@ -166,7 +202,7 @@
                                 android:fontFamily="@font/montserrat_regular"
                                 android:textAlignment="center"
                                 android:textSize="12sp"
-                                android:text="Eficaz"/>
+                                android:text="Respetuoso"/>
                         </LinearLayout>
 
                     </LinearLayout>

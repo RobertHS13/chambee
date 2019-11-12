@@ -141,7 +141,19 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textSize="14sp"
-                            android:hint="Nuevo nombre"
+                            android:hint="Nuevo nombre (s)"
+                            android:background="@drawable/fondo_redondeado_blanco_contorno"
+                            />
+                        <EditText
+                            android:inputType="textPersonName"
+                            android:singleLine="true"
+                            android:id="@+id/etNuevoApellido"
+                            android:layout_marginTop="10dp"
+                            android:padding="15dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:hint="Nuevo apellido (s)"
                             android:background="@drawable/fondo_redondeado_blanco_contorno"
                             />
 

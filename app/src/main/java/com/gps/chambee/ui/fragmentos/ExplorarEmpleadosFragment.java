@@ -30,11 +30,11 @@ public class ExplorarEmpleadosFragment extends Fragment {
 
         List<PublicacionPersona> list = new ArrayList<>();
 
-        PublicacionPersonaAdapter adapter = new PublicacionPersonaAdapter(view.getContext(),list);
-        rvEmpleados = view.findViewById(R.id.rvEmpleados);
-
-        rvEmpleados.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        rvEmpleados.setAdapter(adapter);
+//        PublicacionPersonaAdapter adapter = new PublicacionPersonaAdapter(view.getContext(),list);
+//        rvEmpleados = view.findViewById(R.id.rvEmpleados);
+//
+//        rvEmpleados.setLayoutManager(new LinearLayoutManager(view.getContext()));
+//        rvEmpleados.setAdapter(adapter);
 
         new CUListarPublicacionesPersonas(getContext(), new CasoUso.EventoPeticionAceptada<List<PublicacionPersona>>() {
 

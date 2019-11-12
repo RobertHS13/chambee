@@ -2,6 +2,7 @@ package com.gps.chambee.ui.adaptadores;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,9 @@ import com.gps.chambee.negocios.casos.CUImagen;
 import com.gps.chambee.negocios.casos.CasoUso;
 
 import org.w3c.dom.Text;
-
+import com.gps.chambee.entidades.PublicacionPersona;
+import com.gps.chambee.negocios.casos.CUObtenerImagen;
+import com.gps.chambee.negocios.casos.CasoUso;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -88,6 +91,33 @@ public class PublicacionPersonaAdapter extends RecyclerView.Adapter<PublicacionP
 
             }
         }).enviarPeticion(publicacion.getUrlImagenEmpresa());
+        PublicacionPersona publicacion = lista.get(position);
+        holder.tvComentariosPersona.setText(publicacion.getComentarios());
+        holder.tvDescripcionPersona.setText(publicacion.getDescripcion());
+        holder.tvEtiquetaPublicacionPersona.setText(publicacion.getEtiqueta());
+        holder.tvLikesPersona.setText(publicacion.getInteresados());
+        holder.tvNombrePersonaPublicacion.setText(publicacion.getNombrePersona());
+        holder.tvTiempoPublicacionPersona.setText(publicacion.getTiempo());
+        holder.tvVistosPersona.setText(publicacion.getVistos());
+
+        new CUObtenerImagen(context,
+                new CasoUso.EventoPeticionAceptada<Bitmap>() {
+
+                    @Override
+                    public void alAceptarPeticion(Bitmap bitmap) {
+                        holder.civFotoPerfilPersona.setImageBitmap(bitmap);
+                    }
+                },
+                new CasoUso.EventoPeticionRechazada() {
+                    @Override
+                    public void alRechazarOperacion() {
+                        Bitmap imagen = BitmapFactory.decodeResource(
+                                context.getResources(),
+                                R.drawable.ic_person);
+                        holder.civFotoPerfilPersona.setImageBitmap(imagen);
+                    }
+                });
+
     }
 
     //Cambia el nombre de la UrlImagenEmpresa a Persona

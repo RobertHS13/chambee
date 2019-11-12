@@ -31,8 +31,8 @@ public class ExplorarEmpleosFragment extends Fragment {
 
         rvEmpleos.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
-        PublicacionEmpresaAdapter adapter = new PublicacionEmpresaAdapter(view.getContext(),lista);
-        rvEmpleos.setAdapter(adapter);
+        //PublicacionEmpresaAdapter adapter = new PublicacionEmpresaAdapter(view.getContext(),lista);
+        //rvEmpleos.setAdapter(adapter);
 
         new CUListarPublicacionesEmpresas(getContext(), new CasoUso.EventoPeticionAceptada<List<PublicacionEmpresa>>() {
 
