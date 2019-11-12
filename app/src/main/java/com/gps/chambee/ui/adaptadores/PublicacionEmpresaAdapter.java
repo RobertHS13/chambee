@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.gps.chambee.R;
 import com.gps.chambee.entidades.PublicacionEmpresa;
+import com.gps.chambee.negocios.casos.CUImagen;
 import com.gps.chambee.negocios.casos.CUObtenerImagen;
 import com.gps.chambee.negocios.casos.CasoUso;
 
@@ -70,8 +71,8 @@ public class PublicacionEmpresaAdapter extends RecyclerView.Adapter<PublicacionE
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
-
-        PublicacionEmpresa publicacion = lista.get(position);
+      
+        PublicacionEmpresa publicacion = (PublicacionEmpresa) lista.get(position);
 
         holder.tvComentariosEmpresa.setText(publicacion.getComentarios());
         holder.tvDescripcionPublicacionTrabajo.setText(publicacion.getDescripcion());
@@ -82,6 +83,29 @@ public class PublicacionEmpresaAdapter extends RecyclerView.Adapter<PublicacionE
         holder.tvNombreTrabajoPublicacion.setText(publicacion.getNombreTrabajo());
         holder.tvVistos.setText(publicacion.getVistos());
 
+        new CUImagen(context, new CasoUso.EventoPeticionAceptada<Bitmap>() {
+            @Override
+            public void alAceptarPeticion(Bitmap bitmap) {
+                holder.civFotoPerfilEmpresa.setImageBitmap(bitmap);
+            }
+        }, new CasoUso.EventoPeticionRechazada() {
+            @Override
+            public void alRechazarOperacion() {
+
+            }
+        }).enviarPeticion(publicacion.getUrlImagenEmpresa());
+
+        new CUImagen(context, new CasoUso.EventoPeticionAceptada<Bitmap>() {
+            @Override
+            public void alAceptarPeticion(Bitmap bitmap) {
+                holder.ivImagenPublicacionTrabajo.setImageBitmap(bitmap);
+            }
+        }, new CasoUso.EventoPeticionRechazada() {
+            @Override
+            public void alRechazarOperacion() {
+
+            }
+        }).enviarPeticion(publicacion.getUrlImagenTrabajo());
         final Bitmap imagenTrabajo = null;
         Bitmap imagenEmpresa = null;
 

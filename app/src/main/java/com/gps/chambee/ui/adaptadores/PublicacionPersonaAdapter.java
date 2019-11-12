@@ -9,10 +9,15 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.gps.chambee.R;
+import com.gps.chambee.entidades.PublicacionEmpresa;
+import com.gps.chambee.entidades.PublicacionPersona;
+import com.gps.chambee.negocios.casos.CUImagen;
+import com.gps.chambee.negocios.casos.CasoUso;
+
+import org.w3c.dom.Text;
 import com.gps.chambee.entidades.PublicacionPersona;
 import com.gps.chambee.negocios.casos.CUObtenerImagen;
 import com.gps.chambee.negocios.casos.CasoUso;
-
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -65,6 +70,27 @@ public class PublicacionPersonaAdapter extends RecyclerView.Adapter<PublicacionP
 
     @Override
     public void onBindViewHolder(@NonNull final PublicacionPersonaAdapter.ViewHolder holder, int position) {
+        PublicacionPersona publicacion = (PublicacionPersona) lista.get(position);
+
+        holder.tvNombrePersonaPublicacion.setText(publicacion.getNombrePersona());
+        holder.tvTiempoPublicacionPersona.setText(publicacion.getTiempo());
+        holder.tvEtiquetaPublicacionPersona.setText(publicacion.getEtiqueta());
+        holder.tvLikesPersona.setText(publicacion.getInteresados());
+        holder.tvComentariosPersona.setText(publicacion.getComentarios());
+        holder.tvVistosPersona.setText(publicacion.getVistos());
+        holder.tvDescripcionPersona.setText(publicacion.getDescripcion());
+
+        new CUImagen(context, new CasoUso.EventoPeticionAceptada<Bitmap>() {
+            @Override
+            public void alAceptarPeticion(Bitmap bitmap) {
+                holder.civFotoPerfilPersona.setImageBitmap(bitmap);
+            }
+        }, new CasoUso.EventoPeticionRechazada() {
+            @Override
+            public void alRechazarOperacion() {
+
+            }
+        }).enviarPeticion(publicacion.getUrlImagenEmpresa());
         PublicacionPersona publicacion = lista.get(position);
         holder.tvComentariosPersona.setText(publicacion.getComentarios());
         holder.tvDescripcionPersona.setText(publicacion.getDescripcion());
@@ -93,6 +119,8 @@ public class PublicacionPersonaAdapter extends RecyclerView.Adapter<PublicacionP
                 });
 
     }
+
+    //Cambia el nombre de la UrlImagenEmpresa a Persona
 
     @Override
     public int getItemCount() {

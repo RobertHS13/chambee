@@ -6,6 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gps.chambee.R;
+import com.gps.chambee.entidades.PublicacionEmpresa;
+import com.gps.chambee.entidades.PublicacionPersona;
+import com.gps.chambee.negocios.casos.CUListarPublicacionesEmpresas;
+import com.gps.chambee.negocios.casos.CUListarPublicacionesPersonas;
+import com.gps.chambee.negocios.casos.CasoUso;
+import com.gps.chambee.ui.adaptadores.PublicacionEmpresaAdapter;
 import com.gps.chambee.ui.adaptadores.PublicacionPersonaAdapter;
 
 import java.util.ArrayList;
@@ -20,11 +26,9 @@ public class ExplorarEmpleadosFragment extends Fragment {
     private RecyclerView rvEmpleados;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        View view = inflater.inflate(R.layout.fragment_explorar_empleados, container, false);
+        final View view = inflater.inflate(R.layout.fragment_explorar_empleados, container, false);
 
-        List<Object> list = new ArrayList<>();
-        list.add(0);
-        list.add(0);
+        List<PublicacionPersona> list = new ArrayList<>();
 
 //        PublicacionPersonaAdapter adapter = new PublicacionPersonaAdapter(view.getContext(),list);
 //        rvEmpleados = view.findViewById(R.id.rvEmpleados);
@@ -32,7 +36,29 @@ public class ExplorarEmpleadosFragment extends Fragment {
 //        rvEmpleados.setLayoutManager(new LinearLayoutManager(view.getContext()));
 //        rvEmpleados.setAdapter(adapter);
 
+        new CUListarPublicacionesPersonas(getContext(), new CasoUso.EventoPeticionAceptada<List<PublicacionPersona>>() {
+
+            @Override
+            public void alAceptarPeticion(List<PublicacionPersona> publicaciones) {
+                llenarPublicacionesEmpleados(publicaciones, view);
+            }
+        }, new CasoUso.EventoPeticionRechazada() {
+            @Override
+            public void alRechazarOperacion() {
+            }
+        }).enviarPeticion();
+
         return view;
+    }
+
+    private void llenarPublicacionesEmpleados(List<PublicacionPersona> publicaciones, View view){
+        PublicacionPersonaAdapter adapter = new PublicacionPersonaAdapter(view.getContext(), publicaciones);
+        rvEmpleados.setLayoutManager(new LinearLayoutManager(view.getContext()){
+            @Override
+            public boolean canScrollVertically(){return false;}
+        });
+        rvEmpleados.setHasFixedSize(true);
+        rvEmpleados.setAdapter(adapter);
     }
 
 }

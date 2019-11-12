@@ -1,5 +1,6 @@
 package com.gps.chambee.ui.fragmentos;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -15,6 +16,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.gps.chambee.R;
+import com.gps.chambee.negocios.casos.CUImagen;
+import com.gps.chambee.negocios.casos.CasoUso;
 import com.gps.chambee.ui.adaptadores.MedallasAdapter;
 import com.gps.chambee.ui.adaptadores.RegistroTrabajosAdapter;
 
@@ -76,6 +79,26 @@ public class PerfilFragment extends Fragment {
         });
         rvMedallas.setAdapter(adMedallas);
 
+        String nombreUsuario = tvNombreUsuario.getText().toString();
+        String edadUsuario = tvEdadUsuario.getText().toString();
+        String puestoUsuario = tvPuertoUsuario.getText().toString();
+        String puntajeEstrella = tvPuntajeEstrellas.getText().toString();
+        String numeroCalificaciones = tvNumeroCalificaciones.getText().toString();
+        String paisUsuario = tvCiudadUsuario.getText().toString();
+        String acercaDeMiPerfil = tvAcercaDeMiPerfil.getText().toString();
+
+
+        CUImagen cuImagen = new CUImagen(getContext(), new CasoUso.EventoPeticionAceptada<Bitmap>() {
+            @Override
+            public void alAceptarPeticion(Bitmap bitmap) {
+                cimImagenPerfilUsuario.setImageBitmap(bitmap);
+            }
+        }, new CasoUso.EventoPeticionRechazada() {
+            @Override
+            public void alRechazarOperacion() {
+
+            }
+        });
 
         return view;
     }
