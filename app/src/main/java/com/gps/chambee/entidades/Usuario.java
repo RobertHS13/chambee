@@ -12,7 +12,7 @@ public class Usuario implements Parcelable {
     private String telefono;
     private String id;
 
-    private Usuario(UsuarioBuilder builder){
+    private Usuario(UsuarioBuilder builder) {
         this.nombre = builder.nombre;
         this.apellidos = builder.apellidos;
         this.correoElectronico = builder.correoElectronico;

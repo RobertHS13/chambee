@@ -6,7 +6,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class PresentadorCalle {
+public class PresentadorCalle extends Presentador<Calle> {
 
     public Calle procesar(JSONObject json) {
         JSONArray jsonArray = json.optJSONArray("calles");

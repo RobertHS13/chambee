@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "651535399555",
+    "firebase_url": "https://chambee-6c2e7.firebaseio.com",
+    "project_id": "chambee-6c2e7",
+    "storage_bucket": "chambee-6c2e7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:651535399555:android:2de50d77ef9f7ed9dbf9b6",
+        "android_client_info": {
+          "package_name": "com.gps.chambee"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "651535399555-2opvr3q8b7mk4vv6csphrpmbh5bv6qun.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gps.chambee",
+            "certificate_hash": "8b9c09e2c944248f41acdc8707ea52c06be3195a"
+          }
+        },
+        {
+          "client_id": "651535399555-fdjv6of1189a0e3jifj2s7bhd7an3fji.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATI6zGrShMv892fy5ydvKUfEKMN5zsiLE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "651535399555-fdjv6of1189a0e3jifj2s7bhd7an3fji.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
