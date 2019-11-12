@@ -114,7 +114,7 @@ public class ValidadorUsuario extends Validador<Usuario> {
                 String correo = t.getCorreoElectronico();
                 Pattern regex = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
                         + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
-                return !regex.matcher(correo).find();
+                return regex.matcher(correo).find();
             }
         }, new ErrorValidacion() {
             @Override
@@ -143,6 +143,13 @@ public class ValidadorUsuario extends Validador<Usuario> {
             @Override
             public Object propiedadInvalida() {
                 return t.getContrasenia();
+            }
+        });
+
+        agregarValidacion(new ValidadorPropiedad() {
+            @Override
+            public boolean validar() {
+                return t.getContrasenia().length() >= 6;
             }
         });
 

@@ -1,6 +1,8 @@
 package com.gps.chambee.ui.adaptadores;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.gps.chambee.R;
+import com.gps.chambee.entidades.PublicacionEmpresa;
+import com.gps.chambee.negocios.casos.CUObtenerImagen;
+import com.gps.chambee.negocios.casos.CasoUso;
 
 import java.util.List;
 
@@ -49,9 +54,9 @@ public class PublicacionEmpresaAdapter extends RecyclerView.Adapter<PublicacionE
     }
 
     private Context context;
-    private List<Object> lista;
+    private List<PublicacionEmpresa> lista;
 
-    public PublicacionEmpresaAdapter(Context context, List<Object> lista) {
+    public PublicacionEmpresaAdapter(Context context, List<PublicacionEmpresa> lista) {
         this.context = context;
         this.lista = lista;
     }
@@ -64,8 +69,59 @@ public class PublicacionEmpresaAdapter extends RecyclerView.Adapter<PublicacionE
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
 
+        PublicacionEmpresa publicacion = lista.get(position);
+
+        holder.tvComentariosEmpresa.setText(publicacion.getComentarios());
+        holder.tvDescripcionPublicacionTrabajo.setText(publicacion.getDescripcion());
+        holder.tvEtiquetaPrincipal.setText(publicacion.getEtiqueta());
+        holder.tvInteresados.setText(publicacion.getInteresados());
+        holder.tvNombreReclutador.setText(publicacion.getNombreEmpresa());
+        holder.tvTiempoPublicacion.setText(publicacion.getTiempo());
+        holder.tvNombreTrabajoPublicacion.setText(publicacion.getNombreTrabajo());
+        holder.tvVistos.setText(publicacion.getVistos());
+
+        final Bitmap imagenTrabajo = null;
+        Bitmap imagenEmpresa = null;
+
+        new CUObtenerImagen(
+                context,
+                new CasoUso.EventoPeticionAceptada<Bitmap>() {
+
+                    @Override
+                    public void alAceptarPeticion(Bitmap bitmap) {
+                        holder.civFotoPerfilEmpresa.setImageBitmap(bitmap);
+                    }
+                },
+                new CasoUso.EventoPeticionRechazada() {
+                    @Override
+                    public void alRechazarOperacion() {
+                        Bitmap imagen = BitmapFactory.decodeResource(
+                                context.getResources(),
+                                R.drawable.ic_person);
+                        holder.civFotoPerfilEmpresa.setImageBitmap(imagen);
+                    }
+                }).enviarPeticion(publicacion.getUrlImagenEmpresa());
+
+        new CUObtenerImagen(
+                context,
+                new CasoUso.EventoPeticionAceptada<Bitmap>() {
+                    @Override
+                    public void alAceptarPeticion(Bitmap bitmap) {
+                        holder.ivImagenPublicacionTrabajo.setImageBitmap(bitmap);
+                    }
+                },
+                new CasoUso.EventoPeticionRechazada() {
+                    @Override
+                    public void alRechazarOperacion() {
+                        Bitmap imagen = BitmapFactory.decodeResource(
+                                context.getResources(),
+                                R.drawable.ic_person);
+                        holder.civFotoPerfilEmpresa.setImageBitmap(imagen);
+                    }
+                }
+        ).enviarPeticion(publicacion.getUrlImagenTrabajo());
     }
 
     @Override

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.gps.chambee.R;
+import com.gps.chambee.entidades.Categoria;
 
 import java.util.List;
 
@@ -26,9 +27,9 @@ public class CategoriasAdapter extends RecyclerView.Adapter<CategoriasAdapter.Vi
         }
     }
     private Context context;
-    private List<Object> lista;
+    private List<Categoria> lista;
 
-    public CategoriasAdapter(Context context, List<Object> lista){
+    public CategoriasAdapter(Context context, List<Categoria> lista){
         this.context=context;
         this.lista=lista;
     }
@@ -42,7 +43,8 @@ public class CategoriasAdapter extends RecyclerView.Adapter<CategoriasAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull CategoriasAdapter.ViewHolder holder, int position) {
-
+        Categoria categoria = lista.get(position);
+        holder.tvNombreCategoria.setText(categoria.getNombre());
     }
 
     @Override

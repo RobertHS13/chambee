@@ -135,6 +135,9 @@ public class LoginActivity extends AppCompatActivity {
                 ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(LoginActivity.this, pair);
                 startActivity(sharedIntent, options.toBundle());
                 overridePendingTransition(0, 0);
+
+
+
             }
         });
     }

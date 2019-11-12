@@ -14,11 +14,19 @@ import android.widget.ImageView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.gps.chambee.R;
+import com.gps.chambee.SesionSingleton;
+import com.gps.chambee.entidades.Categoria;
+import com.gps.chambee.entidades.Usuario;
+import com.gps.chambee.negocios.casos.CUSeleccionarCategorias;
+import com.gps.chambee.negocios.casos.CasoUso;
+import com.gps.chambee.servicios.web.ServicioWeb;
 import com.gps.chambee.ui.fragmentos.ExploraFragment;
 import com.gps.chambee.ui.fragmentos.InicioFragment;
 import com.gps.chambee.ui.fragmentos.MensajesFragment;
 import com.gps.chambee.ui.fragmentos.NotificacionesFragment;
 import com.gps.chambee.ui.fragmentos.PerfilFragment;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,7 +45,10 @@ public class MainActivity extends AppCompatActivity {
         ivConfiguracion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,ConfiguracionesActivity.class));
+
+              startActivity(new Intent(MainActivity.this,
+                        ConfiguracionesActivity.class));
+
             }
         });
         bottomNavigation = findViewById(R.id.bottom_navigation);
@@ -46,14 +57,15 @@ public class MainActivity extends AppCompatActivity {
         Fragment sFragment = new InicioFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.flFragments,sFragment).commit();
 
-        bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.
+                OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 int itemId=menuItem.getItemId();
                 Fragment sFragment=null;
                 switch (itemId){
                     case R.id.iHome:
-                        sFragment =new InicioFragment();
+                        sFragment = new InicioFragment();
                         break;
                     case R.id.iExplorar:
                         sFragment =new ExploraFragment();
