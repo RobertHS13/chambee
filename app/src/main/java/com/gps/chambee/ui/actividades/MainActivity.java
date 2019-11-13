@@ -14,19 +14,11 @@ import android.widget.ImageView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.gps.chambee.R;
-import com.gps.chambee.SesionSingleton;
-import com.gps.chambee.entidades.Categoria;
-import com.gps.chambee.entidades.Usuario;
-import com.gps.chambee.negocios.casos.CUSeleccionarCategorias;
-import com.gps.chambee.negocios.casos.CasoUso;
-import com.gps.chambee.servicios.web.ServicioWeb;
 import com.gps.chambee.ui.fragmentos.ExploraFragment;
 import com.gps.chambee.ui.fragmentos.InicioFragment;
 import com.gps.chambee.ui.fragmentos.MensajesFragment;
 import com.gps.chambee.ui.fragmentos.NotificacionesFragment;
 import com.gps.chambee.ui.fragmentos.PerfilFragment;
-
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 

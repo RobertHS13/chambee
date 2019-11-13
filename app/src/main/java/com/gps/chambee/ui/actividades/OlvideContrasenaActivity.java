@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gps.chambee.R;
+import com.gps.chambee.negocios.validadores.ValidadorCorreo;
 import com.gps.chambee.negocios.validadores.propiedades.ValidadorContrasenia;
 
 public class OlvideContrasenaActivity extends AppCompatActivity {

@@ -16,10 +16,6 @@ import com.gps.chambee.entidades.Usuario;
 import com.gps.chambee.negocios.casos.CUActualizarUsuario;
 import com.gps.chambee.negocios.casos.CasoUso;
 import com.gps.chambee.negocios.validadores.propiedades.ValidadorNombre;
-import com.gps.chambee.SesionSingleton;
-import com.gps.chambee.entidades.Usuario;
-import com.gps.chambee.negocios.casos.CUActualizarUsuario;
-import com.gps.chambee.negocios.casos.CasoUso;
 
 public class NombreCompletoActivity extends AppCompatActivity {
 
@@ -79,20 +75,6 @@ public class NombreCompletoActivity extends AppCompatActivity {
                 usuario.setNombre(nombreCompleto);
 
                 NombreCompletoActivity.super.onBackPressed();
-                // CUActualizar.
-                CUActualizarUsuario cuActualizarUsuario = new CUActualizarUsuario(
-                        NombreCompletoActivity.this,
-                        new CasoUso.EventoPeticionAceptada<String>() {
-                            @Override
-                            public void alAceptarPeticion(String s) {
-
-                            }
-                        }, new CasoUso.EventoPeticionRechazada() {
-                    @Override
-                    public void alRechazarOperacion() {
-
-                    }
-                });
             }
         });
 

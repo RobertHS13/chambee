@@ -16,8 +16,7 @@ public class PresentadorDetallePublicacionEmpresa extends Presentador<DetallePub
             JSONObject jsonObject = array.getJSONObject(0);
 
             assert jsonObject != null;
-            DetallePublicacionEmpresa publicacionEmpresa = new DetallePublicacionEmpresa.DetallePublicacionEmpresaBuilder()
-                    .setPublicacion();
+            // DetallePublicacionEmpresa publicacionEmpresa = new DetallePublicacionEmpresa.DetallePublicacionEmpresaBuilder();
 
 
         } catch (JSONException e) {

@@ -15,6 +15,7 @@ import com.gps.chambee.entidades.SingletonSesion;
 import com.gps.chambee.entidades.Usuario;
 import com.gps.chambee.negocios.casos.CUActualizarUsuario;
 import com.gps.chambee.negocios.casos.CasoUso;
+import com.gps.chambee.negocios.validadores.ValidadorCorreo;
 
 public class CorreoElectronicoActivity extends AppCompatActivity {
 

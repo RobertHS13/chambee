@@ -153,16 +153,7 @@ public class InicioFragment extends Fragment {
     }
 
     private void llenarCategorias(List<Categoria> categorias, View view) {
-        //RecyclerView de categorias
-        List<Object> categorias = new ArrayList<>();
-        categorias.add(0);
-        categorias.add(0);
-        categorias.add(0);
-        categorias.add(0);
-        categorias.add(0);
-        categorias.add(0);
-        categorias.add(0);
-        categorias.add(0);
+
         CategoriasAdapter caAdapter = new CategoriasAdapter(view.getContext(), categorias);
         rvCategorias.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayout.HORIZONTAL, false) {
             @Override

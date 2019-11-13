@@ -1,9 +1,10 @@
-package com.gps.chambee;
+package com.gps.chambee.entidades;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+
+import com.gps.chambee.R;
 
 import java.util.HashMap;
 import java.util.Map;

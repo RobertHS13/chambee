@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.gps.chambee.R;
 import com.gps.chambee.entidades.PublicacionEmpresa;
-import com.gps.chambee.negocios.casos.CUImagen;
 import com.gps.chambee.negocios.casos.CUObtenerImagen;
 import com.gps.chambee.negocios.casos.CasoUso;
 
@@ -83,7 +82,7 @@ public class PublicacionEmpresaAdapter extends RecyclerView.Adapter<PublicacionE
         holder.tvNombreTrabajoPublicacion.setText(publicacion.getNombreTrabajo());
         holder.tvVistos.setText(publicacion.getVistos());
 
-        new CUImagen(context, new CasoUso.EventoPeticionAceptada<Bitmap>() {
+        new CUObtenerImagen(context, new CasoUso.EventoPeticionAceptada<Bitmap>() {
             @Override
             public void alAceptarPeticion(Bitmap bitmap) {
                 holder.civFotoPerfilEmpresa.setImageBitmap(bitmap);
@@ -95,7 +94,7 @@ public class PublicacionEmpresaAdapter extends RecyclerView.Adapter<PublicacionE
             }
         }).enviarPeticion(publicacion.getUrlImagenEmpresa());
 
-        new CUImagen(context, new CasoUso.EventoPeticionAceptada<Bitmap>() {
+        new CUObtenerImagen(context, new CasoUso.EventoPeticionAceptada<Bitmap>() {
             @Override
             public void alAceptarPeticion(Bitmap bitmap) {
                 holder.ivImagenPublicacionTrabajo.setImageBitmap(bitmap);

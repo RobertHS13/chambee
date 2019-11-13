@@ -6,6 +6,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.gps.chambee.entidades.DetallePublicacionEmpresa;
 import com.gps.chambee.negocios.presentadores.Presentador;
+import com.gps.chambee.negocios.presentadores.PresentadorDetallePublicacionEmpresa;
 import com.gps.chambee.servicios.web.ServicioWeb;
 import com.gps.chambee.servicios.web.implementaciones.SWObtenerDetallesPublicacionEmpresa;
 
@@ -25,7 +26,7 @@ public class CUObtenerDetallesPublicacionEmpresa extends CasoUso<DetallePublicac
                 new Response.Listener<JSONObject>(){
                     @Override
                     public void onResponse(JSONObject response) {
-                        DetallePublicacionEmpresa publicacionEmpresa = new PresentadorDetallePublicacionEmpres().procesar(response);
+                        DetallePublicacionEmpresa publicacionEmpresa = new PresentadorDetallePublicacionEmpresa().procesar(response);
                     }
                 },
                 new Response.ErrorListener(){

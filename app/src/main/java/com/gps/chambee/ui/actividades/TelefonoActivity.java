@@ -15,6 +15,7 @@ import com.gps.chambee.entidades.SingletonSesion;
 import com.gps.chambee.entidades.Usuario;
 import com.gps.chambee.negocios.casos.CUActualizarUsuario;
 import com.gps.chambee.negocios.casos.CasoUso;
+import com.gps.chambee.negocios.validadores.ValidadorTelefono;
 
 public class TelefonoActivity extends AppCompatActivity {
 
@@ -47,7 +48,7 @@ public class TelefonoActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 String telefono = etNuevoCorreo.getText().toString();
-                ValidadorTelefono validadorTelefono = new ValidadorTelefono();
+                ValidadorTelefono validadorTelefono = new ValidadorTelefono(telefono);
 
                 if(!validadorTelefono.validar()){
                     Toast.makeText(TelefonoActivity.this, validadorTelefono.ultimoError().mensajeError(), Toast.LENGTH_LONG).show();

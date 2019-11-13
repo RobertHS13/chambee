@@ -16,7 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.gps.chambee.R;
-import com.gps.chambee.negocios.casos.CUImagen;
+import com.gps.chambee.negocios.casos.CUObtenerImagen;
 import com.gps.chambee.negocios.casos.CasoUso;
 import com.gps.chambee.ui.adaptadores.MedallasAdapter;
 import com.gps.chambee.ui.adaptadores.RegistroTrabajosAdapter;
@@ -88,7 +88,7 @@ public class PerfilFragment extends Fragment {
         String acercaDeMiPerfil = tvAcercaDeMiPerfil.getText().toString();
 
 
-        CUImagen cuImagen = new CUImagen(getContext(), new CasoUso.EventoPeticionAceptada<Bitmap>() {
+        CUObtenerImagen cuImagen = new CUObtenerImagen(getContext(), new CasoUso.EventoPeticionAceptada<Bitmap>() {
             @Override
             public void alAceptarPeticion(Bitmap bitmap) {
                 cimImagenPerfilUsuario.setImageBitmap(bitmap);

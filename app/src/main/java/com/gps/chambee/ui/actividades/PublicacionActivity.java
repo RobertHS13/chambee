@@ -16,6 +16,7 @@ import com.gps.chambee.R;
 import com.gps.chambee.entidades.ComentarioPublicacion;
 import com.gps.chambee.entidades.DetallePublicacionEmpresa;
 import com.gps.chambee.entidades.Perfil;
+import com.gps.chambee.negocios.casos.CUObtenerDetallesPublicacionEmpresa;
 import com.gps.chambee.negocios.casos.CasoUso;
 import com.gps.chambee.ui.adaptadores.ComentarioTrabajoAdapter;
 import com.gps.chambee.ui.adaptadores.InteresadosAdapter;
