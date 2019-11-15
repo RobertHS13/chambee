@@ -36,7 +36,7 @@ public class ExplorarEmpleadosFragment extends Fragment {
 //        rvEmpleados.setLayoutManager(new LinearLayoutManager(view.getContext()));
 //        rvEmpleados.setAdapter(adapter);
 
-        new CUListarPublicacionesPersonas(getContext(), new CasoUso.EventoPeticionAceptada<List<PublicacionPersona>>() {
+        /*new CUListarPublicacionesPersonas(getContext(), new CasoUso.EventoPeticionAceptada<List<PublicacionPersona>>() {
 
             @Override
             public void alAceptarPeticion(List<PublicacionPersona> publicaciones) {
@@ -46,7 +46,7 @@ public class ExplorarEmpleadosFragment extends Fragment {
             @Override
             public void alRechazarOperacion() {
             }
-        }).enviarPeticion();
+        }).enviarPeticion();*/
 
         return view;
     }

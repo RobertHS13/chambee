@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.gps.chambee.R;
 import com.gps.chambee.entidades.Categoria;
@@ -77,11 +78,11 @@ public class InicioFragment extends Fragment {
             }
         });
 
-        String result = cargarInicio(view);
+        /*String result = cargarInicio(view);
         Log.d(TAG, "onCreateView: cargarInicio result: " + result);
         if (result != "Everything went well!"){
             Toast.makeText(getContext(), result, Toast.LENGTH_SHORT).show();
-        }
+        }*/
 
         return view;
     }

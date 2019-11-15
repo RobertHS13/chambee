@@ -47,9 +47,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-              startActivity(new Intent(MainActivity.this,
-                        ConfiguracionesActivity.class));
-
+              startActivity(new Intent(MainActivity.this, ConfiguracionesActivity.class));
             }
         });
         bottomNavigation = findViewById(R.id.bottom_navigation);
@@ -92,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        listUsers();
+        //listUsers();
     }
 
     private void listUsers() {
@@ -100,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void alAceptarPeticion(List<Usuario> usuarios) {
                 Toast.makeText(MainActivity.this, String.valueOf(usuarios.size()), Toast.LENGTH_SHORT).show();
-                sendMessage(usuarios);
+                //sendMessage(usuarios);
             }
         }, new CasoUsoFirebase.EventoPeticionRechazada() {
             @Override
