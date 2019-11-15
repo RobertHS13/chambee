@@ -1,18 +1,15 @@
 package com.gps.chambee.negocios.presentadores;
 
-import com.gps.chambee.entidades.Publicacion;
 import com.gps.chambee.entidades.PublicacionEmpresa;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PresentadorListaPublicacionEmpresa extends
-        Presentador<List<PublicacionEmpresa>> {
+public class PresentadorListaPublicacionEmpresa extends Presentador<List<PublicacionEmpresa>> {
 
     @Override
     public List<PublicacionEmpresa> procesar(JSONObject json) {
