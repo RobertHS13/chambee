@@ -3,14 +3,14 @@ package com.gps.chambee.entidades;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class ComentarioPublicacion implements Parcelable {
+public class Comentario implements Parcelable {
     private long idPerfil;
     private String comentario;
     private String fecha;
     private long idPublicacion;
     private int id;
 
-    public ComentarioPublicacion(ComentarioPublicacionBuilder builder) {
+    public Comentario(ComentarioPublicacionBuilder builder) {
         this.idPerfil = builder.idPerfil;
         this.comentario = builder.comentario;
         this.fecha = builder.fecha;
@@ -18,7 +18,7 @@ public class ComentarioPublicacion implements Parcelable {
         this.id = builder.id;
     }
 
-    protected ComentarioPublicacion(Parcel in) {
+    protected Comentario(Parcel in) {
         idPerfil = in.readLong();
         comentario = in.readString();
         fecha = in.readString();
@@ -26,15 +26,15 @@ public class ComentarioPublicacion implements Parcelable {
         id = in.readInt();
     }
 
-    public static final Creator<ComentarioPublicacion> CREATOR = new Creator<ComentarioPublicacion>() {
+    public static final Creator<Comentario> CREATOR = new Creator<Comentario>() {
         @Override
-        public ComentarioPublicacion createFromParcel(Parcel in) {
-            return new ComentarioPublicacion(in);
+        public Comentario createFromParcel(Parcel in) {
+            return new Comentario(in);
         }
 
         @Override
-        public ComentarioPublicacion[] newArray(int size) {
-            return new ComentarioPublicacion[size];
+        public Comentario[] newArray(int size) {
+            return new Comentario[size];
         }
     };
 
@@ -61,8 +61,8 @@ public class ComentarioPublicacion implements Parcelable {
 
         public ComentarioPublicacionBuilder() {  }
 
-        public ComentarioPublicacion build() {
-            return new ComentarioPublicacion(this);
+        public Comentario build() {
+            return new Comentario(this);
         }
 
         public ComentarioPublicacionBuilder setIdPerfil(long idPerfil) {
