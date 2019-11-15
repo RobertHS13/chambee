@@ -6,7 +6,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class PresentadorPerfil {
+public class PresentadorPerfil extends Presentador<Perfil>{
     public Perfil procesar(JSONObject json) {
         JSONArray jsonArray = json.optJSONArray("pefiles");
         JSONObject jsonObject = null;

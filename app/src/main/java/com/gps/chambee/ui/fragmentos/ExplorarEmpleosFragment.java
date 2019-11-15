@@ -34,7 +34,7 @@ public class ExplorarEmpleosFragment extends Fragment {
         //PublicacionEmpresaAdapter adapter = new PublicacionEmpresaAdapter(view.getContext(),lista);
         //rvEmpleos.setAdapter(adapter);
 
-        new CUListarPublicacionesEmpresas(getContext(), new CasoUso.EventoPeticionAceptada<List<PublicacionEmpresa>>() {
+        /*new CUListarPublicacionesEmpresas(getContext(), new CasoUso.EventoPeticionAceptada<List<PublicacionEmpresa>>() {
 
             @Override
             public void alAceptarPeticion(List<PublicacionEmpresa> publicaciones) {
@@ -44,7 +44,7 @@ public class ExplorarEmpleosFragment extends Fragment {
             @Override
             public void alRechazarOperacion() {
             }
-        }).enviarPeticion();
+        }).enviarPeticion();*/
 
         return view;
     }

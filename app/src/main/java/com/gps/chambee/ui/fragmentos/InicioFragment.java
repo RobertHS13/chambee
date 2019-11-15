@@ -77,11 +77,11 @@ public class InicioFragment extends Fragment {
             }
         });
 
-        String result = cargarInicio(view);
+        /*String result = cargarInicio(view);
         Log.d(TAG, "onCreateView: cargarInicio result: " + result);
         if (result != "Everything went well!"){
             Toast.makeText(getContext(), result, Toast.LENGTH_SHORT).show();
-        }
+        }*/
 
         return view;
     }
