@@ -4,8 +4,7 @@ import android.content.Context;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.gps.chambee.entidades.DetallePublicacionEmpresa;
-import com.gps.chambee.negocios.presentadores.Presentador;
+import com.gps.chambee.entidades.vistas.DetallePublicacionEmpresa;
 import com.gps.chambee.negocios.presentadores.PresentadorDetallePublicacionEmpresa;
 import com.gps.chambee.servicios.web.ServicioWeb;
 import com.gps.chambee.servicios.web.implementaciones.SWObtenerDetallesPublicacionEmpresa;

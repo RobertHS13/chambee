@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gps.chambee.R;
-import com.gps.chambee.entidades.PublicacionEmpresa;
+import com.gps.chambee.entidades.vistas.PublicacionEmpresa;
 import com.gps.chambee.negocios.casos.CUListarPublicacionesEmpresas;
 import com.gps.chambee.negocios.casos.CasoUso;
 import com.gps.chambee.ui.adaptadores.PublicacionEmpresaAdapter;

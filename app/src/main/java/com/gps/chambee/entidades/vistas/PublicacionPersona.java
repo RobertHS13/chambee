@@ -1,4 +1,4 @@
-package com.gps.chambee.entidades;
+package com.gps.chambee.entidades.vistas;
 
 
 import android.os.Parcel;
@@ -137,7 +137,7 @@ public class PublicacionPersona implements Parcelable {
         }
     };
 
-    public String getUrlImagenEmpresa() {
+    public String getUrlImagenPersona() {
         return urlImagenPersona;
     }
 

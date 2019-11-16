@@ -21,8 +21,8 @@ import com.bumptech.glide.Glide;
 import com.getbase.floatingactionbutton.FloatingActionButton;
 import com.gps.chambee.R;
 import com.gps.chambee.entidades.Categoria;
-import com.gps.chambee.entidades.PublicacionEmpresa;
-import com.gps.chambee.entidades.PublicacionPersona;
+import com.gps.chambee.entidades.vistas.PublicacionEmpresa;
+import com.gps.chambee.entidades.vistas.PublicacionPersona;
 import com.gps.chambee.negocios.casos.CUListarPublicacionesEmpresas;
 import com.gps.chambee.negocios.casos.CUListarPublicacionesPersonas;
 import com.gps.chambee.negocios.casos.CUSeleccionarCategorias;
@@ -134,23 +134,9 @@ public class InicioFragment extends Fragment {
             public void alRechazarOperacion() {
                 message[0] = "Failed to load categories!";
             }
-        });
+        }).enviarPeticion();
 
         return message[0];
-    }
-
-    private void llenarPublicacionesPersonas(List<PublicacionPersona> publicacionPersonas, View view) {
-        PublicacionPersonaAdapter adapter = new PublicacionPersonaAdapter(
-                view.getContext(),
-                publicacionPersonas);
-        rvPublicaciones.setLayoutManager(new LinearLayoutManager(view.getContext()) {
-            @Override
-            public boolean canScrollVertically() {
-                return false;
-            }
-        });
-        rvPublicaciones.setHasFixedSize(true);
-        rvPublicaciones.setAdapter(adapter);
     }
 
     private void llenarCategorias(List<Categoria> categorias, View view) {
@@ -180,11 +166,10 @@ public class InicioFragment extends Fragment {
         rvPublicacionesEmpleados.setAdapter(ppAdapter);
     }
 
-    private void llenarPublicacionesEmpresas(View view, List<PublicacionEmpresa> publicaciones) {
-        //RecyclerView de publicaciones de empleadores
-        PublicacionEmpresaAdapter adapter = new PublicacionEmpresaAdapter(
+    private void llenarPublicacionesPersonas(List<PublicacionPersona> publicacionPersonas, View view) {
+        PublicacionPersonaAdapter adapter = new PublicacionPersonaAdapter(
                 view.getContext(),
-                publicaciones);
+                publicacionPersonas);
         rvPublicaciones.setLayoutManager(new LinearLayoutManager(view.getContext()) {
             @Override
             public boolean canScrollVertically() {
