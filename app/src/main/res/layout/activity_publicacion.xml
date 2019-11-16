@@ -176,41 +176,11 @@
                         android:textColor="#8b8b8b"
                         android:text="Areas de interes"
                         />
-                    <LinearLayout
-                        android:layout_marginTop="15dp"
-                        android:layout_width="wrap_content"
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:paddingTop="20dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="10sp"
-                            android:fontFamily="@font/montserrat_regular"
-                            android:background="@drawable/etiqueta"
-                            android:paddingLeft="10dp"
-                            android:paddingRight="10dp"
-                            android:text="Lorem"/>
-                        <TextView
-                            android:layout_marginStart="15dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="10sp"
-                            android:fontFamily="@font/montserrat_regular"
-                            android:background="@drawable/etiqueta"
-                            android:paddingLeft="10dp"
-                            android:paddingRight="10dp"
-                            android:text="Ipsum"/>
-                        <TextView
-                            android:layout_marginStart="15dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="10sp"
-                            android:fontFamily="@font/montserrat_regular"
-                            android:background="@drawable/etiqueta"
-                            android:paddingLeft="10dp"
-                            android:paddingRight="10dp"
-                            android:text="Lorem"/>
-                    </LinearLayout>
+                        android:id="@+id/rvEtiquetas"/>
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
@@ -274,23 +244,32 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/rvComentariosTrabajo"/>
             <LinearLayout
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
+                android:padding="20dp"
+                android:background="#FFF"
                 android:layout_below="@+id/rvComentariosTrabajo"
-                android:background="@color/blanco"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center">
                 <EditText
+                    android:layout_weight="1"
+                    android:imeOptions="actionSend"
+                    android:layout_gravity="center_vertical"
+                    android:singleLine="true"
                     android:id="@+id/etComentario"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    android:textSize="14sp"
+                    android:padding="15dp"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="Comentar"
-                    android:background="@drawable/comentario"
-                    android:layout_marginBottom="20dp"/>
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:hint="Escribe algo..."
+                    android:background="@drawable/fondo_redondeado_blanco_contorno"
+                    />
+                <ImageView
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="15dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_send"/>
             </LinearLayout>
         </RelativeLayout>
 

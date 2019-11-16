@@ -23,8 +23,11 @@ import com.gps.chambee.negocios.casos.CUObtenerDetallesPublicacionEmpresa;
 import com.gps.chambee.negocios.casos.CasoUso;
 import com.gps.chambee.ui.adaptadores.CategoriasAdapter;
 import com.gps.chambee.ui.adaptadores.ComentarioTrabajoAdapter;
+import com.gps.chambee.ui.adaptadores.EtiquetaAdapter;
 import com.gps.chambee.ui.adaptadores.InteresadosAdapter;
+import com.gps.chambee.ui.adaptadores.RegistroTrabajosAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PublicacionActivity extends AppCompatActivity {
@@ -33,6 +36,7 @@ public class PublicacionActivity extends AppCompatActivity {
     private RecyclerView rvInteresados;
     private RecyclerView rvComentariosTrabajo;
     private RecyclerView rvAreasDeInteres;
+    private RecyclerView rvEtiquetas;
     private ImageView ivRegresarPublicacion;
     private ImageView ivPortada;
     private TextView tvDescripcionTrabajo;
@@ -58,6 +62,19 @@ public class PublicacionActivity extends AppCompatActivity {
         civFotoPerfil = findViewById(R.id.civFotoPerfil);
         rvInteresados = findViewById(R.id.rvInteresados);
         etComentario = findViewById(R.id.etComentario);
+        rvEtiquetas = findViewById(R.id.rvEtiquetas);
+
+        List<Object> lista = new ArrayList<>();
+        lista.add(0);
+
+        EtiquetaAdapter adapter = new EtiquetaAdapter(this,lista);
+        rvEtiquetas.setLayoutManager(new LinearLayoutManager(this, LinearLayout.HORIZONTAL, false) {
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        });
+        rvEtiquetas.setAdapter(adapter);
 
         new CUObtenerDetallesPublicacionEmpresa(
                 getApplicationContext(),

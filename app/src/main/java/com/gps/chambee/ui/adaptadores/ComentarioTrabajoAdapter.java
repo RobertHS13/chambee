@@ -27,7 +27,7 @@ public class ComentarioTrabajoAdapter extends RecyclerView.Adapter<ComentarioTra
         CircleImageView civFotoComentario;
         TextView tvComentarioPersona;
         TextView tvComentario;
-        TextView tvLikesComentario;
+        //TextView tvLikesComentario;
         TextView tvComentariosComentario;
         TextView tvTiempoComentario;
 
@@ -37,7 +37,7 @@ public class ComentarioTrabajoAdapter extends RecyclerView.Adapter<ComentarioTra
             civFotoComentario = itemView.findViewById(R.id.civFotoComentario);
             tvComentarioPersona = itemView.findViewById(R.id.tvComentariosPersona);
             tvComentario = itemView.findViewById(R.id.tvComentario);
-            tvLikesComentario = itemView.findViewById(R.id.tvLikesComentario);
+            //tvLikesComentario = itemView.findViewById(R.id.tvLikesComentario);
             tvComentariosComentario = itemView.findViewById(R.id.tvComentariosComentario);
             tvTiempoComentario = itemView.findViewById(R.id.tvTiempoComentario);
 
@@ -99,8 +99,8 @@ public class ComentarioTrabajoAdapter extends RecyclerView.Adapter<ComentarioTra
         if (!tiempo.isEmpty()) holder.tvTiempoComentario.setText(tiempo);
         else holder.tvTiempoComentario.setText(EMPTY);
 
-        if (!likes.isEmpty()) holder.tvLikesComentario.setText(likes);
-        else holder.tvLikesComentario.setText(EMPTY);
+       /* if (!likes.isEmpty()) holder.tvLikesComentario.setText(likes);
+        else holder.tvLikesComentario.setText(EMPTY);*/
     }
 
     @Override

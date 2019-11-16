@@ -47,11 +47,13 @@ public class MedallasAdapter extends RecyclerView.Adapter<MedallasAdapter.ViewHo
 
         ImageView ivMedalla;
         TextView tvNumeroMedallas;
+        TextView tvTituloMedalla;
 
         public ViewHolder(@NonNull View itemView){
             super(itemView);
             ivMedalla = itemView.findViewById(R.id.ivMedalla);
             tvNumeroMedallas = itemView.findViewById(R.id.tvNumeroMedallas);
+            tvTituloMedalla = itemView.findViewById(R.id.tvTituloMedalla);
         }
     }
 }

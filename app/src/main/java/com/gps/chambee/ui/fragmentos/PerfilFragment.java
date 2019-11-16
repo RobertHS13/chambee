@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.gps.chambee.R;
 import com.gps.chambee.negocios.casos.CUObtenerImagen;
 import com.gps.chambee.negocios.casos.CasoUso;
+import com.gps.chambee.ui.adaptadores.EtiquetaAdapter;
 import com.gps.chambee.ui.adaptadores.MedallasAdapter;
 import com.gps.chambee.ui.adaptadores.RegistroTrabajosAdapter;
 
@@ -37,6 +38,7 @@ public class PerfilFragment extends Fragment {
     private TextView tvNumeroCalificaciones;
     private TextView tvCiudadUsuario;
     private TextView tvAcercaDeMiPerfil;
+    private RecyclerView rvEtiquetas;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,15 +56,28 @@ public class PerfilFragment extends Fragment {
         tvCiudadUsuario = view.findViewById(R.id.tvCiudadUsuario);
         tvAcercaDeMiPerfil = view.findViewById(R.id.tvAcercaDeMiPerfil);
         rvMedallas = view.findViewById(R.id.rvMedallas);
+        rvEtiquetas = view.findViewById(R.id.rvEtiquetas);
 
         List<Object> lista = new ArrayList<>();
         lista.add(0);
+
+        EtiquetaAdapter adapter = new EtiquetaAdapter(view.getContext(),lista);
+        rvEtiquetas.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayout.HORIZONTAL, false) {
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        });
+        rvEtiquetas.setAdapter(adapter);
+
+        List<Object> list = new ArrayList<>();
+        lista.add(0);
         lista.add(0);
         lista.add(0);
 
-        RegistroTrabajosAdapter adapter = new RegistroTrabajosAdapter(view.getContext(),lista);
+        RegistroTrabajosAdapter adapte = new RegistroTrabajosAdapter(view.getContext(),lista);
         rvRegistroTrabajos.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        rvRegistroTrabajos.setAdapter(adapter);
+        rvRegistroTrabajos.setAdapter(adapte);
 
         //
         List<Object> listaMedallas = new ArrayList<>();

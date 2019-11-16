@@ -1,7 +1,6 @@
 package com.gps.chambee.negocios.presentadores;
 
 import com.gps.chambee.entidades.vistas.PublicacionEmpresa;
-import com.gps.chambee.entidades.PublicacionEmpresa;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
