@@ -29,14 +29,12 @@ public class ExplorarEmpleadosFragment extends Fragment {
 
         rvEmpleados = view.findViewById(R.id.rvEmpleados);
 
-        new CUListarPublicacionesPersonas(
-                getContext(),
-                new CasoUso.EventoPeticionAceptada<List<PublicacionPersona>>() {
-                    @Override
-                    public void alAceptarPeticion(List<PublicacionPersona> publicacionPersonas) {
-                        llenarPublicacionesEmpleados(publicacionPersonas, view);
-                    }
-                }, new CasoUso.EventoPeticionRechazada() {
+        new CUListarPublicacionesPersonas(getContext(), new CasoUso.EventoPeticionAceptada<List<PublicacionPersona>>() {
+            @Override
+            public void alAceptarPeticion(List<PublicacionPersona> publicaciones) {
+                llenarPublicacionesEmpleados(publicaciones, view);
+            }
+        }, new CasoUso.EventoPeticionRechazada() {
             @Override
             public void alRechazarOperacion() {
                 //

@@ -51,71 +51,19 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 registrarUsuario();
-                startActivity(new Intent(RegisterActivity.this, PostRegistroActivity.class));
-                finish();
             }
         });
-
-
-        String nombre = etNombre.getText().toString();
-        String apellidos = etApellidos.getText().toString();
-        String correo = etCorreo.getText().toString();
-        String contrasena = etContrasena.getText().toString();
-        String contrasenaConfimada = etConfirmarContrasena.getText().toString();
-
-        if (contrasena == contrasenaConfimada){
-            Usuario usuario = new Usuario.UsuarioBuilder()
-                    .setNombre(nombre)
-                    .setApellidos(apellidos)
-                    .setCorreoElectronico(correo)
-                    .setContrasenia(contrasena)
-
-                    .build();
-
-
-            ValidadorUsuario validadorUsuario = new ValidadorUsuario(usuario);
-            if (validadorUsuario.validar() == true) {
-
-                CURegistrarUsuario cuRegister = new CURegistrarUsuario(RegisterActivity.this, new CasoUso.EventoPeticionAceptada<String>() {
-                    @Override
-                    public void alAceptarPeticion(String s) {
-                        Intent sharedIntent = new Intent(RegisterActivity.this, PostRegistroActivity.class);
-                        startActivity(sharedIntent);
-                        finish();
-
-
-                    }
-                }, new CasoUso.EventoPeticionRechazada() {
-                    @Override
-                    public void alRechazarOperacion() {
-                        Toast.makeText(RegisterActivity.this, "No se registra usuario", Toast.LENGTH_SHORT).show();
-
-                    }
-                });
-
-
-                tvIniciar.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        RegisterActivity.super.onBackPressed();
-                    }
-                });
-
-                cuRegister.enviarPeticion(usuario);
-
-            }else {
-                Toast.makeText(RegisterActivity.this, validadorUsuario.ultimoError().mensajeError(), Toast.LENGTH_SHORT).show();
-
-            }
-
-        }
-
-
-
-
     }
 
     private void registrarUsuario() {
+        String contrasena = etContrasena.getText().toString();
+        String contrasenaConfimada = etConfirmarContrasena.getText().toString();
+
+        if (!contrasena.equals(contrasenaConfimada)) {
+            Toast.makeText(this, "Las contrasenas no coinciden", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         Usuario usuario = new Usuario.UsuarioBuilder()
                 .setId(etNombreUsuario.getText().toString())
                 .setNombre(etNombre.getText().toString())

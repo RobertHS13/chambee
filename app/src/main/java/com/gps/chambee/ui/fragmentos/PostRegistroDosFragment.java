@@ -1,5 +1,6 @@
 package com.gps.chambee.ui.fragmentos;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,15 +14,18 @@ import com.gps.chambee.R;
 import androidx.fragment.app.Fragment;
 
 public class PostRegistroDosFragment extends Fragment {
+    //TODO check the information
 
-    private ImageView civFotoPost;
     private EditText etProfesion;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup context, Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.fragment_post_parte_2, context, false);
-
         etProfesion = view.findViewById(R.id.etProfesion);
-
         return view;
     }
+
+    public String getProfesion(){
+        return etProfesion.getText().toString();
+    }
+
 }
