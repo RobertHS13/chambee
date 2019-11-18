@@ -38,7 +38,7 @@ public class ValidadorCorreo extends Validador<String> {
                 Pattern regex = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
                         + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
 
-                return regex.matcher(t).find();
+                return regex.matcher(t.trim()).find();
 
 
             }

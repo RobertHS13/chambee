@@ -53,5 +53,4 @@ public class ExplorarEmpleadosFragment extends Fragment {
         rvEmpleados.setHasFixedSize(true);
         rvEmpleados.setAdapter(adapter);
     }
-
 }
