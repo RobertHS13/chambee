@@ -23,7 +23,7 @@ public class PostRegistroTresFragment extends Fragment {
     private EditText etColonia;
     private Button btnFecha;
     private int dia, mes, ano;
-
+    private String fecha;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup context, Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.fragment_post_parte_3, context, false);
@@ -43,7 +43,8 @@ public class PostRegistroTresFragment extends Fragment {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(view.getContext(), new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-                        btnFecha.setText(i2+"/"+(i1+1)+"/"+i);
+                        fecha = i2+"/"+(i1+1)+"/"+i;
+                        btnFecha.setText(fecha);
                     }
                 }, ano,mes,dia);
                 datePickerDialog.show();
@@ -51,5 +52,14 @@ public class PostRegistroTresFragment extends Fragment {
         });
 
         return view;
+    }
+    public String getLocalidad(){
+        return etLocalidad.getText().toString();
+    }
+    public String getColonia(){
+        return etColonia.getText().toString();
+    }
+    public String getFecha(){
+        return fecha;
     }
 }

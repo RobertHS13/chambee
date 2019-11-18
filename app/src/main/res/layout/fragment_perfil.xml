@@ -164,33 +164,11 @@
                     android:fontFamily="@font/nunito_semibold"
                     android:textSize="18sp"
                     android:layout_marginStart="20dp"/>
-                <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="10sp"
-                        android:fontFamily="@font/montserrat_regular"
-                        android:background="@drawable/etiqueta"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
-                        android:text="Lorem Ipsum"/>
-                    <TextView
-                        android:layout_marginStart="5dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="10sp"
-                        android:fontFamily="@font/montserrat_regular"
-                        android:background="@drawable/etiqueta"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
-                        android:text="Lorem Ipsum"/>
-                </LinearLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:paddingVertical="10dp"
+                    android:id="@+id/rvEtiquetas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
 
                 <View

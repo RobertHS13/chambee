@@ -6,12 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gps.chambee.R;
-import com.gps.chambee.entidades.PublicacionEmpresa;
-import com.gps.chambee.entidades.PublicacionPersona;
-import com.gps.chambee.negocios.casos.CUListarPublicacionesEmpresas;
+import com.gps.chambee.entidades.vistas.PublicacionPersona;
 import com.gps.chambee.negocios.casos.CUListarPublicacionesPersonas;
 import com.gps.chambee.negocios.casos.CasoUso;
-import com.gps.chambee.ui.adaptadores.PublicacionEmpresaAdapter;
 import com.gps.chambee.ui.adaptadores.PublicacionPersonaAdapter;
 
 import java.util.ArrayList;
@@ -30,14 +27,9 @@ public class ExplorarEmpleadosFragment extends Fragment {
 
         List<PublicacionPersona> list = new ArrayList<>();
 
-//        PublicacionPersonaAdapter adapter = new PublicacionPersonaAdapter(view.getContext(),list);
-//        rvEmpleados = view.findViewById(R.id.rvEmpleados);
-//
-//        rvEmpleados.setLayoutManager(new LinearLayoutManager(view.getContext()));
-//        rvEmpleados.setAdapter(adapter);
+        rvEmpleados = view.findViewById(R.id.rvEmpleados);
 
         new CUListarPublicacionesPersonas(getContext(), new CasoUso.EventoPeticionAceptada<List<PublicacionPersona>>() {
-
             @Override
             public void alAceptarPeticion(List<PublicacionPersona> publicaciones) {
                 llenarPublicacionesEmpleados(publicaciones, view);
@@ -45,6 +37,7 @@ public class ExplorarEmpleadosFragment extends Fragment {
         }, new CasoUso.EventoPeticionRechazada() {
             @Override
             public void alRechazarOperacion() {
+                //
             }
         }).enviarPeticion();
 

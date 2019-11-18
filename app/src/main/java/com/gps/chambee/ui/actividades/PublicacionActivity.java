@@ -8,18 +8,24 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.gps.chambee.R;
-import com.gps.chambee.entidades.ComentarioPublicacion;
-import com.gps.chambee.entidades.DetallePublicacionEmpresa;
+import com.gps.chambee.entidades.Categoria;
+import com.gps.chambee.entidades.Comentario;
+import com.gps.chambee.entidades.vistas.ComentarioPublicacion;
+import com.gps.chambee.entidades.vistas.DetallePublicacionEmpresa;
 import com.gps.chambee.entidades.Perfil;
 import com.gps.chambee.negocios.casos.CUObtenerDetallesPublicacionEmpresa;
 import com.gps.chambee.negocios.casos.CasoUso;
+import com.gps.chambee.ui.adaptadores.CategoriasAdapter;
 import com.gps.chambee.ui.adaptadores.ComentarioTrabajoAdapter;
+import com.gps.chambee.ui.adaptadores.EtiquetaAdapter;
 import com.gps.chambee.ui.adaptadores.InteresadosAdapter;
+import com.gps.chambee.ui.adaptadores.RegistroTrabajosAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +35,8 @@ public class PublicacionActivity extends AppCompatActivity {
     private CircleImageView civFotoPerfil;
     private RecyclerView rvInteresados;
     private RecyclerView rvComentariosTrabajo;
+    private RecyclerView rvAreasDeInteres;
+    private RecyclerView rvEtiquetas;
     private ImageView ivRegresarPublicacion;
     private ImageView ivPortada;
     private TextView tvDescripcionTrabajo;
@@ -36,6 +44,7 @@ public class PublicacionActivity extends AppCompatActivity {
     private TextView tvNombrePerfil;
     private TextView tvNumeroInteresados;
     private TextView tvCostos;
+    private EditText etComentario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,29 +54,35 @@ public class PublicacionActivity extends AppCompatActivity {
         ivPortada = findViewById(R.id.ivPortada);
         tvNumeroInteresados = findViewById(R.id.tvNumeroInteresados);
         rvComentariosTrabajo = findViewById(R.id.rvComentariosTrabajo);
+        //rvAreasDeInteres = findViewById(R.id.rvAreasDeInteres);
         ivRegresarPublicacion = findViewById(R.id.ivRegresarPublicacion);
         tvDescripcionTrabajo = findViewById(R.id.tvDescripcionTrabajo);
         tvNombrePerfil = findViewById(R.id.tvNombrePerfil);
         tvCostos = findViewById(R.id.tvCostos);
         civFotoPerfil = findViewById(R.id.civFotoPerfil);
         rvInteresados = findViewById(R.id.rvInteresados);
+        etComentario = findViewById(R.id.etComentario);
+        rvEtiquetas = findViewById(R.id.rvEtiquetas);
 
-        List<Object> interesados = new ArrayList<>();
-        interesados.add(0);
-        interesados.add(0);
-        interesados.add(0);
-        interesados.add(0);
-        interesados.add(0);
-        interesados.add(0);
-        interesados.add(0);
-        interesados.add(0);
-        interesados.add(0);
+        List<Object> lista = new ArrayList<>();
+        lista.add(0);
+
+        EtiquetaAdapter adapter = new EtiquetaAdapter(this,lista);
+        rvEtiquetas.setLayoutManager(new LinearLayoutManager(this, LinearLayout.HORIZONTAL, false) {
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        });
+        rvEtiquetas.setAdapter(adapter);
 
         new CUObtenerDetallesPublicacionEmpresa(
                 getApplicationContext(),
                 new CasoUso.EventoPeticionAceptada<DetallePublicacionEmpresa>(){
                     @Override
-                    public void alAceptarPeticion(DetallePublicacionEmpresa detallePublicacionEmpresa) { }
+                    public void alAceptarPeticion(DetallePublicacionEmpresa detallePublicacionEmpresa) {
+                        llenarDetallePublicacion(detallePublicacionEmpresa);
+                    }
                 },
                 new CasoUso.EventoPeticionRechazada(){
                     @Override
@@ -81,6 +96,30 @@ public class PublicacionActivity extends AppCompatActivity {
                 PublicacionActivity.super.onBackPressed();
             }
         });
+    }
+
+    private void llenarDetallePublicacion(DetallePublicacionEmpresa detallePublicacionEmpresa) {
+
+        tvDescripcionTrabajo.setText(detallePublicacionEmpresa.getDescripcion());
+        tvNombrePerfil.setText(detallePublicacionEmpresa.getPublicacion().getNombreEmpresa());
+        tvNombreTrabajo.setText(detallePublicacionEmpresa.getPublicacion().getNombreTrabajo());
+        tvNumeroInteresados.setText(detallePublicacionEmpresa.getCantidadInteresados());
+
+        llenarComentarios(detallePublicacionEmpresa.getListaComentarios());
+        llenarInteresados(detallePublicacionEmpresa.getListaInteresados());
+        llenarAreasDeInteres(detallePublicacionEmpresa.getListaAreasDeInteres());
+    }
+
+    private void llenarAreasDeInteres(List<Categoria> listaAreasDeInteres) {
+        CategoriasAdapter adapter = new CategoriasAdapter(this, listaAreasDeInteres);
+
+        rvAreasDeInteres.setLayoutManager(new LinearLayoutManager(this) {
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        });
+        rvAreasDeInteres.setAdapter(adapter);
     }
 
     private void llenarComentarios(List<ComentarioPublicacion> comentarios) {

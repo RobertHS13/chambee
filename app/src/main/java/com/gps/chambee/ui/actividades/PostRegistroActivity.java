@@ -6,12 +6,16 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.gps.chambee.R;
 import com.gps.chambee.ui.adaptadores.PostRegistroAdapter;
@@ -30,23 +34,29 @@ public class PostRegistroActivity extends AppCompatActivity {
     private ImageView[] dots;
     private Button btnSiguientePuntos;
 
+    private Bitmap imagenUsuario;
+    private String acercaDeMi;
+
+    private String profesion;
+
+    private String localidad;
+    private String colonia;
+    private String fecha;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_registro2);
 
-        List<Fragment> lista = new ArrayList<>();
+        final List<Fragment> lista = new ArrayList<>();
         lista.add(new PostRegistroUnoFragment());
         lista.add(new PostRegistroDosFragment());
         lista.add(new PostRegistroTresFragment());
 
-
-
-
-
         vpPostRegistro = findViewById(R.id.vpPostRegistro);
 
-        prAdapter = new PostRegistroAdapter(getSupportFragmentManager(),lista);
+        prAdapter = new PostRegistroAdapter(getSupportFragmentManager(), lista);
 
         vpPostRegistro.setAdapter(prAdapter);
 
@@ -55,10 +65,39 @@ public class PostRegistroActivity extends AppCompatActivity {
         btnSiguientePuntos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int nextSlide = vpPostRegistro.getCurrentItem()+1;
-                if(nextSlide<3){
+                Fragment fragment = lista.get(vpPostRegistro.getCurrentItem());
+                switch (vpPostRegistro.getCurrentItem()){
+                    case 0:{
+                        PostRegistroUnoFragment post1 = (PostRegistroUnoFragment) fragment;
+                        imagenUsuario = post1.getImagenUsuario();
+                        acercaDeMi = post1.getAcercaDeMi();
+
+                        break;
+                    }
+                    case 1:{
+                        PostRegistroDosFragment post2 = (PostRegistroDosFragment) fragment;
+                        profesion = post2.getProfesion();
+
+                        break;
+                    }
+                    case 2:{
+                        PostRegistroTresFragment post3 = (PostRegistroTresFragment ) fragment;
+                        localidad = post3.getLocalidad();
+                        colonia = post3.getColonia();
+                        fecha = post3.getFecha();
+
+                        break;
+                    }
+                }
+                Toast.makeText(PostRegistroActivity.this, "", Toast.LENGTH_SHORT).show();
+                Log.e("Post Registro activity", " imagen width "+imagenUsuario+" "+acercaDeMi+" acerca de mi:"+profesion+" profesion: "+localidad+" Localidad: "+colonia+" colonia: "+fecha+" fecha ");
+                int nextSlide = vpPostRegistro.getCurrentItem() + 1;
+                if (nextSlide < 3) {
+
                     vpPostRegistro.setCurrentItem(nextSlide);
-                }else{
+
+
+                } else {
                     startActivity(new Intent(PostRegistroActivity.this, MainActivity.class));
                     finish();
                 }
@@ -75,9 +114,9 @@ public class PostRegistroActivity extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
                 createDots(position);
-                if(position == 2){
+                if (position == 2) {
                     btnSiguientePuntos.setText("Terminar");
-                }else{
+                } else {
                     btnSiguientePuntos.setText("Avanzar");
                 }
             }
@@ -89,26 +128,27 @@ public class PostRegistroActivity extends AppCompatActivity {
         });
     }
 
-    private void createDots(int currentPosition){
-        if(rlPuntos!=null)
+    private void createDots(int currentPosition) {
+        if (rlPuntos != null)
             rlPuntos.removeAllViews();
 
         dots = new ImageView[3];
-        for(int i = 0; i < 3; i++){
-            dots[i]=new ImageView(this);
-            if(i == currentPosition){
-                dots[i].setImageDrawable(ContextCompat.getDrawable(this,R.drawable.active));
-            } else{
-                dots[i].setImageDrawable(ContextCompat.getDrawable(this,R.drawable.inactive));
+        for (int i = 0; i < 3; i++) {
+            dots[i] = new ImageView(this);
+            if (i == currentPosition) {
+                dots[i].setImageDrawable(ContextCompat.getDrawable(this, R.drawable.active));
+            } else {
+                dots[i].setImageDrawable(ContextCompat.getDrawable(this, R.drawable.inactive));
             }
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            params.setMargins(4,0,4,0);
-            rlPuntos.addView(dots[i],params);
+            params.setMargins(4, 0, 4, 0);
+            rlPuntos.addView(dots[i], params);
         }
     }
-    private void nextSlide(){
-        int nextSlide =  vpPostRegistro.getCurrentItem()+1;
-        if(nextSlide < 3){
+
+    private void nextSlide() {
+        int nextSlide = vpPostRegistro.getCurrentItem() + 1;
+        if (nextSlide < 3) {
             vpPostRegistro.setCurrentItem(nextSlide);
         } else {
 

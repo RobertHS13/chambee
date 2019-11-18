@@ -1,4 +1,4 @@
-package com.gps.chambee.entidades;
+package com.gps.chambee.entidades.vistas;
 
 
 import android.os.Parcel;

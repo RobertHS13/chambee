@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gps.chambee.R;
-import com.gps.chambee.entidades.PublicacionEmpresa;
+import com.gps.chambee.entidades.vistas.PublicacionEmpresa;
 import com.gps.chambee.negocios.casos.CUListarPublicacionesEmpresas;
 import com.gps.chambee.negocios.casos.CasoUso;
 import com.gps.chambee.ui.adaptadores.PublicacionEmpresaAdapter;
@@ -34,7 +34,7 @@ public class ExplorarEmpleosFragment extends Fragment {
         //PublicacionEmpresaAdapter adapter = new PublicacionEmpresaAdapter(view.getContext(),lista);
         //rvEmpleos.setAdapter(adapter);
 
-        new CUListarPublicacionesEmpresas(getContext(), new CasoUso.EventoPeticionAceptada<List<PublicacionEmpresa>>() {
+        /*new CUListarPublicacionesEmpresas(getContext(), new CasoUso.EventoPeticionAceptada<List<PublicacionEmpresa>>() {
 
             @Override
             public void alAceptarPeticion(List<PublicacionEmpresa> publicaciones) {
@@ -44,7 +44,7 @@ public class ExplorarEmpleosFragment extends Fragment {
             @Override
             public void alRechazarOperacion() {
             }
-        }).enviarPeticion();
+        }).enviarPeticion();*/
 
         return view;
     }

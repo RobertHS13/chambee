@@ -4,8 +4,7 @@ import android.content.Context;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
-import com.gps.chambee.entidades.ComentarioPublicacion;
-import com.gps.chambee.servicios.web.ServicioWeb;
+import com.gps.chambee.entidades.Comentario;
 import com.gps.chambee.servicios.web.ServicioWebEscritura;
 
 import java.util.HashMap;
@@ -18,13 +17,13 @@ public class SWRegistrarComentarioPublicacion extends ServicioWebEscritura {
 
     @Override
     protected Map<String, String> definirParams(Object... args) {
-        ComentarioPublicacion comentarioPublicacion = (ComentarioPublicacion) args[0];
+        Comentario comentario = (Comentario) args[0];
 
         Map<String, String> params = new HashMap<>();
-        params.put("idPerfil", String.valueOf(comentarioPublicacion.getIdPerfil()));
-        params.put("comentario", comentarioPublicacion.getComentario());
-        params.put("fecha", comentarioPublicacion.getFecha());
-        params.put("idPublicacion", String.valueOf(comentarioPublicacion.getIdPublicacion()));
+        params.put("idPerfil", String.valueOf(comentario.getIdPerfil()));
+        params.put("comentario", comentario.getComentario());
+        params.put("fecha", comentario.getFecha());
+        params.put("idPublicacion", String.valueOf(comentario.getIdPublicacion()));
 
         return params;
     }
