@@ -172,6 +172,7 @@ public class LoginActivity extends AppCompatActivity {
                 progressDialog.dismiss();
 
                 // TODO agregar usuario al singleton de sesion
+                //TODO poner servicio web mandar usuario dado su ID putoso todos, menos yo
 
             }
         }, new CasoUsoFirebase.EventoPeticionRechazada() {

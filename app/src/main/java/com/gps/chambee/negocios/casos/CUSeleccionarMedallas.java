@@ -16,8 +16,8 @@ import org.json.JSONObject;
 
 import java.util.List;
 
-public class CUSeleccionarMedallas extends  CasoUso<Medalla> {
-    public CUSeleccionarMedallas(Context context, EventoPeticionAceptada<Lits<Medalla>> eventoPeticionAceptada, EventoPeticionRechazada eventoPeticionRechazada) {
+public class CUSeleccionarMedallas extends CasoUso<List<Medalla>> {
+    public CUSeleccionarMedallas(Context context, EventoPeticionAceptada<List<Medalla>> eventoPeticionAceptada, EventoPeticionRechazada eventoPeticionRechazada) {
         super(context, eventoPeticionAceptada, eventoPeticionRechazada);
     }
 
@@ -29,7 +29,7 @@ public class CUSeleccionarMedallas extends  CasoUso<Medalla> {
                 PresentadorListaMedalla presentadorListaMedalla = new PresentadorListaMedalla();
                 List<Medalla> medallas = presentadorListaMedalla.procesar(response);
                 Log.i("SWSC", "onResponse: " + response.toString());
-                eventoPeticionAceptada.alAceptarPeticion((Medalla) medallas);
+                eventoPeticionAceptada.alAceptarPeticion(medallas);
             }
         }, new Response.ErrorListener() {
             @Override

@@ -128,9 +128,9 @@ public class PerfilFragment extends Fragment {
             }
         });
 
-        new CUSeleccionarMedallas(getContext(), new CasoUso.EventoPeticionAceptada<Lits<Medalla>>() {
+        new CUSeleccionarMedallas(getContext(), new CasoUso.EventoPeticionAceptada<List<Medalla>>() {
             @Override
-            public void alAceptarPeticion(Lits<Medalla> medallaLits) {
+            public void alAceptarPeticion(List<Medalla> medallas) {
 
             }
         }, new CasoUso.EventoPeticionRechazada() {
