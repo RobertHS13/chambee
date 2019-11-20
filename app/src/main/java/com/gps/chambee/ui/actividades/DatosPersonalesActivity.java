@@ -23,7 +23,7 @@ public class DatosPersonalesActivity extends AppCompatActivity {
     private TextView tvUserEmailAddress;
     private TextView tvUserPhone;
 
-    Usuario usuario = (Usuario) SingletonSesion.getInstance().getObjetosSesion().get("Usuario");
+    private Usuario usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +66,8 @@ public class DatosPersonalesActivity extends AppCompatActivity {
             }
         });
 
-        tvUserName.setText(usuario.getNombre() + usuario.getApellidos());
+        usuario = (Usuario) SingletonSesion.getInstance().getObjetosSesion().get("Usuario");
+        tvUserName.setText(usuario.getNombre() + " " + usuario.getApellidos());
         tvUserEmailAddress.setText(usuario.getCorreoElectronico());
         tvUserPhone.setText(usuario.getTelefono());
     }

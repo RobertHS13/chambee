@@ -48,11 +48,18 @@ public class NombreCompletoActivity extends AppCompatActivity {
         btnListoNombre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String nombreCompleto = etNuevoNombre.getText().toString();
-                ValidadorNombre validadorNombre = new ValidadorNombre(nombreCompleto);
+                String nombres = etNuevoNombre.getText().toString();
+                String apellidos = etNuevoApellido.getText().toString();
+                ValidadorNombre validadorNombres = new ValidadorNombre(nombres);
+                ValidadorNombre validadorApellidos = new ValidadorNombre(apellidos);
 
-                if(!validadorNombre.validar()) {
-                    Toast.makeText(NombreCompletoActivity.this, validadorNombre.ultimoError().mensajeError(), Toast.LENGTH_LONG).show();
+                if(!validadorNombres.validar()) {
+                    Toast.makeText(NombreCompletoActivity.this, validadorNombres.ultimoError().mensajeError(), Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                if(!validadorApellidos.validar()) {
+                    Toast.makeText(NombreCompletoActivity.this, validadorNombres.ultimoError().mensajeError(), Toast.LENGTH_LONG).show();
                     return;
                 }
 
@@ -72,12 +79,13 @@ public class NombreCompletoActivity extends AppCompatActivity {
                 }
                 );
 
-                usuario.setNombre(nombreCompleto);
+                usuario.setNombre(nombres);
+                usuario.setApellidos(apellidos);
 
                 NombreCompletoActivity.super.onBackPressed();
             }
         });
 
-        etNombreActual.setText(usuario.getNombre());
+        etNombreActual.setText(usuario.getNombre() + " " + usuario.getApellidos());
     }
 }
