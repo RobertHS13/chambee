@@ -152,39 +152,39 @@ public class LoginActivity extends AppCompatActivity {
         new CFAutenticarUsuario(new CasoUsoFirebase.EventoPeticionAceptada<String>() {
             @Override
             public void alAceptarPeticion(String s) {
-
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intent);
-
                 progressDialog.dismiss();
-
                 agregarUsuarioSesion();
             }
         }, new CasoUsoFirebase.EventoPeticionRechazada() {
             @Override
             public void alRechazarOperacion(DatabaseError databaseError) {
-
-                Toast.makeText(LoginActivity.this, "Las credenciales son incorrectas", Toast.LENGTH_LONG).show();
                 progressDialog.dismiss();
-
+                Toast.makeText(LoginActivity.this, "Las credenciales son incorrectas", Toast.LENGTH_LONG).show();
             }
         }).enviarPeticion(correo, contrasena);
     }
 
     private void agregarUsuarioSesion() {
+        progressDialog = new ProgressDialog(this);
+        progressDialog.show();
 
+        // agregar usuario al singleton de sesion
         new CFSeleccionarUsuarioFirebase(new CasoUsoFirebase.EventoPeticionAceptada<UsuarioFirebase>() {
             @Override
             public void alAceptarPeticion(UsuarioFirebase usuarioFirebase) {
+                progressDialog.dismiss();
 
-                // agregar usuario al singleton de sesion
+                Sesion.instance().agregarEntidad(UsuarioFirebase.getNombreClase(), usuarioFirebase);
 
-
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         }, new CasoUsoFirebase.EventoPeticionRechazada() {
             @Override
             public void alRechazarOperacion(DatabaseError databaseError) {
+                progressDialog.dismiss();
 
+                Toast.makeText(LoginActivity.this, "Error al obtener usuario de firebase", Toast.LENGTH_SHORT).show();
             }
         }).enviarPeticion();
 

@@ -1,6 +1,6 @@
 package com.gps.chambee.entidades;
 
-public class UsuarioFirebase {
+public class UsuarioFirebase extends EntidadChambee {
 
     public class Builder {
         private String apellidos;
