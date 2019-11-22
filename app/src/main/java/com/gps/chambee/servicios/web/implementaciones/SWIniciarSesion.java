@@ -2,6 +2,7 @@ package com.gps.chambee.servicios.web.implementaciones;
 
 import android.content.Context;
 import com.android.volley.Response;
+import com.gps.chambee.R;
 import com.gps.chambee.servicios.web.ServicioWebLectura;
 import com.gps.chambee.servicios.web.Servidor;
 
@@ -21,17 +22,17 @@ public class SWIniciarSesion extends ServicioWebLectura {
         switch (tipoInicio) {
             case 2: {
                 String nombre = args[0].toString();
-                return ""+nombre+""+contrasena;
+                return context.getString(R.string.login) + "?" + nombre + "?" + contrasena;
             }
 
             case 1: {
                 String correo = args[0].toString();
-                return ""+ correo+""+contrasena;
+                return " " + correo + " " + contrasena;
             }
 
             case 3: {
                 String telefono = args[0].toString();
-                return ""+telefono+""+contrasena;
+                return "" + telefono + "" + contrasena;
             }
 
             default: return null;

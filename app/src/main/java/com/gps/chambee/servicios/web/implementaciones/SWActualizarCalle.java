@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
+import com.gps.chambee.R;
 import com.gps.chambee.entidades.Calle;
 import com.gps.chambee.servicios.web.ServicioWeb;
 import com.gps.chambee.servicios.web.ServicioWebEscritura;
@@ -30,7 +31,7 @@ public class SWActualizarCalle extends ServicioWebEscritura {
 
     @Override
     protected String definirUrl(Object... args) {
-        return "chabee.online/escritura/serviceweb_cambio_calles.php";
+        return context.getString(R.string.sw_cambio_calles);
     }
 
     @Override

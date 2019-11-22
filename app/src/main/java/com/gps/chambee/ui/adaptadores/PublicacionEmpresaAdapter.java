@@ -1,6 +1,7 @@
 package com.gps.chambee.ui.adaptadores;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
@@ -11,9 +12,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.gps.chambee.R;
+import com.gps.chambee.entidades.Publicacion;
 import com.gps.chambee.entidades.vistas.PublicacionEmpresa;
+import com.gps.chambee.entidades.vistas.PublicacionPersona;
 import com.gps.chambee.negocios.casos.CUObtenerImagen;
 import com.gps.chambee.negocios.casos.CasoUso;
+import com.gps.chambee.ui.actividades.MainActivity;
+import com.gps.chambee.ui.actividades.PublicacionActivity;
 
 import java.util.List;
 
@@ -23,7 +28,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PublicacionEmpresaAdapter extends RecyclerView.Adapter<PublicacionEmpresaAdapter.ViewHolder> {
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public  class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView tvNombreReclutador;
         CircleImageView civFotoPerfilEmpresa;
@@ -50,6 +55,13 @@ public class PublicacionEmpresaAdapter extends RecyclerView.Adapter<PublicacionE
             tvNombreTrabajoPublicacion = itemView.findViewById(R.id.tvNombreTrabajoPublicacion);
             tvDescripcionPublicacionTrabajo = itemView.findViewById(R.id.tvDescripcionPublicacionTrabajo);
             ivImagenPublicacionTrabajo = itemView.findViewById(R.id.ivImagenPublicacionTrabajo);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    context.startActivity(new Intent(context, PublicacionActivity.class));
+                }
+            });
 
         }
     }

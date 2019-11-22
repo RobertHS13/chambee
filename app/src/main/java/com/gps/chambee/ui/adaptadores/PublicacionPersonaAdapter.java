@@ -1,6 +1,7 @@
 package com.gps.chambee.ui.adaptadores;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import com.gps.chambee.entidades.vistas.PublicacionPersona;
 import com.gps.chambee.negocios.casos.CasoUso;
 
 import com.gps.chambee.negocios.casos.CUObtenerImagen;
+import com.gps.chambee.ui.actividades.PublicacionActivity;
 
 import java.util.List;
 
@@ -22,7 +24,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PublicacionPersonaAdapter extends RecyclerView.Adapter<PublicacionPersonaAdapter.ViewHolder> {
 
-    public static class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder{
 
         CircleImageView civFotoPerfilPersona;
         TextView tvNombrePersonaPublicacion;
@@ -45,6 +47,13 @@ public class PublicacionPersonaAdapter extends RecyclerView.Adapter<PublicacionP
             tvComentariosPersona = itemView.findViewById(R.id.tvComentariosPersona);
             tvVistosPersona = itemView.findViewById(R.id.tvVistosPersona);
             tvDescripcionPersona = itemView.findViewById(R.id.tvDescripcionPersona);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    context.startActivity(new Intent(context, PublicacionActivity.class));
+                }
+            });
 
         }
     }

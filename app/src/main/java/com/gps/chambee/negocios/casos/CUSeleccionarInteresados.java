@@ -4,31 +4,33 @@ import android.content.Context;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.gps.chambee.entidades.vistas.DetallePublicacion;
-import com.gps.chambee.negocios.presentadores.PresentadorDetallePublicacionEmpresa;
+import com.gps.chambee.entidades.Perfil;
 import com.gps.chambee.servicios.web.ServicioWeb;
-import com.gps.chambee.servicios.web.implementaciones.SWObtenerDetallesPublicacionEmpresa;
+import com.gps.chambee.servicios.web.implementaciones.SWSeleccionarInteresados;
 
 import org.json.JSONObject;
 
-public class CUObtenerDetallesPublicacionEmpresa extends CasoUso<DetallePublicacion> {
+import java.util.List;
 
-
-    public CUObtenerDetallesPublicacionEmpresa(Context context, EventoPeticionAceptada<DetallePublicacion> eventoPeticionAceptada, EventoPeticionRechazada eventoPeticionRechazada) {
+public class CUSeleccionarInteresados extends CasoUso<List<Perfil>> {
+    public CUSeleccionarInteresados(
+            Context context,
+            EventoPeticionAceptada<List<Perfil>> eventoPeticionAceptada,
+            EventoPeticionRechazada eventoPeticionRechazada) {
         super(context, eventoPeticionAceptada, eventoPeticionRechazada);
     }
 
     @Override
     protected ServicioWeb definirServicioWeb() {
-        return new SWObtenerDetallesPublicacionEmpresa(
+        return new SWSeleccionarInteresados(
                 context,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        DetallePublicacion publicacionEmpresa = new PresentadorDetallePublicacionEmpresa().procesar(response);
+
                     }
                 },
-                new Response.ErrorListener(){
+                new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
 
