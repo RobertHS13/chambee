@@ -13,6 +13,8 @@ public class ChatActivity extends AppCompatActivity {
 
     private ImageView ivCalificar;
 
+    private String nombreUsuario;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
