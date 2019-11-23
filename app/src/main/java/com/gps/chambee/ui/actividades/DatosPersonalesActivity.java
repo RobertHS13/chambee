@@ -12,6 +12,8 @@ import android.widget.TextView;
 import com.gps.chambee.R;
 import com.gps.chambee.entidades.SingletonSesion;
 import com.gps.chambee.entidades.Usuario;
+import com.gps.chambee.entidades.UsuarioFirebase;
+import com.gps.chambee.ui.Sesion;
 
 public class DatosPersonalesActivity extends AppCompatActivity {
 
@@ -24,6 +26,7 @@ public class DatosPersonalesActivity extends AppCompatActivity {
     private TextView tvUserPhone;
 
     private Usuario usuario;
+    private UsuarioFirebase usuarioFirebase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,20 +58,25 @@ public class DatosPersonalesActivity extends AppCompatActivity {
         llCorreoElectronico.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(DatosPersonalesActivity.this,CorreoElectronicoActivity.class));
+                startActivity(new Intent(DatosPersonalesActivity.this, CorreoElectronicoActivity.class));
             }
         });
 
         llNombre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(DatosPersonalesActivity.this,NombreCompletoActivity.class));
+                startActivity(new Intent(DatosPersonalesActivity.this, NombreCompletoActivity.class));
             }
         });
 
-        usuario = (Usuario) SingletonSesion.getInstance().getObjetosSesion().get("Usuario");
-        tvUserName.setText(usuario.getNombre() + " " + usuario.getApellidos());
-        tvUserEmailAddress.setText(usuario.getCorreoElectronico());
-        tvUserPhone.setText(usuario.getTelefono());
+        llenarDatosPersonales();
     }
+
+    private void llenarDatosPersonales() {
+        usuarioFirebase = (UsuarioFirebase) Sesion.instance().obtenerEntidad(UsuarioFirebase.getNombreClase());
+        tvUserName.setText(usuarioFirebase.getNombres() + " " + usuarioFirebase.getApellidos());
+        tvUserEmailAddress.setText(usuarioFirebase.getCorreo());
+        tvUserPhone.setText(usuarioFirebase.getTelefono());
+    }
+
 }
