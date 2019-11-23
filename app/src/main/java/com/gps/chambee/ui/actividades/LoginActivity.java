@@ -25,9 +25,11 @@ import com.gps.chambee.negocios.casos.firebase.CFSeleccionarUsuarioFirebase;
 import com.gps.chambee.negocios.casos.firebase.CasoUsoFirebase;
 import com.gps.chambee.negocios.casos.CUIniciarSesion;
 import com.gps.chambee.negocios.casos.CasoUso;
+import com.gps.chambee.negocios.validadores.Validador;
 import com.gps.chambee.negocios.validadores.ValidadorCorreo;
 import com.gps.chambee.negocios.validadores.ValidadorNombreUsuario;
 import com.gps.chambee.negocios.validadores.ValidadorTelefono;
+import com.gps.chambee.negocios.validadores.propiedades.ValidadorContrasenia;
 import com.gps.chambee.ui.Sesion;
 
 public class LoginActivity extends AppCompatActivity {
@@ -89,13 +91,24 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void iniciarSesionSW() {
+
         String credencial = etUsuario.getText().toString();
         String contrasena = etContrasenaLogin.getText().toString();
+        ValidadorContrasenia validadorContrasenia = new ValidadorContrasenia(contrasena);
+
+
+
 
         // validamos si es correo
+
         ValidadorCorreo validadorCorreo = new ValidadorCorreo(credencial);
         ValidadorTelefono validadorTelefono = new ValidadorTelefono(credencial);
         ValidadorNombreUsuario validadorNombreUsuario = new ValidadorNombreUsuario(credencial);
+
+        if (validadorContrasenia.validar() == false){
+            Toast.makeText(this, validadorContrasenia.ultimoError().mensajeError(), Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         int tipoInicio = 0;
         if (validadorCorreo.validar() == true) {
@@ -148,6 +161,20 @@ public class LoginActivity extends AppCompatActivity {
 
         String correo = etUsuario.getText().toString();
         String contrasena = etContrasenaLogin.getText().toString();
+
+        ValidadorContrasenia validadorContrasenia = new ValidadorContrasenia(contrasena);
+        ValidadorCorreo validadorCorreo = new ValidadorCorreo(correo);
+
+        if (validadorContrasenia.validar() == false ){
+            Toast.makeText(this, validadorContrasenia.ultimoError().mensajeError(), Toast.LENGTH_SHORT).show();
+            progressDialog.dismiss();
+            return;
+        }else if(validadorCorreo.validar() == false){
+            Toast.makeText(this, validadorCorreo.ultimoError().mensajeError(), Toast.LENGTH_SHORT).show();
+            progressDialog.dismiss();
+            return;
+        }
+
 
         new CFAutenticarUsuario(new CasoUsoFirebase.EventoPeticionAceptada<String>() {
             @Override
