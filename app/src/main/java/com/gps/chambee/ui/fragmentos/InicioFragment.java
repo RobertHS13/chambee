@@ -83,6 +83,7 @@ public class InicioFragment extends Fragment {
 
         publicaciones.add(
                 new PublicacionEmpresa.PublicacionEmpresaBuilder()
+                        .setIdPublicacionEmpresa(1)
                         .setComentarios(1)
                         .setDescripcion("Desc")
                         .setEtiqueta("etiqueta")
@@ -100,6 +101,25 @@ public class InicioFragment extends Fragment {
         );
 
         llenarPublicacionesEmpresas(publicaciones, view);
+
+        List<PublicacionPersona> publicacionPersonas = new ArrayList<>();
+        publicacionPersonas.add(
+                new PublicacionPersona.PublicacionPersonaBuilder()
+                .setIdPublicacionPersona(1)
+                .setNombrePersona("Andres")
+                .setComentarios(1)
+                .setDescripcion("Andres Reyna Descripcion")
+                .setEtiqueta("lolis")
+                .setInteresada(1)
+                .setInteresados(10)
+                .setTiempo("12 horas")
+                .setUrlImagenPersona("default")
+                .setVista(1)
+                .setVistos(15)
+                .build()
+        );
+
+        llenarPublicacionesPersonas(publicacionPersonas, view);
 
         /*String result = cargarInicio(view);
         Log.d(TAG, "onCreateView: cargarInicio result: " + result);

@@ -6,6 +6,7 @@ import android.os.Parcelable;
 
 public class PublicacionPersona implements Parcelable {
 
+    private int idPublicacionPersona;
     private String urlImagenPersona;
     private String nombrePersona;
     private String tiempo;
@@ -21,6 +22,7 @@ public class PublicacionPersona implements Parcelable {
     private Integer interesada;
 
     public static class PublicacionPersonaBuilder {
+        private int idPublicacionPersona;
         private String urlImagenPersona;
         private String nombrePersona;
         private String tiempo;
@@ -32,6 +34,11 @@ public class PublicacionPersona implements Parcelable {
 
         private Integer vista;
         private Integer interesada;
+
+        public PublicacionPersonaBuilder setIdPublicacionPersona(int idPublicacionPersona) {
+            this.idPublicacionPersona = idPublicacionPersona;
+            return this;
+        }
 
         public PublicacionPersonaBuilder setUrlImagenPersona(String urlImagenPersona) {
             this.urlImagenPersona = urlImagenPersona;
@@ -80,6 +87,7 @@ public class PublicacionPersona implements Parcelable {
     }
 
     public PublicacionPersona(PublicacionPersonaBuilder builder) {
+        this.idPublicacionPersona = builder.idPublicacionPersona;
         this.nombrePersona = builder.nombrePersona;
         this.comentarios = builder.comentarios;
         this.descripcion = builder.descripcion;
@@ -137,18 +145,37 @@ public class PublicacionPersona implements Parcelable {
         }
     };
 
+    public int getIdPublicacionPersona() {
+        return idPublicacionPersona;
+    }
+    public void setIdPublicacionPersona(int idPublicacionPersona) {
+        this.idPublicacionPersona = idPublicacionPersona;
+    }
+
+    public Integer getVista() {
+        return vista;
+    }
+    public void setVista(Integer vista) {
+        this.vista = vista;
+    }
+
+    public Integer getInteresada() {
+        return interesada;
+    }
+    public void setInteresados(Integer interesados) {
+        this.interesados = interesados;
+    }
+
     public String getUrlImagenPersona() {
         return urlImagenPersona;
     }
-
-    public void setUrlImagenEmpresa(String urlImagenEmpresa) {
+    public void setUrlImagenPersona(String urlImagenPersona) {
         this.urlImagenPersona = urlImagenPersona;
     }
 
     public String getNombrePersona() {
         return nombrePersona;
     }
-
     public void setNombrePersona(String nombrePersona) {
         this.nombrePersona = nombrePersona;
     }
@@ -156,15 +183,11 @@ public class PublicacionPersona implements Parcelable {
     public String getTiempo() {
         return tiempo;
     }
-
-    public void setTiempo(String tiempo) {
-        this.tiempo = tiempo;
-    }
+    public void setTiempo(String tiempo) { this.tiempo = tiempo; }
 
     public String getEtiqueta() {
         return etiqueta;
     }
-
     public void setEtiqueta(String etiqueta) {
         this.etiqueta = etiqueta;
     }
@@ -172,15 +195,13 @@ public class PublicacionPersona implements Parcelable {
     public Integer getInteresados() {
         return interesados;
     }
-
-    public void setInteresados(Integer interesados) {
-        this.interesados = interesados;
+    public void setInteresada(Integer interesada) {
+        this.interesada = interesada;
     }
 
     public Integer getComentarios() {
         return comentarios;
     }
-
     public void setComentarios(Integer comentarios) {
         this.comentarios = comentarios;
     }
@@ -188,17 +209,15 @@ public class PublicacionPersona implements Parcelable {
     public Integer getVistos() {
         return vistos;
     }
-
     public void setVistos(Integer vistos) {
         this.vistos = vistos;
     }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
-
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+    public String getDescripcion() {
+        return descripcion;
     }
 
     @Override

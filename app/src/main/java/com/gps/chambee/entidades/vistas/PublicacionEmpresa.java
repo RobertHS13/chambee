@@ -6,6 +6,7 @@ import android.os.Parcelable;
 
 public class PublicacionEmpresa implements Parcelable {
 
+    private int idPublicacionEmpresa;
     private String urlImagenEmpresa;
     private String nombreEmpresa;
     private String tiempo;
@@ -23,6 +24,7 @@ public class PublicacionEmpresa implements Parcelable {
     private Integer interesada;
 
     public static class PublicacionEmpresaBuilder {
+        private int idPublicacionEmpresa;
         private String urlImagenEmpresa;
         private String nombreEmpresa;
         private String tiempo;
@@ -36,6 +38,11 @@ public class PublicacionEmpresa implements Parcelable {
 
         private Integer vista;
         private Integer interesada;
+
+        public PublicacionEmpresaBuilder setIdPublicacionEmpresa(int id){
+            idPublicacionEmpresa = id;
+            return this;
+        }
 
         public PublicacionEmpresaBuilder setUrlImagenEmpresa(String urlImagenEmpresa) {
             this.urlImagenEmpresa = urlImagenEmpresa;
@@ -92,6 +99,7 @@ public class PublicacionEmpresa implements Parcelable {
     }
 
     public PublicacionEmpresa(PublicacionEmpresaBuilder builder) {
+        this.idPublicacionEmpresa = builder.idPublicacionEmpresa;
         this.nombreEmpresa = builder.nombreEmpresa;
         this.nombreTrabajo = builder.nombreTrabajo;
         this.comentarios = builder.comentarios;
@@ -159,6 +167,30 @@ public class PublicacionEmpresa implements Parcelable {
 
     public void setUrlImagenEmpresa(String urlImagenEmpresa) {
         this.urlImagenEmpresa = urlImagenEmpresa;
+    }
+
+    public int getIdPublicacionEmpresa() {
+        return idPublicacionEmpresa;
+    }
+
+    public void setIdPublicacionEmpresa(int idPublicacionEmpresa) {
+        this.idPublicacionEmpresa = idPublicacionEmpresa;
+    }
+
+    public Integer getVista() {
+        return vista;
+    }
+
+    public void setVista(Integer vista) {
+        this.vista = vista;
+    }
+
+    public Integer getInteresada() {
+        return interesada;
+    }
+
+    public void setInteresada(Integer interesada) {
+        this.interesada = interesada;
     }
 
     public String getNombreEmpresa() {

@@ -6,34 +6,34 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gps.chambee.R;
 import com.gps.chambee.entidades.Categoria;
-import com.gps.chambee.entidades.SingletonSesion;
 import com.gps.chambee.entidades.Usuario;
 import com.gps.chambee.entidades.vistas.ComentarioPublicacion;
 import com.gps.chambee.entidades.vistas.DetallePublicacion;
 import com.gps.chambee.entidades.Perfil;
 import com.gps.chambee.negocios.casos.CUObtenerDetallePublicacion;
-import com.gps.chambee.negocios.casos.CUObtenerDetallesPublicacionEmpresa;
+import com.gps.chambee.negocios.casos.CURegistrarComentarioPublicacion;
 import com.gps.chambee.negocios.casos.CUSeleccionarCategorias;
 import com.gps.chambee.negocios.casos.CUSeleccionarComentarios;
 import com.gps.chambee.negocios.casos.CUSeleccionarInteresados;
 import com.gps.chambee.negocios.casos.CasoUso;
 import com.gps.chambee.ui.Sesion;
-import com.gps.chambee.ui.adaptadores.CategoriasAdapter;
 import com.gps.chambee.ui.adaptadores.ComentarioTrabajoAdapter;
 import com.gps.chambee.ui.adaptadores.EtiquetaAdapter;
 import com.gps.chambee.ui.adaptadores.InteresadosAdapter;
 
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 public class PublicacionActivity extends AppCompatActivity {
@@ -45,6 +45,7 @@ public class PublicacionActivity extends AppCompatActivity {
     private RecyclerView rvEtiquetas;
     private ImageView ivRegresarPublicacion;
     private ImageView ivPortada;
+    private ImageView ivComentar;
     private TextView tvDescripcionTrabajo;
     private TextView tvNombreTrabajo;
     private TextView tvNombrePerfil;
@@ -69,10 +70,12 @@ public class PublicacionActivity extends AppCompatActivity {
         rvInteresados = findViewById(R.id.rvInteresados);
         etComentario = findViewById(R.id.etComentario);
         rvEtiquetas = findViewById(R.id.rvEtiquetas);
+        ivComentar = findViewById(R.id.ivComentar);
 
-        Usuario usuario = (Usuario) Sesion.instance().obtenerEntidad("usuario");
+        final Usuario usuario = (Usuario) Sesion.instance().obtenerEntidad("usuario");
 
-        final int idPublicacion = 0;
+        Intent intent = getIntent();
+        final int idPublicacion = intent.getIntExtra("id", -1);
 
         new CUObtenerDetallePublicacion(
             getApplicationContext(),
@@ -163,6 +166,32 @@ public class PublicacionActivity extends AppCompatActivity {
             }
         ).enviarPeticion(usuario);
 
+        final String comentario = etComentario.getText().toString();
+        // anio-dia-mes
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-dd-MM");
+        Date date = new Date();
+
+        final String fecha = formatter.format(date);
+        ivComentar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new CURegistrarComentarioPublicacion(
+                        getApplicationContext(),
+                        new CasoUso.EventoPeticionAceptada<String>() {
+                            @Override
+                            public void alAceptarPeticion(String s) {
+                                Toast.makeText(PublicacionActivity.this, "Comentado exitosamente!", Toast.LENGTH_SHORT).show();
+                            }
+                        },
+                        new CasoUso.EventoPeticionRechazada() {
+                            @Override
+                            public void alRechazarOperacion() {
+                                Toast.makeText(PublicacionActivity.this, "Fallo al enviar comentario!", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                ).enviarPeticion( usuario.getId(), comentario, fecha, idPublicacion);
+            }
+        });
     }
 
 }

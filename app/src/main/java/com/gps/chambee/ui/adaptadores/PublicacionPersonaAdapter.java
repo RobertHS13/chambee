@@ -35,6 +35,8 @@ public class PublicacionPersonaAdapter extends RecyclerView.Adapter<PublicacionP
         TextView tvVistosPersona;
         TextView tvDescripcionPersona;
 
+        public int idPublicacion;
+
         public ViewHolder(@NonNull View itemView) {
 
             super(itemView);
@@ -48,10 +50,14 @@ public class PublicacionPersonaAdapter extends RecyclerView.Adapter<PublicacionP
             tvVistosPersona = itemView.findViewById(R.id.tvVistosPersona);
             tvDescripcionPersona = itemView.findViewById(R.id.tvDescripcionPersona);
 
+            idPublicacion = -1;
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    context.startActivity(new Intent(context, PublicacionActivity.class));
+                    Intent intent = new Intent(context, PublicacionActivity.class);
+                    intent.putExtra("id", idPublicacion);
+                    context.startActivity(intent);
                 }
             });
 
@@ -77,6 +83,8 @@ public class PublicacionPersonaAdapter extends RecyclerView.Adapter<PublicacionP
     public void onBindViewHolder(@NonNull final PublicacionPersonaAdapter.ViewHolder holder, int position) {
 
         PublicacionPersona publicacion = lista.get(position);
+
+        holder.idPublicacion = publicacion.getIdPublicacionPersona();
 
         holder.tvComentariosPersona.setText(publicacion.getComentarios().toString());
         holder.tvDescripcionPersona.setText(publicacion.getDescripcion());

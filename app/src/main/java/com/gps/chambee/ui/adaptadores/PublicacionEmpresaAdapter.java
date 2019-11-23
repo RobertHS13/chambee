@@ -41,6 +41,8 @@ public class PublicacionEmpresaAdapter extends RecyclerView.Adapter<PublicacionE
         TextView tvDescripcionPublicacionTrabajo;
         ImageView ivImagenPublicacionTrabajo;
 
+        int idPublicacion;
+
         public ViewHolder(@NonNull View itemView) {
 
             super(itemView);
@@ -59,10 +61,11 @@ public class PublicacionEmpresaAdapter extends RecyclerView.Adapter<PublicacionE
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    context.startActivity(new Intent(context, PublicacionActivity.class));
+                    Intent intent = new Intent(context, PublicacionActivity.class);
+                    intent.putExtra("id", idPublicacion);
+                    context.startActivity(intent);
                 }
             });
-
         }
     }
 
@@ -86,6 +89,8 @@ public class PublicacionEmpresaAdapter extends RecyclerView.Adapter<PublicacionE
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
       
         PublicacionEmpresa publicacion = (PublicacionEmpresa) lista.get(position);
+
+        holder.idPublicacion = publicacion.getIdPublicacionEmpresa();
 
         holder.tvComentariosEmpresa.setText(publicacion.getComentarios().toString());
         holder.tvDescripcionPublicacionTrabajo.setText(publicacion.getDescripcion());
