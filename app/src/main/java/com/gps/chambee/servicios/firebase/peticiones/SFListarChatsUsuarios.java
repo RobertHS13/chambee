@@ -9,23 +9,19 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.gps.chambee.servicios.firebase.ServicioFirebaseLectura;
 
-public class SFListarChats extends ServicioFirebaseLectura {
+public class SFListarChatsUsuarios extends ServicioFirebaseLectura {
 
-    private String idEmisor;
-
-    public SFListarChats(String idEmisor, EventoTareaCompletada<DataSnapshot> eventoTareaCompletada, EventoTareaCancelada eventoTareaCancelada) {
+    public SFListarChatsUsuarios(EventoTareaCompletada<DataSnapshot> eventoTareaCompletada, EventoTareaCancelada eventoTareaCancelada) {
         super(eventoTareaCompletada, eventoTareaCancelada);
-
-        this.idEmisor = idEmisor;
     }
 
     @Override
     public void ejecutarTarea(Object... args) {
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance()
-                .getReference("chats")
-                .child(idEmisor);
+
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("usuarios");
 
         databaseReference.addValueEventListener(new ValueEventListener() {
+
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 eventoTareaCompletada.alCompletarTarea(dataSnapshot);
@@ -35,6 +31,8 @@ public class SFListarChats extends ServicioFirebaseLectura {
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 eventoTareaCancelada.alCancelarTarea(databaseError);
             }
+
         });
+
     }
 }

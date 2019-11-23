@@ -16,7 +16,7 @@ import com.gps.chambee.entidades.MensajeFirebase;
 
 import java.util.List;
 
-public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
+public class MensajesChatAdapter extends RecyclerView.Adapter<MensajesChatAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -37,7 +37,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
 
     private FirebaseUser firebaseUser;
 
-    public ChatAdapter(Context context, List<MensajeFirebase> mensajes) {
+    public MensajesChatAdapter(Context context, List<MensajeFirebase> mensajes) {
         this.context = context;
         this.mensajes = mensajes;
     }
@@ -47,11 +47,11 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         if (viewType == MENSAJE_IZQ) {
             View view = LayoutInflater.from(context).inflate(R.layout.item_mensaje_izq, parent, false);
-            return new ChatAdapter.ViewHolder(view);
+            return new MensajesChatAdapter.ViewHolder(view);
         }
         else {
             View view = LayoutInflater.from(context).inflate(R.layout.item_mensaje_der, parent, false);
-            return new ChatAdapter.ViewHolder(view);
+            return new MensajesChatAdapter.ViewHolder(view);
         }
     }
 

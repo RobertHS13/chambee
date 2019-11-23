@@ -1,30 +1,20 @@
 package com.gps.chambee.negocios.presentadores.firebase;
 
 import com.google.firebase.database.DataSnapshot;
-import com.gps.chambee.entidades.vistas.VistaChat;
+import com.gps.chambee.entidades.ChatFirebase;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PresentadorFBListaChats extends PresentadorFirebase<List<VistaChat>> {
-
-    private String idEmisor;
-
-    public PresentadorFBListaChats(String idEmisor) {
-        this.idEmisor = idEmisor;
-    }
+public class PresentadorFBListaChats extends PresentadorFirebase<List<ChatFirebase>> {
 
     @Override
-    public List<VistaChat> procesar(DataSnapshot snapshot) {
-        List<VistaChat> chats = new ArrayList<>();
+    public List<ChatFirebase> procesar(DataSnapshot snapshot) {
+        List<ChatFirebase> chats = new ArrayList<>();
 
         for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-            VistaChat chat = dataSnapshot.getValue(VistaChat.class);
-
-            assert chat != null;
-
-            if (chat.getNombreUsuario().equals(idEmisor))
-                chats.add(chat);
+            ChatFirebase chat = dataSnapshot.getValue(ChatFirebase.class);
+            chats.add(chat);
         }
 
         return chats;

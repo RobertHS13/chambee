@@ -9,12 +9,12 @@ import com.gps.chambee.servicios.firebase.peticiones.SFListarMensajes;
 
 import java.util.List;
 
-public class CUListarMensajes extends CasoUsoFirebase<List<MensajeFirebase>> {
+public class CFListarMensajes extends CasoUsoFirebase<List<MensajeFirebase>> {
 
     private String idEmisor;
     private String idReceptor;
 
-    public CUListarMensajes(String idEmisor, String idReceptor, EventoPeticionAceptada<List<MensajeFirebase>> eventoPeticionAceptada, EventoPeticionRechazada eventoPeticionRechazada) {
+    public CFListarMensajes(String idEmisor, String idReceptor, EventoPeticionAceptada<List<MensajeFirebase>> eventoPeticionAceptada, EventoPeticionRechazada eventoPeticionRechazada) {
         super(eventoPeticionAceptada, eventoPeticionRechazada);
 
         this.idEmisor = idEmisor;

@@ -24,11 +24,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class MensajesAdapter extends RecyclerView.Adapter<MensajesAdapter.ViewHolder> {
+public class ChatsAdapter extends RecyclerView.Adapter<ChatsAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         CircleImageView civFotoMensajes;
+        TextView tvReceptor;
         TextView tvUsuarioChat;
         TextView tvMensaje;
         TextView tvNumeroMensaje;
@@ -36,7 +37,9 @@ public class MensajesAdapter extends RecyclerView.Adapter<MensajesAdapter.ViewHo
 
         public ViewHolder (final View itemView){
             super(itemView);
+
             civFotoMensajes = itemView.findViewById(R.id.civFotoMensajes);
+            tvReceptor = itemView.findViewById(R.id.tvReceptor);
             tvUsuarioChat = itemView.findViewById(R.id.tvUsuarioChat);
             tvMensaje = itemView.findViewById(R.id.tvMensaje);
             tvNumeroMensaje = itemView.findViewById(R.id.tvNumeroMensaje);
@@ -46,7 +49,7 @@ public class MensajesAdapter extends RecyclerView.Adapter<MensajesAdapter.ViewHo
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(context, ChatActivity.class);
-                    intent.putExtra("usuario", tvUsuarioChat.getText().toString());
+                    intent.putExtra("idReceptor", tvReceptor.getText().toString());
                     context.startActivity(intent);
                 }
             });
@@ -57,7 +60,7 @@ public class MensajesAdapter extends RecyclerView.Adapter<MensajesAdapter.ViewHo
     private List<VistaChat> lista;
     private Map<String, Bitmap> cacheBitmaps = new HashMap<>();
 
-    public MensajesAdapter (Context context, List<VistaChat> lista){
+    public ChatsAdapter(Context context, List<VistaChat> lista){
         this.context = context;
         this.lista = lista;
     }
@@ -66,7 +69,7 @@ public class MensajesAdapter extends RecyclerView.Adapter<MensajesAdapter.ViewHo
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_mensajes,parent,false);
-        return new MensajesAdapter.ViewHolder(view);
+        return new ChatsAdapter.ViewHolder(view);
     }
 
     @Override
@@ -74,6 +77,7 @@ public class MensajesAdapter extends RecyclerView.Adapter<MensajesAdapter.ViewHo
         final VistaChat chat = lista.get(position);
 
         // datos del chat
+        holder.tvReceptor.setText(chat.getIdRecepetor());
         holder.tvFechaChat.setText(chat.getFechaUltimoMensaje());
         holder.tvMensaje.setText(chat.getUltimoMensaje());
         holder.tvNumeroMensaje.setText(String.valueOf(chat.getCantidadMensajesSinLeer()));
