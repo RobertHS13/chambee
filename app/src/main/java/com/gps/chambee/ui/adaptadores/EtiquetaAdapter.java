@@ -27,9 +27,9 @@ public class EtiquetaAdapter extends RecyclerView.Adapter<EtiquetaAdapter.ViewHo
         }
     }
     private Context context;
-    private List<Object> lista;
+    private List<Categoria> lista;
 
-    public EtiquetaAdapter(Context context, List<Object> lista){
+    public EtiquetaAdapter(Context context, List<Categoria> lista){
         this.context=context;
         this.lista=lista;
     }
@@ -43,6 +43,7 @@ public class EtiquetaAdapter extends RecyclerView.Adapter<EtiquetaAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull EtiquetaAdapter.ViewHolder holder, int position) {
+        holder.tvEtiqueta.setText(lista.get(position).getNombre());
     }
 
     @Override

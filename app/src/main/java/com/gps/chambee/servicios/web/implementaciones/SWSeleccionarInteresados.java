@@ -8,15 +8,14 @@ import com.gps.chambee.servicios.web.ServicioWebLectura;
 
 import org.json.JSONObject;
 
-public class SWSeleccionarPerfilDetallado  extends ServicioWebLectura {
-    public SWSeleccionarPerfilDetallado(Context context,
-                                        Response.Listener<JSONObject> responseListener,
-                                        Response.ErrorListener errorListener) {
+public class SWSeleccionarInteresados extends ServicioWebLectura {
+    public SWSeleccionarInteresados(Context context, Response.Listener<JSONObject> responseListener, Response.ErrorListener errorListener) {
         super(context, responseListener, errorListener);
     }
 
     @Override
     protected Request definirRequest(String url, Object... args) {
+
         return super.definirRequest(url, args);
     }
 

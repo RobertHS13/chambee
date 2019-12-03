@@ -8,7 +8,7 @@ import com.android.volley.Response;
 
 public abstract class ServicioWeb<T> {
 
-    private Context context;
+    protected Context context;
     protected Response.Listener<T> responseListener;
     protected Response.ErrorListener errorListener;
 

@@ -65,14 +65,14 @@ public class PerfilFragment extends Fragment {
         List<Object> lista = new ArrayList<>();
         lista.add(0);
 
-        EtiquetaAdapter adapter = new EtiquetaAdapter(view.getContext(),lista);
-        rvEtiquetas.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayout.HORIZONTAL, false) {
-            @Override
-            public boolean canScrollVertically() {
-                return false;
-            }
-        });
-        rvEtiquetas.setAdapter(adapter);
+//        EtiquetaAdapter adapter = new EtiquetaAdapter(view.getContext(),lista);
+//        rvEtiquetas.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayout.HORIZONTAL, false) {
+//            @Override
+//            public boolean canScrollVertically() {
+//                return false;
+//            }
+//        });
+//        rvEtiquetas.setAdapter(adapter);
 
         List<Object> list = new ArrayList<>();
         lista.add(0);

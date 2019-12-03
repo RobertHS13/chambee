@@ -1,6 +1,7 @@
 package com.gps.chambee.ui.adaptadores;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
@@ -11,9 +12,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.gps.chambee.R;
+import com.gps.chambee.entidades.Publicacion;
 import com.gps.chambee.entidades.vistas.PublicacionEmpresa;
+import com.gps.chambee.entidades.vistas.PublicacionPersona;
 import com.gps.chambee.negocios.casos.CUObtenerImagen;
 import com.gps.chambee.negocios.casos.CasoUso;
+import com.gps.chambee.ui.actividades.MainActivity;
+import com.gps.chambee.ui.actividades.PublicacionActivity;
 
 import java.util.List;
 
@@ -23,7 +28,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PublicacionEmpresaAdapter extends RecyclerView.Adapter<PublicacionEmpresaAdapter.ViewHolder> {
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public  class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView tvNombreReclutador;
         CircleImageView civFotoPerfilEmpresa;
@@ -35,6 +40,8 @@ public class PublicacionEmpresaAdapter extends RecyclerView.Adapter<PublicacionE
         TextView tvNombreTrabajoPublicacion;
         TextView tvDescripcionPublicacionTrabajo;
         ImageView ivImagenPublicacionTrabajo;
+
+        int idPublicacion;
 
         public ViewHolder(@NonNull View itemView) {
 
@@ -51,6 +58,14 @@ public class PublicacionEmpresaAdapter extends RecyclerView.Adapter<PublicacionE
             tvDescripcionPublicacionTrabajo = itemView.findViewById(R.id.tvDescripcionPublicacionTrabajo);
             ivImagenPublicacionTrabajo = itemView.findViewById(R.id.ivImagenPublicacionTrabajo);
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, PublicacionActivity.class);
+                    intent.putExtra("id", idPublicacion);
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 
@@ -74,6 +89,8 @@ public class PublicacionEmpresaAdapter extends RecyclerView.Adapter<PublicacionE
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
       
         PublicacionEmpresa publicacion = (PublicacionEmpresa) lista.get(position);
+
+        holder.idPublicacion = publicacion.getIdPublicacionEmpresa();
 
         holder.tvComentariosEmpresa.setText(publicacion.getComentarios().toString());
         holder.tvDescripcionPublicacionTrabajo.setText(publicacion.getDescripcion());

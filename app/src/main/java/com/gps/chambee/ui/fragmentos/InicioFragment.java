@@ -34,6 +34,7 @@ import com.gps.chambee.ui.adaptadores.CategoriasAdapter;
 import com.gps.chambee.ui.adaptadores.PublicacionEmpresaAdapter;
 import com.gps.chambee.ui.adaptadores.PublicacionPersonaAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class InicioFragment extends Fragment {
@@ -78,6 +79,48 @@ public class InicioFragment extends Fragment {
             }
         });
 
+        List<PublicacionEmpresa> publicaciones = new ArrayList<>();
+
+        publicaciones.add(
+                new PublicacionEmpresa.PublicacionEmpresaBuilder()
+                        .setIdPublicacionEmpresa(1)
+                        .setComentarios(1)
+                        .setDescripcion("Desc")
+                        .setEtiqueta("etiqueta")
+                        .setInteresada(1)
+                        .setInteresados(2)
+                        .setNombreEmpresa("Empresa")
+                        .setNombreTrabajo("Trabajo")
+                        .setTiempo("Tiempo")
+                        .setUrlImagenEmpresa("default")
+                        .setUrlImagenTrabajo("default")
+                        .setVista(1)
+                        .setVistos(4)
+                        .build()
+
+        );
+
+        llenarPublicacionesEmpresas(publicaciones, view);
+
+        List<PublicacionPersona> publicacionPersonas = new ArrayList<>();
+        publicacionPersonas.add(
+                new PublicacionPersona.PublicacionPersonaBuilder()
+                .setIdPublicacionPersona(1)
+                .setNombrePersona("Andres")
+                .setComentarios(1)
+                .setDescripcion("Andres Reyna Descripcion")
+                .setEtiqueta("lolis")
+                .setInteresada(1)
+                .setInteresados(10)
+                .setTiempo("12 horas")
+                .setUrlImagenPersona("default")
+                .setVista(1)
+                .setVistos(15)
+                .build()
+        );
+
+        llenarPublicacionesPersonas(publicacionPersonas, view);
+
         /*String result = cargarInicio(view);
         Log.d(TAG, "onCreateView: cargarInicio result: " + result);
         if (result != "Everything went well!"){
@@ -107,20 +150,20 @@ public class InicioFragment extends Fragment {
 
         cuSeleccionarCategorias.enviarPeticion();
 
-        new CUListarPublicacionesEmpresas(getContext(),
-                new CasoUso.EventoPeticionAceptada<List<PublicacionEmpresa>>() {
-            @Override
-            public void alAceptarPeticion(List<PublicacionEmpresa> publicaciones) {
-                // mostrar categorías.
-                llenarPublicacionesEmpresas(publicaciones, view);
-            }
-        }, new CasoUso.EventoPeticionRechazada() {
-            @Override
-            public void alRechazarOperacion() {
-                message[0] = "Failed to load categories!";
-                Log.i("InicioFragment", message[0]);
-            }
-        }).enviarPeticion();
+//        new CUListarPublicacionesEmpresas(getContext(),
+//                new CasoUso.EventoPeticionAceptada<List<PublicacionEmpresa>>() {
+//            @Override
+//            public void alAceptarPeticion(List<PublicacionEmpresa> publicaciones) {
+//                // mostrar categorías.
+//                llenarPublicacionesEmpresas(publicaciones, view);
+//            }
+//        }, new CasoUso.EventoPeticionRechazada() {
+//            @Override
+//            public void alRechazarOperacion() {
+//                message[0] = "Failed to load categories!";
+//                Log.i("InicioFragment", message[0]);
+//            }
+//        }).enviarPeticion();
 
         new CUListarPublicacionesPersonas(
                 getContext(),

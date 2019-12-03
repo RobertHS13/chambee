@@ -265,6 +265,7 @@
                     android:background="@drawable/fondo_redondeado_blanco_contorno"
                     />
                 <ImageView
+                    android:id="@+id/ivComentar"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="15dp"
                     android:layout_width="30dp"

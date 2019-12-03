@@ -1,6 +1,7 @@
 package com.gps.chambee.ui.adaptadores;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import com.gps.chambee.entidades.vistas.PublicacionPersona;
 import com.gps.chambee.negocios.casos.CasoUso;
 
 import com.gps.chambee.negocios.casos.CUObtenerImagen;
+import com.gps.chambee.ui.actividades.PublicacionActivity;
 
 import java.util.List;
 
@@ -22,7 +24,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PublicacionPersonaAdapter extends RecyclerView.Adapter<PublicacionPersonaAdapter.ViewHolder> {
 
-    public static class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder{
 
         CircleImageView civFotoPerfilPersona;
         TextView tvNombrePersonaPublicacion;
@@ -32,6 +34,8 @@ public class PublicacionPersonaAdapter extends RecyclerView.Adapter<PublicacionP
         TextView tvComentariosPersona;
         TextView tvVistosPersona;
         TextView tvDescripcionPersona;
+
+        public int idPublicacion;
 
         public ViewHolder(@NonNull View itemView) {
 
@@ -45,6 +49,17 @@ public class PublicacionPersonaAdapter extends RecyclerView.Adapter<PublicacionP
             tvComentariosPersona = itemView.findViewById(R.id.tvComentariosPersona);
             tvVistosPersona = itemView.findViewById(R.id.tvVistosPersona);
             tvDescripcionPersona = itemView.findViewById(R.id.tvDescripcionPersona);
+
+            idPublicacion = -1;
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, PublicacionActivity.class);
+                    intent.putExtra("id", idPublicacion);
+                    context.startActivity(intent);
+                }
+            });
 
         }
     }
@@ -68,6 +83,8 @@ public class PublicacionPersonaAdapter extends RecyclerView.Adapter<PublicacionP
     public void onBindViewHolder(@NonNull final PublicacionPersonaAdapter.ViewHolder holder, int position) {
 
         PublicacionPersona publicacion = lista.get(position);
+
+        holder.idPublicacion = publicacion.getIdPublicacionPersona();
 
         holder.tvComentariosPersona.setText(publicacion.getComentarios().toString());
         holder.tvDescripcionPersona.setText(publicacion.getDescripcion());
