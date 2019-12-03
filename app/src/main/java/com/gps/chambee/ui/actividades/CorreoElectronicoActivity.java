@@ -12,8 +12,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gps.chambee.R;
-import com.gps.chambee.entidades.SingletonSesion;
-import com.gps.chambee.entidades.Usuario;
 import com.gps.chambee.entidades.UsuarioFirebase;
 import com.gps.chambee.negocios.casos.CUActualizarUsuario;
 import com.gps.chambee.negocios.casos.CasoUso;

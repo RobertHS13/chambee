@@ -10,7 +10,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.gps.chambee.R;
-import com.gps.chambee.entidades.SingletonSesion;
 import com.gps.chambee.entidades.Usuario;
 import com.gps.chambee.entidades.UsuarioFirebase;
 import com.gps.chambee.ui.Sesion;
