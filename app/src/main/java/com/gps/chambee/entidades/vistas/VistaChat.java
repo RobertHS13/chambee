@@ -7,6 +7,9 @@ public class VistaChat implements Parcelable {
 
     public static class Builder {
 
+        private String idEmisor;
+        private String idRecepetor;
+
         private String urlImagen;
         private String nombreUsuario;
         private String ultimoMensaje;
@@ -15,6 +18,16 @@ public class VistaChat implements Parcelable {
         private boolean activo;
 
         public Builder() { }
+
+        public Builder setIdEmisor(String idEmisor) {
+            this.idEmisor = idEmisor;
+            return this;
+        }
+
+        public Builder setIdRecepetor(String idRecepetor) {
+            this.idRecepetor = idRecepetor;
+            return this;
+        }
 
         public Builder setUrlImagen(String urlImagen) {
             this.urlImagen = urlImagen;
@@ -51,6 +64,9 @@ public class VistaChat implements Parcelable {
         }
     }
 
+    private String idEmisor;
+    private String idRecepetor;
+
     private String urlImagen;
     private String nombreUsuario;
     private String ultimoMensaje;
@@ -58,9 +74,12 @@ public class VistaChat implements Parcelable {
     private int cantidadMensajesSinLeer;
     private boolean activo;
 
-    private VistaChat() { }
+    public VistaChat() { }
 
     public VistaChat(Builder builder) {
+        this.idEmisor = builder.idEmisor;
+        this.idRecepetor = builder.idRecepetor;
+
         this.urlImagen = builder.urlImagen;
         this.nombreUsuario = builder.nombreUsuario;
         this.ultimoMensaje = builder.ultimoMensaje;
@@ -103,6 +122,22 @@ public class VistaChat implements Parcelable {
         parcel.writeString(fechaUltimoMensaje);
         parcel.writeInt(cantidadMensajesSinLeer);
         parcel.writeByte((byte) (activo ? 1 : 0));
+    }
+
+    public String getIdEmisor() {
+        return idEmisor;
+    }
+
+    public void setIdEmisor(String idEmisor) {
+        this.idEmisor = idEmisor;
+    }
+
+    public String getIdRecepetor() {
+        return idRecepetor;
+    }
+
+    public void setIdRecepetor(String idRecepetor) {
+        this.idRecepetor = idRecepetor;
     }
 
     public String getUrlImagen() {
@@ -151,5 +186,19 @@ public class VistaChat implements Parcelable {
 
     public void setActivo(boolean activo) {
         this.activo = activo;
+    }
+
+    @Override
+    public String toString() {
+        return "VistaChat{" +
+                "idEmisor='" + idEmisor + '\'' +
+                ", idRecepetor='" + idRecepetor + '\'' +
+                ", urlImagen='" + urlImagen + '\'' +
+                ", nombreUsuario='" + nombreUsuario + '\'' +
+                ", ultimoMensaje='" + ultimoMensaje + '\'' +
+                ", fechaUltimoMensaje='" + fechaUltimoMensaje + '\'' +
+                ", cantidadMensajesSinLeer=" + cantidadMensajesSinLeer +
+                ", activo=" + activo +
+                '}';
     }
 }

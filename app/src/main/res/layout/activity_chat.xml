@@ -19,7 +19,7 @@
             android:paddingStart="15dp"
             android:layout_width="60dp"
             android:layout_height="fill_parent"
-            android:id="@+id/ivRegresarConfiguracion"
+            android:id="@+id/ivRegresar"
             android:src="@drawable/ic_regresar"
             android:layout_gravity="center_vertical"/>
         <TextView
@@ -61,7 +61,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nunito"
-                    android:text="Puesto"
+                    android:text="Numero de telefono"
                     android:textSize="12sp" />
 
             </LinearLayout>

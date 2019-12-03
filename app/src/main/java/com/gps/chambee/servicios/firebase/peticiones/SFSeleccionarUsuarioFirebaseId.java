@@ -9,21 +9,19 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.gps.chambee.servicios.firebase.ServicioFirebaseLectura;
 
-public class SFListarChats extends ServicioFirebaseLectura {
+public class SFSeleccionarUsuarioFirebaseId extends ServicioFirebaseLectura {
 
-    private String idEmisor;
-
-    public SFListarChats(String idEmisor, EventoTareaCompletada<DataSnapshot> eventoTareaCompletada, EventoTareaCancelada eventoTareaCancelada) {
+    public SFSeleccionarUsuarioFirebaseId(EventoTareaCompletada<DataSnapshot> eventoTareaCompletada, EventoTareaCancelada eventoTareaCancelada) {
         super(eventoTareaCompletada, eventoTareaCancelada);
-
-        this.idEmisor = idEmisor;
     }
 
     @Override
     public void ejecutarTarea(Object... args) {
+        String idUsuarioFirebase = args[0].toString();
+
         DatabaseReference databaseReference = FirebaseDatabase.getInstance()
-                .getReference("chats")
-                .child(idEmisor);
+                .getReference("usuarios")
+                .child(idUsuarioFirebase);
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override

@@ -5,7 +5,7 @@ public class MensajeFirebase {
     public static class Builder {
 
         private String emisor;
-        private String receptor;
+        private String recepetor;
         private String mensaje;
         private int tipoVista;
 
@@ -16,8 +16,8 @@ public class MensajeFirebase {
             return this;
         }
 
-        public Builder setReceptor(String receptor) {
-            this.receptor = receptor;
+        public Builder setRecepetor(String recepetor) {
+            this.recepetor = recepetor;
             return this;
         }
 
@@ -37,15 +37,15 @@ public class MensajeFirebase {
     }
 
     private String emisor;
-    private String receptor;
+    private String recepetor;
     private String mensaje;
     private int tipoVista;
 
-    private MensajeFirebase() { }
+    public MensajeFirebase() { }
 
     public MensajeFirebase(Builder builder) {
         this.emisor = builder.emisor;
-        this.receptor = builder.receptor;
+        this.recepetor = builder.recepetor;
         this.mensaje = builder.mensaje;
         this.tipoVista = builder.tipoVista;
     }
@@ -58,12 +58,12 @@ public class MensajeFirebase {
         this.emisor = emisor;
     }
 
-    public String getReceptor() {
-        return receptor;
+    public String getRecepetor() {
+        return recepetor;
     }
 
-    public void setReceptor(String receptor) {
-        this.receptor = receptor;
+    public void setRecepetor(String recepetor) {
+        this.recepetor = recepetor;
     }
 
     public String getMensaje() {
@@ -80,5 +80,15 @@ public class MensajeFirebase {
 
     public void setTipoVista(int tipoVista) {
         this.tipoVista = tipoVista;
+    }
+
+    @Override
+    public String toString() {
+        return "MensajeFirebase{" +
+                "emisor='" + emisor + '\'' +
+                ", recepetor='" + recepetor + '\'' +
+                ", mensaje='" + mensaje + '\'' +
+                ", tipoVista=" + tipoVista +
+                '}';
     }
 }

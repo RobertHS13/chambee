@@ -158,6 +158,8 @@ public class RegisterActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(RegisterActivity.this, PostRegistroActivity.class);
                 startActivity(intent);
+                finish();
+
             }
         }, new CasoUsoFirebase.EventoPeticionRechazada() {
             @Override
@@ -168,7 +170,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
         }).enviarPeticion();
 
-        // TODO agregar usuario al singleton de sesion
-        // TODO servicio web para obtener datos del usuario
+        // TODO agregar usuario (normal, no firebase) al singleton de sesion
+        // TODO servicio web para obtener datos del usuario (normal, no firebase)
     }
 }

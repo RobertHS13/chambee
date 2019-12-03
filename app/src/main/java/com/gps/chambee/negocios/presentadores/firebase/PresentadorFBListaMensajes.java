@@ -25,8 +25,8 @@ public class PresentadorFBListaMensajes extends PresentadorFirebase<List<Mensaje
 
             assert mensajeFirebase != null;
 
-            if (mensajeFirebase.getReceptor().equals(idEmisor) && mensajeFirebase.getEmisor().equals(idReceptor) ||
-                mensajeFirebase.getReceptor().equals(idReceptor) && mensajeFirebase.getEmisor().equals(idEmisor))
+            if (mensajeFirebase.getRecepetor().equals(idEmisor) && mensajeFirebase.getEmisor().equals(idReceptor) ||
+                mensajeFirebase.getRecepetor().equals(idReceptor) && mensajeFirebase.getEmisor().equals(idEmisor))
             {
                 mensajes.add(mensajeFirebase);
             }
