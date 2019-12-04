@@ -25,11 +25,10 @@ import com.gps.chambee.negocios.casos.firebase.CFSeleccionarUsuarioFirebase;
 import com.gps.chambee.negocios.casos.firebase.CasoUsoFirebase;
 import com.gps.chambee.negocios.casos.CUIniciarSesion;
 import com.gps.chambee.negocios.casos.CasoUso;
-import com.gps.chambee.negocios.validadores.Validador;
 import com.gps.chambee.negocios.validadores.ValidadorCorreo;
 import com.gps.chambee.negocios.validadores.ValidadorNombreUsuario;
 import com.gps.chambee.negocios.validadores.ValidadorPool;
-import com.gps.chambee.negocios.validadores.ValidadorTelefono;
+import com.gps.chambee.negocios.validadores.propiedades.ValidadorTelefono;
 import com.gps.chambee.negocios.validadores.propiedades.ValidadorContrasenia;
 import com.gps.chambee.ui.Sesion;
 import com.gps.chambee.ui.Utils;
@@ -177,7 +176,7 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
 
         if (!validadorPool.validarTodo()) {
-            Toast.makeText(this, validadorPool.getUltimoError().mensajeError(), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, validadorPool.ultimoError().mensajeError(), Toast.LENGTH_LONG).show();
             return;
         }
 
