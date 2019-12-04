@@ -28,7 +28,7 @@ public class ValidadorPool {
         this.validadores = builder.validadores;
     }
 
-    public Validador.ErrorValidacion getUltimoError() {
+    public Validador.ErrorValidacion ultimoError() {
         return ultimoError;
     }
 

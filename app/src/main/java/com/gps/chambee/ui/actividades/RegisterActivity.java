@@ -77,7 +77,7 @@ public class RegisterActivity extends AppCompatActivity {
                 .build();
 
         if (!validadorPool.validarTodo()) {
-            Toast.makeText(this, validadorPool.getUltimoError().mensajeError(), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, validadorPool.ultimoError().mensajeError(), Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -91,7 +91,7 @@ public class RegisterActivity extends AppCompatActivity {
                 .build();
 
         if (!validadorPool.validarTodo()) {
-            Toast.makeText(this, validadorPool.getUltimoError().mensajeError(), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, validadorPool.ultimoError().mensajeError(), Toast.LENGTH_LONG).show();
             return;
         }
 
