@@ -166,10 +166,9 @@
                     android:layout_marginStart="20dp"/>
                 <androidx.recyclerview.widget.RecyclerView
                     android:paddingVertical="10dp"
-                    android:id="@+id/rvEtiquetas"
+                    android:id="@+id/rvServicios"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
-
 
                 <View
                     android:background="#228B8B8B"

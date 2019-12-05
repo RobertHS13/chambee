@@ -36,12 +36,14 @@ public class ValidadorNombre extends Validador<String> {
             @Override
             public boolean validar() {
                 String nombre = t;
-                Pattern regex = Pattern.compile("[^a-zA-Z]");
-                Matcher mt = regex.matcher(nombre);
+                Pattern regex = Pattern.compile("/^([a-z ñáéíóú]{2,60})$/i");
+                return !regex.matcher(nombre).find();
+                /*Matcher mt = regex.matcher(nombre);
                 if(mt.matches()){
                     return true;
                 }
-                    return false;
+                    return false;*/
+                //    /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/g
                 }
         }, new ErrorValidacion() {
             @Override
