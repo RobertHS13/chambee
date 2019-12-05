@@ -169,7 +169,7 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:paddingVertical="10dp"
-                    android:id="@+id/rvEtiquetas"
+                    android:id="@+id/rvServicios"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 

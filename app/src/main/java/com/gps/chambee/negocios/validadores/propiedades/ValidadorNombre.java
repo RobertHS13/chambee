@@ -2,6 +2,7 @@ package com.gps.chambee.negocios.validadores.propiedades;
 
 import com.gps.chambee.negocios.validadores.Validador;
 
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ValidadorNombre extends Validador<String> {
@@ -35,10 +36,15 @@ public class ValidadorNombre extends Validador<String> {
             @Override
             public boolean validar() {
                 String nombre = t;
-                Pattern regex = Pattern.compile("[^a-zA-Z]");
+                Pattern regex = Pattern.compile("/^([a-z ñáéíóú]{2,60})$/i");
                 return !regex.matcher(nombre).find();
-            }
-
+                /*Matcher mt = regex.matcher(nombre);
+                if(mt.matches()){
+                    return true;
+                }
+                    return false;*/
+                //    /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/g
+                }
         }, new ErrorValidacion() {
             @Override
             public String mensajeError() {
