@@ -34,9 +34,7 @@ import java.util.List;
 
 public class PerfilFragment extends Fragment {
 
-    private RecyclerView rvRegistroTrabajos;
-    private RecyclerView rvMedallas;
-    private CircleImageView cimImagenPerfilUsuario;
+    private CircleImageView civImagenPerfilUsuario;
     private TextView tvNombreUsuario;
     private TextView tvEdadUsuario;
     private ImageView ivInsigniaPrincipal;
@@ -44,16 +42,16 @@ public class PerfilFragment extends Fragment {
     private TextView tvPuntajeEstrellas;
     private TextView tvNumeroCalificaciones;
     private TextView tvCiudadUsuario;
-    private TextView tvAcercaDeMiPerfil;
-    private RecyclerView rvServicios;
+    private TextView tvAcercaDeMi;
+    private RecyclerView rvEtiquetas;
+    private RecyclerView rvMedallas;
+    private RecyclerView rvRegistroTrabajos;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.fragment_perfil,container,false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_perfil,container,false);
 
-        rvRegistroTrabajos = view.findViewById(R.id.rvRegistroTrabajos);
-        cimImagenPerfilUsuario = view.findViewById(R.id.cimImagenPerfilUsuario);
+        civImagenPerfilUsuario = view.findViewById(R.id.civImagenPerfilUsuario);
         tvNombreUsuario = view.findViewById(R.id.tvNombreUsuario);
         tvEdadUsuario = view.findViewById(R.id.tvEdadUsuario);
         ivInsigniaPrincipal = view.findViewById(R.id.ivInsigniaPrincipal);
@@ -61,8 +59,28 @@ public class PerfilFragment extends Fragment {
         tvPuntajeEstrellas = view.findViewById(R.id.tvPuntajeEstrellas);
         tvNumeroCalificaciones = view.findViewById(R.id.tvNumeroCalificaciones);
         tvCiudadUsuario = view.findViewById(R.id.tvCiudadUsuario);
-        tvAcercaDeMiPerfil = view.findViewById(R.id.tvAcercaDeMiPerfil);
+        tvAcercaDeMi = view.findViewById(R.id.tvAcercaDeMi);
         rvMedallas = view.findViewById(R.id.rvMedallas);
+        rvEtiquetas = view.findViewById(R.id.rvEtiquetas);
+        rvRegistroTrabajos = view.findViewById(R.id.rvRegistroTrabajos);
+
+        llenarDatosPerfil();
+
+        return view;
+    }
+
+    private void llenarDatosPerfil() {
+        seleccionarPerfilDetallado();
+        listarServicios();
+        listarMedallas();
+        listarRegistrosTrabajo();
+    }
+
+    private void seleccionarPerfilDetallado() {
+
+        // TODO Caso de uso para seleccionar el perfil detallado del usuario
+
+        // Suoponiendo que ya se obtuvo el perfil detallado del usuario...
         rvServicios = view.findViewById(R.id.rvServicios);
 
         List<String> lista = new ArrayList<>();
@@ -94,39 +112,31 @@ public class PerfilFragment extends Fragment {
         });
         rvMedallas.setAdapter(adMedallas);
 
-        /*String nombreUsuario = tvNombreUsuario.getText().toString();
-        String edadUsuario = tvEdadUsuario.getText().toString();
-        String puestoUsuario = tvPuertoUsuario.getText().toString();
-        String puntajeEstrella = tvPuntajeEstrellas.getText().toString();
-        String numeroCalificaciones = tvNumeroCalificaciones.getText().toString();
-        String paisUsuario = tvCiudadUsuario.getText().toString();
-        String acercaDeMiPerfil = tvAcercaDeMiPerfil.getText().toString();*/
+        PerfilDetallado perfilDetallado = new PerfilDetallado();
 
+        tvNombreUsuario.setText(perfilDetallado.getNombrePersona() + " " + perfilDetallado.getApellidosPersona());
+        tvEdadUsuario.setText(String.valueOf(perfilDetallado.getEdad()));
+        tvPuertoUsuario.setText(perfilDetallado.getPuesto());
+        tvPuntajeEstrellas.setText(String.valueOf(perfilDetallado.getEstrellas()));
 
-        CUObtenerImagen cuImagenPerfil = new CUObtenerImagen(getContext(), new CasoUso.EventoPeticionAceptada<Bitmap>() {
+        /*new CUSeleccionarPerfilDetallado(getContext(), new CasoUso.EventoPeticionAceptada<PerfilDetallado>() {
+
             @Override
-            public void alAceptarPeticion(Bitmap bitmap) {
-                cimImagenPerfilUsuario.setImageBitmap(bitmap);
+            public void alAceptarPeticion(PerfilDetallado perfilDetallado) {
+
             }
+
         }, new CasoUso.EventoPeticionRechazada() {
+
             @Override
             public void alRechazarOperacion() {
 
             }
-        });
 
-        CUObtenerImagen cuImagenPortada = new CUObtenerImagen(getContext(), new CasoUso.EventoPeticionAceptada<Bitmap>() {
-            @Override
-            public void alAceptarPeticion(Bitmap bitmap) {
-                ivInsigniaPrincipal.setImageBitmap(bitmap);
-            }
-        }, new CasoUso.EventoPeticionRechazada() {
-            @Override
-            public void alRechazarOperacion() {
+        }).enviarPeticion();*/
+    }
 
-            }
-        });
-
+    private void listarMedallas() {
         new CUSeleccionarMedallas(getContext(), new CasoUso.EventoPeticionAceptada<List<Medalla>>() {
             @Override
             public void alAceptarPeticion(List<Medalla> medallas) {
@@ -134,11 +144,14 @@ public class PerfilFragment extends Fragment {
             }
         }, new CasoUso.EventoPeticionRechazada() {
             @Override
-            public void alRechazarOperacion() {
+            public void alRechazarOperacion() { }
+        });
 
-            }
-        }).enviarPeticion();
-
+        MedallasAdapter adapter = new MedallasAdapter(getContext(), null);
+        rvMedallas.setAdapter(adapter);
+        rvMedallas.setLayoutManager(new LinearLayoutManager(getContext()));
+      
+        
         new CUListarServicios(getContext(), new CasoUso.EventoPeticionAceptada<List<String>>() {
             @Override
             public void alAceptarPeticion(List<String> strings) {
@@ -163,29 +176,22 @@ public class PerfilFragment extends Fragment {
             }
         });
 
-        new CUSeleccionarPerfilDetallado(getContext(), new CasoUso.EventoPeticionAceptada<List<PerfilDetallado>>() {
-            @Override
-            public void alAceptarPeticion(List<PerfilDetallado> perfilDetallados) {
-
-            }
-        }, new CasoUso.EventoPeticionRechazada() {
-            @Override
-            public void alRechazarOperacion() {
-
-            }
-        }).enviarPeticion();
-
-        return view;
+       // new CUSeleccionarPerfilDetallado(getContext(), new CasoUso.EventoPeticionAceptada<List<PerfilDetallado>>() {
+       //     @Override
+       //     public void alAceptarPeticion(List<PerfilDetallado> perfilDetallados) { } 
     }
 
-    private void llenarMedallas(List<Medalla> listaMedallas, View view){
-        MedallasAdapter adapter = new MedallasAdapter(view.getContext(), listaMedallas);
-        rvMedallas.setLayoutManager(new LinearLayoutManager(view.getContext()){
-            @Override
-            public boolean canScrollVertically(){return false;}
-        });
-        rvMedallas.setHasFixedSize(true);
-        rvMedallas.setAdapter(adapter);
+    private void listarRegistrosTrabajo() {
+
+        // TODO Servicio web para listar registros de trabajo
+
+        RegistroTrabajosAdapter adapter = new RegistroTrabajosAdapter(getContext(), null);
+        rvRegistroTrabajos.setAdapter(adapter);
+        rvRegistroTrabajos.setLayoutManager(new LinearLayoutManager(getContext()));
+    }
+
+    private void listarServicios() {
+
     }
 
     private void llenarServicios(List<String> listaServicios, View view){
