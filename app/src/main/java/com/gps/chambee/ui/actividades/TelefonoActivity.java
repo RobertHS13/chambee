@@ -20,7 +20,7 @@ public class TelefonoActivity extends AppCompatActivity {
 
     private ImageView ivRegresarTelefono;
     private TextView tvTelefonoActual;
-    private EditText etNuevoCorreo;
+    private EditText etNuevoTelefono;
     private Button btnListoTelefono;
     private ProgressDialog progressDialog;
 
@@ -32,7 +32,7 @@ public class TelefonoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_telefono);
 
         tvTelefonoActual = findViewById(R.id.tvTelefonoActual);
-        etNuevoCorreo = findViewById(R.id.etNuevoCorreo);
+        etNuevoTelefono = findViewById(R.id.etNuevoTelefono);
         btnListoTelefono = findViewById(R.id.btnListoTelefono);
         ivRegresarTelefono = findViewById(R.id.ivRegresarTelefono);
 
@@ -54,7 +54,7 @@ public class TelefonoActivity extends AppCompatActivity {
     }
 
     private void actualizarTelefono() {
-        String telefono = etNuevoCorreo.getText().toString();
+        String telefono = etNuevoTelefono.getText().toString();
         ValidadorTelefono validadorTelefono = new ValidadorTelefono(telefono);
 
         if (!validadorTelefono.validar()) {

@@ -32,6 +32,7 @@ public class RecuperarPasswordActivity extends AppCompatActivity {
     }
 
     private void validarCodigo() {
+
         startActivity(new Intent(RecuperarPasswordActivity.this, PasswordNuevaActivity.class));
     }
 }

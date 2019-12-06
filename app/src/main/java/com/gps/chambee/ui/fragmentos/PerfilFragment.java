@@ -3,6 +3,8 @@ package com.gps.chambee.ui.fragmentos;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.gps.chambee.R;
 import com.gps.chambee.entidades.Medalla;
@@ -46,6 +49,7 @@ public class PerfilFragment extends Fragment {
     private RecyclerView rvEtiquetas;
     private RecyclerView rvMedallas;
     private RecyclerView rvRegistroTrabajos;
+    private RecyclerView rvServicios;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -63,17 +67,48 @@ public class PerfilFragment extends Fragment {
         rvMedallas = view.findViewById(R.id.rvMedallas);
         rvEtiquetas = view.findViewById(R.id.rvEtiquetas);
         rvRegistroTrabajos = view.findViewById(R.id.rvRegistroTrabajos);
-
-        llenarDatosPerfil();
+        rvServicios = view.findViewById(R.id.rvServicios);
 
         return view;
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        llenarDatosPerfil();
+    }
+
     private void llenarDatosPerfil() {
         seleccionarPerfilDetallado();
-        listarServicios();
         listarMedallas();
         listarRegistrosTrabajo();
+    }
+
+    private void llenarImagen(){
+        CUObtenerImagen cuImagenPerfil = new CUObtenerImagen(getContext(), new CasoUso.EventoPeticionAceptada<Bitmap>() {
+            @Override
+            public void alAceptarPeticion(Bitmap bitmap) {
+                civImagenPerfilUsuario.setImageBitmap(bitmap);
+            }
+        }, new CasoUso.EventoPeticionRechazada() {
+            @Override
+            public void alRechazarOperacion() {
+                Toast.makeText(getContext(), "No se pudo cargar la imagen", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        CUObtenerImagen cuImagenPortada = new CUObtenerImagen(getContext(), new CasoUso.EventoPeticionAceptada<Bitmap>() {
+            @Override
+            public void alAceptarPeticion(Bitmap bitmap) {
+                ivInsigniaPrincipal.setImageBitmap(bitmap);
+            }
+        }, new CasoUso.EventoPeticionRechazada() {
+            @Override
+            public void alRechazarOperacion() {
+                Toast.makeText(getContext(), "No se pudo cargar la imagen", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void seleccionarPerfilDetallado() {
@@ -81,12 +116,12 @@ public class PerfilFragment extends Fragment {
         // TODO Caso de uso para seleccionar el perfil detallado del usuario
 
         // Suoponiendo que ya se obtuvo el perfil detallado del usuario...
-        rvServicios = view.findViewById(R.id.rvServicios);
+
 
         List<String> lista = new ArrayList<>();
 
-        ServiciosAdapter adapter = new ServiciosAdapter(view.getContext(),lista);
-        rvServicios.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayout.HORIZONTAL, false) {
+        ServiciosAdapter adapter = new ServiciosAdapter(getView().getContext(),lista);
+        rvServicios.setLayoutManager(new LinearLayoutManager(getView().getContext(), LinearLayout.HORIZONTAL, false) {
             @Override
             public boolean canScrollVertically() {
                 return false;
@@ -96,15 +131,15 @@ public class PerfilFragment extends Fragment {
 
         final List<Puesto> listaPuestos = new ArrayList<>();
 
-        RegistroTrabajosAdapter adapte = new RegistroTrabajosAdapter(view.getContext(),listaPuestos);
-        rvRegistroTrabajos.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        RegistroTrabajosAdapter adapte = new RegistroTrabajosAdapter(getView().getContext(),listaPuestos);
+        rvRegistroTrabajos.setLayoutManager(new LinearLayoutManager(getView().getContext()));
         rvRegistroTrabajos.setAdapter(adapte);
 
         //
         final List<Medalla> listaMedallas = new ArrayList<>();
 
-        final MedallasAdapter adMedallas = new MedallasAdapter(view.getContext(),listaMedallas);
-        rvMedallas.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayout.HORIZONTAL, false) {
+        final MedallasAdapter adMedallas = new MedallasAdapter(getView().getContext(),listaMedallas);
+        rvMedallas.setLayoutManager(new LinearLayoutManager(getView().getContext(), LinearLayout.HORIZONTAL, false) {
             @Override
             public boolean canScrollVertically() {
                 return false;
@@ -140,39 +175,41 @@ public class PerfilFragment extends Fragment {
         new CUSeleccionarMedallas(getContext(), new CasoUso.EventoPeticionAceptada<List<Medalla>>() {
             @Override
             public void alAceptarPeticion(List<Medalla> medallas) {
-                llenarMedallas(listaMedallas, view);
+                llenarMedallas(medallas, getView());
             }
         }, new CasoUso.EventoPeticionRechazada() {
             @Override
-            public void alRechazarOperacion() { }
+            public void alRechazarOperacion() {
+                Toast.makeText(getContext(), "No se pudieron cargar las medallas", Toast.LENGTH_SHORT).show();
+            }
         });
 
-        MedallasAdapter adapter = new MedallasAdapter(getContext(), null);
+        MedallasAdapter adapter = new MedallasAdapter(getContext(), new ArrayList<Medalla>());
         rvMedallas.setAdapter(adapter);
         rvMedallas.setLayoutManager(new LinearLayoutManager(getContext()));
       
         
         new CUListarServicios(getContext(), new CasoUso.EventoPeticionAceptada<List<String>>() {
             @Override
-            public void alAceptarPeticion(List<String> strings) {
-
+            public void alAceptarPeticion(List<String> servicios) {
+                llenarServicios(servicios, getView());
             }
         }, new CasoUso.EventoPeticionRechazada() {
             @Override
             public void alRechazarOperacion() {
-
+                Toast.makeText(getContext(), "No se pudieron cargar los servicios", Toast.LENGTH_SHORT).show();
             }
         });
 
         new CUListarPuestos(getContext(), new CasoUso.EventoPeticionAceptada<List<Puesto>>() {
             @Override
             public void alAceptarPeticion(List<Puesto> puestos) {
-                llenarRegistroTrabajoAdapter(listaPuestos, view);
+                llenarRegistroTrabajoAdapter(puestos, getView());
             }
         }, new CasoUso.EventoPeticionRechazada() {
             @Override
             public void alRechazarOperacion() {
-
+                Toast.makeText(getContext(), "No se pudieron cargar los puestos", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -185,13 +222,19 @@ public class PerfilFragment extends Fragment {
 
         // TODO Servicio web para listar registros de trabajo
 
-        RegistroTrabajosAdapter adapter = new RegistroTrabajosAdapter(getContext(), null);
+        RegistroTrabajosAdapter adapter = new RegistroTrabajosAdapter(getContext(), new ArrayList<Puesto>());
         rvRegistroTrabajos.setAdapter(adapter);
         rvRegistroTrabajos.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
-    private void listarServicios() {
-
+    private void llenarMedallas(List<Medalla> listaMedallas, View view){
+        MedallasAdapter adapter = new MedallasAdapter(view.getContext(), listaMedallas);
+        rvMedallas.setLayoutManager(new LinearLayoutManager(view.getContext()){
+            @Override
+            public boolean canScrollVertically(){return false;}
+        });
+        rvMedallas.setHasFixedSize(true);
+        rvMedallas.setAdapter(adapter);
     }
 
     private void llenarServicios(List<String> listaServicios, View view){
