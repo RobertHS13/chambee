@@ -76,14 +76,11 @@ public class NombreCompletoActivity extends AppCompatActivity {
         progressDialog.setMessage("Actualizando...");
         progressDialog.show();
 
-        // TODO Caso de uso para actualizar el nombre del usuario
-
-        /*new CUActualizarUsuario(this, new CasoUso.EventoPeticionAceptada<String>() {
+        new CUActualizarUsuario(this, new CasoUso.EventoPeticionAceptada<String>() {
 
             @Override
             public void alAceptarPeticion(String s) {
                 progressDialog.dismiss();
-
                 Sesion.instance().agregarEntidad(UsuarioFirebase.getNombreClase(), usuarioFirebase);
                 finish();
             }
@@ -96,6 +93,8 @@ public class NombreCompletoActivity extends AppCompatActivity {
                 Toast.makeText(NombreCompletoActivity.this, "No tienes internet.", Toast.LENGTH_LONG).show();
             }
 
-        });*/
+        });
+
+
     }
 }

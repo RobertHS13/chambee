@@ -34,7 +34,8 @@ public class SWActualizarUsuario extends ServicioWebEscritura {
 
     @Override
     protected String definirUrl(Object... args) {
-        return "chabee.online/escritura/serviceweb_cambio_usuarios.php";
+        //return "chabee.online/escritura/serviceweb_cambio_usuarios.php";
+        return "http://www.chambee.online/chambee_php/escritura/cambio/serviceweb_cambio_usuarios.php";
     }
 
     @Override
